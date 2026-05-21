@@ -6,7 +6,7 @@ import AppRouter from './routes/AppRouter';
 import { AuthProvider } from './auth/AuthContext';
 
 function App() {
-  const [dark, setDark] = useState<boolean>(true)
+  // const [dark, setDark] = useState<boolean>(true)
 
   useEffect(() => {
     testConnection()
@@ -15,7 +15,9 @@ function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
-        <AppRouter dark={dark} setDark={setDark} />
+        {/* <AppRouter dark={dark} setDark={setDark} /> */}
+        <AppRouter  />
+
       </BrowserRouter>
     </AuthProvider>
   )

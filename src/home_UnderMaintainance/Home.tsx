@@ -1,9 +1,13 @@
 import React from 'react'
+import Hero from './hero/Hero'
+import About from './about/About'
 
 const Home = () => {
     return (
         <div>
-            <h1 className=' font-extrabold text-8xl text-center '>briksy real Estate </h1>
+            <Hero />
+            <About />
+
         </div>
     )
 }

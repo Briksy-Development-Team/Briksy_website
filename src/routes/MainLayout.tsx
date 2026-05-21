@@ -4,8 +4,8 @@ import { profileData } from '../data/profileDummydata'
 
 const MainLayout = ({ dark, setDark }: any) => {
     return (
-        <div className={`min-h-screen ${dark ? "bg-black text-white" : "bg-zinc-50 text-black"}`}>
-
+        // <div className={`min-h-screen ${dark ? "bg-black text-white" : "bg-zinc-50 text-black"}`}>
+        <div>
             <Navbar
                 dark={dark}
                 setDark={setDark}

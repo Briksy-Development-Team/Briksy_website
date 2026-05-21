@@ -1,110 +1,149 @@
-import { Sun, Moon } from "lucide-react"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import { useAuth } from "../auth/AuthContext"
 
 interface NavbarProps {
-    dark: boolean
-    setDark: (value: boolean) => void
     avatar?: string
     name?: string
 }
 
 const NAV_LINKS = [
-    { label: "Explore", path: "/" },
-    { label: "My Properties", path: "/properties" },
-    { label: "Support", path: "/support" },
+    { label: "Properties", path: "/" },
+    { label: "Find Builders", path: "/properties" },
+    { label: "How it Works", path: "/support" },
+    { label: "About", path: "/about" },
 ]
 
-const Navbar = ({ dark, setDark, avatar, name }: NavbarProps) => {
+const Navbar = ({ avatar, name }: NavbarProps) => {
     const location = useLocation()
     const navigate = useNavigate()
+
     const { user, isAuthenticated, logout } = useAuth()
+
     const displayName = user?.name ?? name ?? "User"
 
     return (
-        <nav className={`
-            sticky top-0 z-50 flex items-center justify-between px-8 h-16
-            border-b backdrop-blur-md transition-all duration-300
-            ${dark ? "bg-black/80 border-zinc-800" : "bg-white/80 border-zinc-200"}
-        `}>
+        <nav
+            className="
+                fixed top-0 left-0 w-full z-50
+                   backdrop-blur-xs
+            "
+        >
+            <div
+                className="
+                    flex items-center justify-between
+                    border-b border-white/20 
+                    py-7  px-12
+                "
+            >
 
-            <Link to="/" className="flex items-center gap-2 no-underline">
-                <div className={`w-7 h-7 rounded-lg flex items-center justify-center ${dark ? "bg-white" : "bg-black"}`}>
-                    <span className={`text-xs font-black ${dark ? "text-black" : "text-white"}`}>B</span>
-                </div>
-                <span className={`text-base font-bold tracking-tight ${dark ? "text-white" : "text-black"}`}>
-                    Briksy
-                </span>
-            </Link>
-
-            <div className="flex items-center gap-6">
-
-                {NAV_LINKS.map((item) => {
-                    const isActive = location.pathname === item.path
-                    return (
-                        <Link
-                            key={item.label}
-                            to={item.path}
-                            className={`
-                                text-sm transition-colors duration-200 no-underline font-medium
-                                ${isActive
-                                    ? dark ? "text-white" : "text-black"
-                                    : dark ? "text-zinc-500 hover:text-zinc-200" : "text-zinc-400 hover:text-zinc-700"
-                                }
-                            `}
-                        >
-                            {item.label}
-                            {isActive && (
-                                <span className={`block h-0.5 mt-0.5 rounded-full ${dark ? "bg-white" : "bg-black"}`} />
-                            )}
-                        </Link>
-                    )
-                })}
-
-                <button
-                    onClick={() => setDark(!dark)}
-                    className={`
-                        flex items-center gap-2 px-4 py-2 rounded-full border text-xs font-medium
-                        transition-all duration-300 cursor-pointer
-                        ${dark
-                            ? "border-zinc-700 bg-zinc-900 text-zinc-300 hover:border-zinc-400"
-                            : "border-zinc-300 bg-white text-zinc-600 hover:border-zinc-500"
-                        }
-                    `}
+                <Link
+                    to="/"
+                    className="
+                        text-white text-5xl
+                        font-light tracking-tight
+                        no-underline
+                    "
                 >
-                    {dark ? <Sun size={15} /> : <Moon size={15} />}
-                    {dark ? "Light" : "Dark"}
-                </button>
+                    briksy<span className="text-red-500">.</span>
+                </Link>
 
-                {avatar && isAuthenticated && (
-                    <Link to="/profile">
-                        <img
-                            src={avatar}
-                            alt={displayName}
-                            className={`
-                                w-8 h-8 rounded-full object-cover ring-2 ring-offset-2 cursor-pointer
-                                ${dark ? "ring-zinc-700 ring-offset-black" : "ring-zinc-300 ring-offset-white"}
-                            `}
-                        />
-                    </Link>
-                )}
-                {isAuthenticated ? (
-                    <button
-                        type='button'
-                        onClick={async () => {
-                            await logout()
-                            navigate('/login', {replace: true})
-                        }}
-                        className='hover:bg-white hover:text-black py-1 px-3 rounded-4xl'
+                <div className="flex items-center gap-3">
+
+                    <div
+                        className="
+                            flex items-center gap-6
+                            px-6 py-4
+                            rounded-lg
+                            bg-black/50
+                            backdrop-blur-lg
+                        "
                     >
-                        {displayName}
-                    </button>
-                ) : (
-                    <Link to="/login" className="hover:bg-white hover:text-black py-1 px-3 rounded-4xl">
-                        Login
+                        {NAV_LINKS.map((item) => {
+                            const isActive = location.pathname === item.path
+
+                            return (
+                                <Link
+                                    key={item.label}
+                                    to={item.path}
+                                    className={`
+                                        text-lg no-underline font-medium    
+                                        transition-all duration-300
+                                        hover:text-white
+                                        ${isActive
+                                            ? "text-white"
+                                            // : "text-zinc-300"
+                                            : "text-white"
+
+                                        }
+                                    `}
+                                >
+                                    {item.label}
+                                </Link>
+                            )
+                        })}
+                    </div>
+
+                    <Link
+                        to="/login"
+                        className="
+                            px-5 py-4
+                            rounded-lg
+                            bg-[#2C3F24]
+                            text-white text-lg  font-medium
+                            no-underline
+                            transition-all duration-300
+                        "
+                    >
+                        Book a Visit
                     </Link>
-                )}
+                </div>
             </div>
+
+            {/* {avatar && isAuthenticated && (
+                <Link to="/profile">
+                    <img
+                        src={avatar}
+                        alt={displayName}
+                        className="
+                            w-8 h-8 rounded-full
+                            object-cover cursor-pointer
+                            ring-2 ring-zinc-700
+                            ring-offset-2 ring-offset-black
+                        "
+                    />
+                </Link>
+            )} */}
+
+            {/* {isAuthenticated ? (
+                <button
+                    type="button"
+                    onClick={async () => {
+                        await logout()
+                        navigate("/login", { replace: true })
+                    }}
+                    className="
+                        py-1 px-3 rounded-4xl
+                        text-white
+                        hover:bg-white hover:text-black
+                        transition-all duration-200
+                        cursor-pointer
+                    "
+                >
+                    {displayName}
+                </button>
+            ) : (
+                <Link
+                    to="/login"
+                    className="
+                        py-1 px-3 rounded-4xl
+                        text-white no-underline
+                        hover:bg-white hover:text-black
+                        transition-all duration-200
+                    "
+                >
+                    Login
+                </Link>
+            )} */}
         </nav>
     )
 }
