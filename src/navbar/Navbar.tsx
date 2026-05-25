@@ -39,12 +39,12 @@ const Navbar = ({ avatar, name }: NavbarProps) => {
                 <Link
                     to="/"
                     className="
-                        text-white text-5xl
+                        text-black text-5xl
                         font-light tracking-tight
                         no-underline
                     "
                 >
-                    briksy<span className="text-red-500">.</span>
+                    briksy<span className="text-red-500 ">.</span>
                 </Link>
 
                 <div className="flex items-center gap-3">

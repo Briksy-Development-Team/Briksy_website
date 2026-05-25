@@ -2,6 +2,9 @@ import React, { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import Magnifine from "../../assest/about/magnifine.svg"
+import Bag from "../../assest/about/bag.svg"
+import Dollar from "../../assest/about/dollar.svg"
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -56,7 +59,7 @@ const About = () => {
       scrollTrigger: {
         trigger: pinSectionRef.current,
         start: "top top",
-        end: "+=3000",
+        end: "+=3500",
         scrub: 3,
         pin: true,
         anticipatePin: 1,
@@ -73,8 +76,8 @@ const About = () => {
   }, { scope: sectionRef });
 
   return (
-    <section ref={sectionRef} className="w-full bg-[#F6F3EE]">
-      <div className="flex w-full border-b border-[#E5E3D8] pt-28 pb-16">
+    <section ref={sectionRef} className="w-full bg-[#fcfafa] space-y-24">
+      <div className="flex w-full border-b bg-orange-200 border-[#E5E3D8] py-20">
         <div className="w-1/2 px-14">
           <p className="text-sm tracking-widest uppercase mb-4 text-[#88867A]">Platform Overview</p>
           <h2 className="text-[3rem] leading-tight text-[#1A1A1A]">
@@ -95,19 +98,78 @@ const About = () => {
         </div>
       </div>
 
-      <div ref={pinSectionRef} className="w-full flex justify-center items-center py-10">
-        <canvas ref={canvasRef} className="rounded-[24px] w-[50%] block" />
+      <div ref={pinSectionRef} className="w-full  flex justify-center items-center   ">
+        <canvas ref={canvasRef} className="rounded-[24px]  w-[50%] block" />
       </div>
 
-      <div className="w-full min-h-screen bg-white">
-        <div className="px-14 py-24">
-          <h2 className="text-[3rem] mb-8">Verified infrastructure for modern property experiences.</h2>
-          <p className="text-xl text-[#6B6B6B] max-w-[800px] leading-relaxed">
-            Brisky combines AI-driven discovery, transparent verification systems,
-            and premium digital experiences into a unified property platform designed for the Australian market.
-          </p>
+      <div className="w-full  text-2xl px-20 font-helvetica py-16 flex justify-between  ">
+        <div className="flex w-1/4 flex-col gap-5">
+          <div>
+            <img
+              src={Magnifine}
+              alt="verified"
+              className="w-1/3  object-contain "
+            />
+          </div>
+
+          <div className="space-y-3 w-[95%] ">
+            <h3 className=" font-medium text-[#1e1e1e]">
+              Verified to your needs
+            </h3>
+
+            <p className=" text-[#6B6B6B]">
+              Our ABN-anchored verification system lets you
+              connect with only legitimate agents, agencies, and builders
+              no guesswork, no fake listings.
+            </p>
+          </div>
         </div>
+
+        <div className="flex  flex-col  w-1/3 gap-5">
+          <div>
+            <img
+              src={Bag}
+              alt="connected"
+              className="w-1/4  object-contain "
+            />
+          </div>
+
+          <div className="space-y-3 w-[95%]">
+            <h3 className="   font-medium text-[#1e1e1e]">
+              Efficiently connected
+            </h3>
+
+            <p className="text-[#6B6B6B]">
+              Our AI-guided interface cuts through the noise. Describe
+              what you need a landscaper in Sydney, a 3-bed in Richmond
+              and we do the rest.
+            </p>
+          </div>
+        </div>
+
+        <div className="flex  flex-col  w-1/4 gap-5">
+          <div>
+            <img
+              src={Dollar}
+              alt="pricing"
+              className="w-1/3  object-contain "
+            />
+          </div>
+
+          <div className="space-y-3 w-[95%]">
+            <h3 className="  font-medium text-[#1e1e1e]">
+              Transparently priced
+            </h3>
+
+            <p className="  text-[#6B6B6B]">
+              Subscription plans from Bronze to Gold with guaranteed seat limits,
+              billing managed through Stripe, and no hidden upgrade surprises.
+            </p>
+          </div>
+        </div>
+
       </div>
+
     </section>
   );
 };
