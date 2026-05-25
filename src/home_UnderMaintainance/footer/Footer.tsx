@@ -1,6 +1,7 @@
 import React from "react";
 import FooterImg from "../../assest/footer/footer.svg";
 import Logo from "../../assest/footer/logo.svg";
+import { Link } from "react-router-dom";
 
 
 const Footer = () => {
@@ -31,7 +32,7 @@ const Footer = () => {
                                 <li>Find Builders</li>
                                 <li>For Agencies</li>
                                 <li>For Agents</li>
-                                <li>Subscription Plans</li>
+                                <li><Link to='/subs'>Subscription Plans</Link></li>
                             </ul>
                         </div>
 
@@ -50,7 +51,7 @@ const Footer = () => {
                             </ul>
                         </div>
 
-                            <div>
+                        <div>
                             <h4 className="text-[#2C3F24] font-medium text-sm tracking-wider mb-4">
                                 Contact
                             </h4>
@@ -71,9 +72,9 @@ const Footer = () => {
                         </p>
 
                         <div className="flex gap-7 text-[#6B6B6B] text-[0.9rem]">
-                            <span>Terms</span>
-                            <span>Privacy</span>
-                            <span>Compliance</span>
+                            <Link to="/terms">Terms</Link>
+                            <Link to="/terms">Privacy</Link>
+                            <Link to="/terms">Compliance</Link>
                         </div>
                     </div>
                 </div>

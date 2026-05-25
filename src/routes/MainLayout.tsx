@@ -1,6 +1,8 @@
 import { Outlet } from 'react-router-dom'
 import Navbar from '../navbar/Navbar'
 import { profileData } from '../data/profileDummydata'
+import Contact from '../home_UnderMaintainance/contact/Contact'
+import Footer from '../home_UnderMaintainance/footer/Footer'
 
 const MainLayout = ({ dark, setDark }: any) => {
     return (
@@ -14,6 +16,8 @@ const MainLayout = ({ dark, setDark }: any) => {
             />
 
             <Outlet />
+            <Contact />
+            <Footer />
         </div>
     )
 }

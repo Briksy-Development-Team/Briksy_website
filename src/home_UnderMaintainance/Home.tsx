@@ -4,6 +4,8 @@ import About from './about/About'
 import Community from './community/Community'
 import Review from './review/Review'
 import Footer from './footer/Footer'
+import Process from './process/Process'
+import Contact from './contact/Contact'
 
 const Home = () => {
     return (
@@ -11,8 +13,9 @@ const Home = () => {
             <Hero />
             <About />
             <Community />
+            <Process />
             <Review />
-            <Footer />
+        
 
         </div>
     )
