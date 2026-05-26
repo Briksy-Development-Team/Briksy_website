@@ -8,7 +8,7 @@ import Dollar from "../../assest/about/dollar.svg";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-const FRAME_COUNT = 323;
+const FRAME_COUNT = 210;
 const getFrameSrc = (i: number) =>
   `/frames-webp/frame_${String(i).padStart(4, "0")}.webp`;
 
@@ -88,7 +88,7 @@ const About = () => {
 
   return (
     <section ref={sectionRef} className="w-full bg-[#fcfafa] space-y-24">
-      <div className="flex w-full border-b bg-orange-200 border-[#E5E3D8] py-20">
+      <div className="flex w-full border-b  border-[#E5E3D8] py-20">
         <div className="w-1/2 px-14">
           <p className="text-sm tracking-widest uppercase mb-4 text-[#88867A]">
             Platform Overview
@@ -117,25 +117,9 @@ const About = () => {
       </div>
       <div
         ref={pinSectionRef}
-        className="
-    relative
-    w-full
-    min-h-screen
-    flex
-    justify-center
-    items-center
-    px-[5%]
-  "
+        className=" relative w-full min-h-screen flex justify-center items-center px-["
       >
-        <div
-          className="
-      absolute
-      left-[5%]
-      top-[15%]
-      z-10
-      max-w-[28rem]
-    "
-        >
+        <div className=" absolute left-[5%] top-[15%] z-10 max-w-[28rem] ">
           <h2 className="text-[3rem] leading-[3rem] text-[#24391F]">
             How much could you grow if nothing was wasted?
           </h2>
@@ -144,21 +128,13 @@ const About = () => {
         <div className="w-[55%] flex justify-center">
           <canvas
             ref={canvasRef}
-            className="
-        w-full
-        rounded-[1.5rem]
-        block
+            className=" w-full rounded-[1.5rem] block
       "
           />
         </div>
 
         <div
-          className="
-      absolute
-      right-[5%]
-      bottom-[5%]
-      z-10
-      max-w-[24rem]
+          className=" absolute right-[5%] bottom-[5%] z-10 max-w-[24rem]
     "
         >
           <h3 className="text-[2.5rem] leading-[3rem] text-[#24391F]">

@@ -9,7 +9,7 @@ const Hero = () => {
             {/* Background */}
             <img src={HeroBG} alt="hero" className="absolute inset-0 w-full h-full object-cover" />
 
-           
+
             <div className="relative z-10 min-h-screen flex items-center justify-between px-14 pt-20">
 
                 {/* Left Content */}
@@ -42,10 +42,17 @@ const Hero = () => {
                 </div>
 
                 {/* Right Illustration */}
-                <div className="flex items-end self-end h-full">
-                    <img src={Human} alt="human" className="w-[500px] object-contain drop-shadow-2xl" />
-                </div>
 
+
+            </div>
+            {/* Right Illustration */}
+            <div className="absolute bottom-0 right-[5%] z-20">
+                <img
+                    src={Human}
+                    alt="human"
+                    className=" w-[40rem] object-contain drop-shadow-2xl
+        "
+                />
             </div>
         </section>
     )
