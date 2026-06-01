@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import FooterImg from "../../assest/footer/footer.svg";
 import Logo from "../../assest/footer/logo.svg";
 import { Link } from "react-router-dom";

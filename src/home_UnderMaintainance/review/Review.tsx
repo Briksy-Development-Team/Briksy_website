@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import Imgone from "../../assest/reviews/img1.svg";
 import Imgtwo from "../../assest/reviews/img2.svg";
 import Imgthree from "../../assest/reviews/img3.svg";

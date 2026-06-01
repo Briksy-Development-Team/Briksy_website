@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import HeroBG from "../../assest/hero/herobg.svg"
 import Human from "../../assest/hero/human.svg"
 

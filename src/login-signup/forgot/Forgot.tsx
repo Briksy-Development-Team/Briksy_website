@@ -1,9 +1,9 @@
-import React from 'react'
+// import React from 'react'
 
 const Forgot = () => {
   return (
     <div>
-      working
+      working on this
     </div>
   )
 }

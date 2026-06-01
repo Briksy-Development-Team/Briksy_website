@@ -1,10 +1,10 @@
-import { Link, useLocation, useNavigate } from "react-router-dom"
-import { useAuth } from "../auth/AuthContext"
+import { Link, useLocation } from "react-router-dom"
+// import { useAuth } from "../auth/AuthContext"
 
-interface NavbarProps {
-    avatar?: string
-    name?: string
-}
+// interface NavbarProps {
+//     avatar?: string
+//     name?: string
+// }
 
 const NAV_LINKS = [
     { label: "Properties", path: "/" },
@@ -13,13 +13,17 @@ const NAV_LINKS = [
     { label: "About", path: "/about" },
 ]
 
-const Navbar = ({ avatar, name }: NavbarProps) => {
+// const Navbar = ({ avatar, name }: NavbarProps) => {
+const Navbar = () => {
+
     const location = useLocation()
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
-    const { user, isAuthenticated, logout } = useAuth()
+    // const { user, isAuthenticated, logout } = useAuth()
+    // const { user } = useAuth()
 
-    const displayName = user?.name ?? name ?? "User"
+
+    // const displayName = user?.name ?? name ?? "User"
 
     return (
         <nav

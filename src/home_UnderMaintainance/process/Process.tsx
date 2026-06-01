@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import Stepone from "../../assest/process/stepone.svg";
 import Steptwo from "../../assest/process/steptwo.svg";
 import Stepthree from "../../assest/process/stepthree.svg";

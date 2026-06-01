@@ -1,25 +1,26 @@
-import {AxiosError} from 'axios'
-import {type ChangeEvent, type FormEvent, useState} from 'react'
-import {Link, Navigate, useNavigate} from 'react-router-dom'
+import { AxiosError } from 'axios'
+import { type ChangeEvent, type FormEvent, useState } from 'react'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import loginbg from '../../assest/login/loginbg.svg'
 import briksy from '../../assest/logo/briksy.svg'
 import headphone from '../../assest/login/headphone.svg'
 import google from '../../assest/login/google.svg'
 import apple from '../../assest/login/apple.svg'
-import {getAuthErrorMessage, useAuth} from '../../auth/AuthContext'
+import { getAuthErrorMessage, useAuth } from '../../auth/AuthContext'
 
-interface LoginProps {
-  dark: boolean
-}
+// interface LoginProps {
+//   dark: boolean
+// }
+const Login = () => {
 
-const Login = ({dark}: LoginProps) => {
+  // const Login = ({dark}: LoginProps) => {
   const [form, setForm] = useState({
     email: '',
     password: '',
   })
   const [error, setError] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const {login, isAuthenticated} = useAuth()
+  const { login, isAuthenticated } = useAuth()
   const navigate = useNavigate()
 
   if (isAuthenticated) {
@@ -27,7 +28,7 @@ const Login = ({dark}: LoginProps) => {
   }
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const {name, value} = event.target
+    const { name, value } = event.target
 
     setForm((current) => ({
       ...current,
@@ -45,7 +46,7 @@ const Login = ({dark}: LoginProps) => {
         email: form.email,
         password: form.password,
       })
-      navigate('/profile', {replace: true})
+      navigate('/profile', { replace: true })
     } catch (error: unknown) {
       if (error instanceof AxiosError && error.response?.status === 422) {
         setError('Please enter a valid email address and password.')
@@ -112,9 +113,8 @@ const Login = ({dark}: LoginProps) => {
                 </div>
                 {error && (
                   <div
-                    className={`mx-2 rounded-lg px-3 py-2 text-sm ${
-                      dark ? 'bg-red-950 text-red-200' : 'bg-red-50 text-red-700'
-                    }`}
+                    className={`mx-2 rounded-lg px-3 py-2 text-sm ${dark ? 'bg-red-950 text-red-200' : 'bg-red-50 text-red-700'
+                      }`}
                   >
                     {error}
                   </div>

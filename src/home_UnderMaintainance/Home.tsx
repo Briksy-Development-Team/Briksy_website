@@ -1,11 +1,11 @@
-import React from 'react'
+// import React from 'react'
 import Hero from './hero/Hero'
 import About from './about/About'
 import Community from './community/Community'
 import Review from './review/Review'
-import Footer from './footer/Footer'
+// import Footer from './footer/Footer'
 import Process from './process/Process'
-import Contact from './contact/Contact'
+// import Contact from './contact/Contact'
 
 const Home = () => {
     return (

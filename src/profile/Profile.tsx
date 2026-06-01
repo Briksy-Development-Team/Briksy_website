@@ -18,9 +18,9 @@ import {
 } from "lucide-react";
 import { useAuth } from "../auth/AuthContext";
 
-interface ProfilePageProps {
-    dark: boolean
-}
+// interface ProfilePageProps {
+//     dark: boolean
+// }
 
 const formatDate = (d: string): string =>
     new Date(d).toLocaleDateString("en-IN", {
@@ -34,7 +34,9 @@ const TABS = ["Favourites", "Viewed", "Visits", "Enquiries"];
 const extractPrice = (priceString: string): number =>
     parseInt(priceString.replace(/[₹,]/g, ""), 10);
 
-export default function Profile({ dark }: ProfilePageProps) {
+export default function Profile() {
+    // export default function Profile({ dark }: ProfilePageProps) {
+
     const [activeTab, setActiveTab] = useState<number>(0);
     const [locationFilter, setLocationFilter] = useState<string>("all");
     const [priceRangeFilter, setPriceRangeFilter] = useState<string>("all");

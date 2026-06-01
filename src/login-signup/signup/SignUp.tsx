@@ -1,18 +1,19 @@
-import {AxiosError} from 'axios'
-import {type ChangeEvent, type FormEvent, useState} from 'react'
-import {Link, Navigate, useNavigate} from 'react-router-dom'
+import { AxiosError } from 'axios'
+import { type ChangeEvent, type FormEvent, useState } from 'react'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import loginbg from '../../assest/login/loginbg.svg'
 import briksy from '../../assest/logo/briksy.svg'
 import headphone from '../../assest/login/headphone.svg'
 import google from '../../assest/login/google.svg'
 import apple from '../../assest/login/apple.svg'
-import {getAuthErrorMessage, useAuth} from '../../auth/AuthContext'
+import { getAuthErrorMessage, useAuth } from '../../auth/AuthContext'
 
-interface SignUpProps {
-  dark: boolean
-}
+// interface SignUpProps {
+//   dark: boolean
+// }
+const SignUp = () => {
 
-const SignUp = ({dark}: SignUpProps) => {
+  // const SignUp = ({dark}: SignUpProps) => {
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -21,7 +22,7 @@ const SignUp = ({dark}: SignUpProps) => {
   })
   const [error, setError] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const {register, isAuthenticated} = useAuth()
+  const { register, isAuthenticated } = useAuth()
   const navigate = useNavigate()
 
   if (isAuthenticated) {
@@ -29,7 +30,7 @@ const SignUp = ({dark}: SignUpProps) => {
   }
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const {name, value} = event.target
+    const { name, value } = event.target
 
     setForm((current) => ({
       ...current,
@@ -55,7 +56,7 @@ const SignUp = ({dark}: SignUpProps) => {
         password: form.password,
         password_confirmation: form.confirm_password,
       })
-      navigate('/profile', {replace: true})
+      navigate('/profile', { replace: true })
     } catch (error: unknown) {
       if (error instanceof AxiosError && error.response?.status === 422) {
         const payload = error.response.data as {
@@ -154,10 +155,15 @@ const SignUp = ({dark}: SignUpProps) => {
                 </div>
                 {error && (
                   <div
+                    className="mx-2 rounded-lg px-3 py-2 text-sm 
+                     bg-red-950 text-red-200"
+
+                  >
+                    {/* <div
                     className={`mx-2 rounded-lg px-3 py-2 text-sm ${
                       dark ? 'bg-red-950 text-red-200' : 'bg-red-50 text-red-700'
                     }`}
-                  >
+                  > */}
                     {error}
                   </div>
                 )}
