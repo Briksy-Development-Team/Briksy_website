@@ -7,7 +7,7 @@ import Bag from "../../assest/about/bag.svg";
 import Dollar from "../../assest/about/dollar.svg";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
-
+// animation in about us on sroll video play frame by frame
 const FRAME_COUNT = 210;
 const getFrameSrc = (i: number) =>
   `/frames-webp/frame_${String(i).padStart(4, "0")}.webp`;
