@@ -1,6 +1,6 @@
-import {AxiosError} from 'axios'
-import {FC, type ReactNode, useEffect, useMemo} from 'react'
-import {Provider, TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux'
+import { AxiosError } from 'axios'
+import type { FC, ReactNode, useEffect, useMemo } from 'react'
+import  { Provider, type TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import {
   bootstrapSeekerAuth,
   loginSeekerSession,
@@ -10,7 +10,7 @@ import {
   type SeekerAuthDispatch,
   type SeekerAuthRootState,
 } from './auth.store'
-import type {AuthUser, LoginPayload, RegisterPayload} from './auth.types'
+import type { AuthUser, LoginPayload, RegisterPayload } from './auth.types'
 
 interface AuthContextValue {
   user: AuthUser | null
@@ -28,7 +28,7 @@ const useSeekerAuthSelector: TypedUseSelectorHook<SeekerAuthRootState> = useSele
 const getErrorMessage = (error: unknown): string => {
   if (error instanceof AxiosError) {
     const message =
-      (error.response?.data as {message?: string} | undefined)?.message ??
+      (error.response?.data as { message?: string } | undefined)?.message ??
       'Something went wrong while contacting the server.'
 
     return message
@@ -37,7 +37,7 @@ const getErrorMessage = (error: unknown): string => {
   return 'Something went wrong while contacting the server.'
 }
 
-const AuthBootstrapper: FC<{children: ReactNode}> = ({children}) => {
+const AuthBootstrapper: FC<{ children: ReactNode }> = ({ children }) => {
   const dispatch = useDispatch<SeekerAuthDispatch>()
 
   useEffect(() => {
@@ -47,7 +47,7 @@ const AuthBootstrapper: FC<{children: ReactNode}> = ({children}) => {
   return <>{children}</>
 }
 
-export const AuthProvider = ({children}: {children: ReactNode}) => {
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
   return (
     <Provider store={seekerAuthStore}>
       <AuthBootstrapper>{children}</AuthBootstrapper>

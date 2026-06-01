@@ -111,10 +111,20 @@ const Login = () => {
                     required
                   />
                 </div>
-                {error && (
+                {/* {error && (
                   <div
                     className={`mx-2 rounded-lg px-3 py-2 text-sm ${dark ? 'bg-red-950 text-red-200' : 'bg-red-50 text-red-700'
                       }`}
+                  >
+                    {error}
+                  </div>
+                )} */}
+
+
+                {error && (
+                  <div
+                    className="mx-2 rounded-lg px-3 py-2 text-sm bg-red-950 text-red-200"
+
                   >
                     {error}
                   </div>

@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import Profile from '../profile/Profile'
+// import Profile from '../profile/Profile'
 import Home from '../home_UnderMaintainance/Home'
 import Login from '../login-signup/login/Login'
 import MainLayout from './MainLayout'
@@ -41,7 +41,7 @@ const AppRouter = () => {
 
 
                 <Route element={<ProtectedRoute />}>
-                    <Route path='/profile' element={<Profile />} />
+                    {/* <Route path='/profile' element={<Profile />} /> */}
                 </Route>
             </Route>
 
