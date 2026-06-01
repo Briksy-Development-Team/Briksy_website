@@ -1,5 +1,5 @@
 import { AxiosError } from 'axios'
-import type { FC, ReactNode, useEffect, useMemo } from 'react'
+import  { type FC, type ReactNode, useEffect, useMemo } from 'react'
 import  { Provider, type TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import {
   bootstrapSeekerAuth,
