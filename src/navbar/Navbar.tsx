@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Divide as Hamburger } from "hamburger-react";
 
@@ -10,7 +10,7 @@ const NAV_LINKS = [
 ];
 
 const Navbar = () => {
-    const location = useLocation();
+    // const location = useLocation();
     const [open, setOpen] = useState(false);
 
     return (
