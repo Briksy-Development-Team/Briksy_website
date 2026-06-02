@@ -67,56 +67,48 @@ const Process = () => {
     return (
         <section
             ref={container}
-            className="w-full bg-[#F7F7F4] px-[5%] py-[8rem]"
+            className="w-full bg-[#F7F7F4] px-[5%] py-32"
         >
-            <div className="flex flex-col xl:flex-row justify-between gap-[6rem]">
+            <div className="flex flex-col xl:flex-row justify-between gap-24">
 
                 <div className="xl:w-[35%] xl:sticky xl:top-[15%] h-fit">
-                    <h2 className="text-[3rem] leading-tight text-[#222] ">
+                    <h2 className="text-[2.25rem] leading-10  ">
                         You search it,
                         <br />
                         we verify it.
                     </h2>
 
-                    <p className="mt-[2rem] text-xl leading-[2rem] text-[#6B6B6B] ">
+                    <p className="mt-7 text-[1.125rem] leading-8 text-[#6B6B6B] ">
                         Our team of verification specialists and AI systems work together
                         to ensure every listing, agent, and builder you see on Brisky is
                         legitimate from search to settlement.
                     </p>
 
-                    <button className="mt-[2.5rem] bg-[#2C3F24] text-white px-[2rem] py-[1rem] rounded-lg text-[1rem]">
+                    <button className="mt-4 bg-[#2C3F24] text-white px-6 py-3 rounded-lg text-[0.875rem]">
                         Explore More
                     </button>
                 </div>
 
-                <div className="xl:w-[38%] flex flex-col gap-[2rem] relative">
+                <div className="xl:w-[30%] flex flex-col gap-8 relative">
                     {steps.map((step, index) => (
                         <div
                             key={index}
-                            className="
-                process-card
-                sticky
-                top-[10rem]
-                bg-[#F4EFE9]
-                overflow-hidden
-                border border-[#e7e1d9]
-                will-change-transform
-              "
+                            className=" process-card sticky top-40 bg-[#F4EFE9] overflow-hidden border border-[#e7e1d9] will-change-transform"
                         >
                             <img
                                 src={step.img}
                                 alt={step.title}
-                                className="w-full h-[20rem] object-cover"
+                                className="w-full h-80 object-cover"
                             />
 
-                            <div className="flex gap-[1.2rem] p-[1.5rem]">
+                            <div className="flex gap-[1.2rem] p-6">
 
-                                <span className="text-[4rem] text-[#d9d1c7] font-medium leading-none">
+                                <span className="text-[3rem] text-[#E5E3D8] font-medium leading-none">
                                     {step.id}
                                 </span>
 
                                 <div>
-                                    <h3 className="text-[1.2rem] text-[#222] font-medium">
+                                    <h3 className="text-[1.125rem] text-[#222] font-medium">
                                         {step.title}
                                     </h3>
 

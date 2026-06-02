@@ -2,12 +2,12 @@
 
 const Contact = () => {
     return (
-        <div className="w-full bg-[#24391F]  px-[5%] py-[8rem]">
+        <div className="w-full bg-[#2C3F24]  px-[5%] py-[8rem]">
 
             <div className="flex flex-col lg:flex-row justify-between items-center ">
 
                 <div className="lg:w-[40%]">
-                    <h2 className="text-white text-[3rem] leading-tight font-normal">
+                    <h2 className="text-white text-[2.25rem] leading-tight font-normal">
                         Schedule a free
                         <br />
                         consultation to
@@ -17,7 +17,7 @@ const Contact = () => {
                 </div>
 
                 <div className="lg:w-[42%] flex flex-col justify-center">
-                    <p className="text-white/75 text-[1.5rem] ">
+                    <p className="text-white/75 text-[1.125rem] ">
                         Whether you're a property seeker, agency owner, or verified
                         builder Brisky has a plan built for your workflow. Start with a
                         free walkthrough of the platform.

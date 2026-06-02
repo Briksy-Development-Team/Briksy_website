@@ -36,16 +36,16 @@ const Navbar = () => {
                 className="
                     flex items-center justify-between
                     border-b border-white/20 
-                    py-7  px-12
+                    py-4  px-12
                 "
             >
 
                 <Link
                     to="/"
                     className="
-                        text-black text-5xl
+                         text-5xl
                         font-light tracking-tight
-                        no-underline
+                        no-underline mix-blend-difference
                     "
                 >
                     briksy<span className="text-red-500 ">.</span>
@@ -56,7 +56,7 @@ const Navbar = () => {
                     <div
                         className="
                             flex items-center gap-6
-                            px-6 py-4
+                            px-6 py-3
                             rounded-lg
                             bg-black/50
                             backdrop-blur-lg
@@ -70,7 +70,7 @@ const Navbar = () => {
                                     key={item.label}
                                     to={item.path}
                                     className={`
-                                        text-lg no-underline font-medium    
+                                        text-[0.875rem] no-underline font-medium    
                                         transition-all duration-300
                                         hover:text-white
                                         ${isActive
@@ -90,10 +90,10 @@ const Navbar = () => {
                     <Link
                         to="/login"
                         className="
-                            px-5 py-4
+                            px-5 py-3
                             rounded-lg
                             bg-[#2C3F24]
-                            text-white text-lg  font-medium
+                            text-white text-[0.875rem]  font-medium
                             no-underline
                             transition-all duration-300
                         "

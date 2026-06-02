@@ -1,4 +1,4 @@
-import  { useRef } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -90,26 +90,28 @@ const About = () => {
     <section ref={sectionRef} className="w-full bg-[#fcfafa] space-y-24">
       <div className="flex w-full border-b  border-[#E5E3D8] py-20">
         <div className="w-1/2 px-14">
-          <p className="text-sm tracking-widest uppercase mb-4 text-[#88867A]">
+          <p className="text-[0.6875rem] tracking-widest uppercase mb-4 text-[#88867A]">
             Platform Overview
           </p>
-          <h2 className="text-[3rem] leading-tight text-[#1A1A1A]">
+          <h2 className="text-[2.25rem] leading-tight text-[#1A1A1A]">
             Reshaping the way <br />
             you find and build <br />
             property in Australia.
           </h2>
         </div>
         <div className="w-1/2 px-24 flex flex-col gap-4 justify-center">
-          <p className="text-[1.5rem] text-[#6B6B6B] leading-relaxed">
-            Brisky brings together the best of property search, professional
-            services, and verified trust into a single editorial digital
-            experience.
+          <p className="text-[1.125rem] text-[#6B6B6B] leading-relaxed">
+            Brisky brings together the best of property search, professional services, and verified
+            trust into a single, editorial digital experience. Think Domain meets Airbnb — clean,
+            structured,
+            and built for the Australian market.
           </p>
-          <p className="text-[1.5rem] text-[#6B6B6B] leading-relaxed">
-            Every listing goes through verification before going live.
-          </p>
+          <p className="text-[1.125rem] text-[#6B6B6B] leading-relaxed">
+            Every agent, agency, and builder on Brisky is ABN-verified. Every listing goes through
+            our multi-stage
+            verification process before going live.          </p>
           <div className="mt-2 w-fit cursor-pointer">
-            <p className="text-lg border-b border-black pb-1">
+            <p className="text-[0.875rem] border-b border-black pb-1">
               Explore the platform →
             </p>
           </div>
@@ -120,7 +122,7 @@ const About = () => {
         className=" relative w-full min-h-screen flex justify-center items-center px-["
       >
         <div className=" absolute left-[5%] top-[15%] z-10 max-w-[28rem] ">
-          <h2 className="text-[3rem] leading-[3rem] text-[#24391F]">
+          <h2 className="text-[2.25rem] leading-[3rem] text-[#24391F]">
             How much could you grow if nothing was wasted?
           </h2>
         </div>
@@ -134,10 +136,10 @@ const About = () => {
         </div>
 
         <div
-          className=" absolute right-[5%] bottom-[5%] z-10 max-w-[24rem]
+          className=" absolute right-[5%] bottom-[5%] z-10 max-w-[22rem]
     "
         >
-          <h3 className="text-[2.5rem] leading-[3rem] text-[#24391F]">
+          <h3 className="text-[2.25rem] leading-[2rem] text-[#24391F]">
             We found a better way
           </h3>
 
@@ -159,11 +161,11 @@ const About = () => {
           </div>
 
           <div className="space-y-3 w-[95%] ">
-            <h3 className=" font-medium text-[#1e1e1e]">
+            <h3 className=" text-[1.125rem] font-medium text-[#1e1e1e]">
               Verified to your needs
             </h3>
 
-            <p className=" text-[#6B6B6B]">
+            <p className="text-[1.125rem] text-[#6B6B6B]">
               Our ABN-anchored verification system lets you connect with only
               legitimate agents, agencies, and builders no guesswork, no fake
               listings.
@@ -177,11 +179,11 @@ const About = () => {
           </div>
 
           <div className="space-y-3 w-[95%]">
-            <h3 className="   font-medium text-[#1e1e1e]">
+            <h3 className=" text-[1.125rem]  font-medium text-[#1e1e1e]">
               Efficiently connected
             </h3>
 
-            <p className="text-[#6B6B6B]">
+            <p className=" text-[1.125rem] text-[#6B6B6B]">
               Our AI-guided interface cuts through the noise. Describe what you
               need a landscaper in Sydney, a 3-bed in Richmond and we do the
               rest.
@@ -199,11 +201,11 @@ const About = () => {
           </div>
 
           <div className="space-y-3 w-[95%]">
-            <h3 className="  font-medium text-[#1e1e1e]">
+            <h3 className=" text-[1.125rem]  font-medium text-[#1e1e1e]">
               Transparently priced
             </h3>
 
-            <p className="  text-[#6B6B6B]">
+            <p className=" text-[1.125rem]  text-[#6B6B6B]">
               Subscription plans from Bronze to Gold with guaranteed seat
               limits, billing managed through Stripe, and no hidden upgrade
               surprises.

@@ -5,26 +5,26 @@ import Imgthree from "../../assest/reviews/img3.svg";
 
 const Review = () => {
     return (
-        <section className="w-full font-helvetica min-h-screen ">
+        <section className="w-full font-helvetica  ">
             <div className="flex flex-col xl:flex-row gap-8 py-20 px-[5%]">
 
 
                 <div className="xl:w-[24%] pt-8">
-                    <p className="uppercase tracking-[1px] text-md font-medium text-[#8b8577] mb-6">
+                    <p className="uppercase tracking-[1px] text-[0.6875rem] font-medium text-[#8b8577] mb-2">
                         Reviews
                     </p>
 
-                    <h2 className="text-5xl leading-[68px]  text-[#222] mb-8">
+                    <h2 className="text-[2.25rem] leading-17  text-[#222] mb-0">
                         Success Stories
                     </h2>
 
-                    <p className="text-2xl  text-[#666] ">
+                    <p className="text-[1.125rem]  text-[#666] ">
                         Our team of verification specialists and AI systems work together
                         to ensure every listing, agent, and builder you see on Brisky is
                         legitimate from search to settlement.
                     </p>
 
-                    <button className="mt-10 px-8 py-4 rounded-2xl bg-[#243d1f] text-white text-[18px]">
+                    <button className="mt-10 px-5 py-3 rounded-xl font-medium bg-[#243d1f] text-white text-[0.875rem]">
                         Next
                     </button>
                 </div>
@@ -39,17 +39,17 @@ const Review = () => {
                         />
 
                         <div className="p-6 flex flex-col justify-between flex-1">
-                            <p className="text-[22px]  font-medium text-[#222]">
+                            <p className="text-[1.125rem]  font-medium text-[#222]">
                                 “ Exceptional service and deep local knowledge: [Link].
                                 Seamless process, highly recommend: [Link].”
                             </p>
 
                             <div className="mt-16">
-                                <h4 className="text-[20px] text-[#666]">
+                                <h4 className="text-[1rem] text-[#666]">
                                     Pankit Patel
                                 </h4>
 
-                                <p className="text-[18px] text-[#777] mt-1">
+                                <p className="text-[1rem] text-[#777] mt-1">
                                     from ELsolveIT
                                 </p>
                             </div>
@@ -58,18 +58,18 @@ const Review = () => {
 
                     <div className="rounded-3xl overflow-hidden border border-[#ddd8cf] bg-white flex flex-col">
 
-                        <div className="p-6 min-h-[290px] flex flex-col justify-between">
-                            <p className="text-[22px]  font-medium text-[#222]">
+                        <div className="p-6 flex flex-col justify-between">
+                            <p className="text-[1.125rem]  font-medium text-[#222]">
                                 “ Outstanding support and personalized attention: [Link].
                                 Truly a game-changer for my project: [Link].”
                             </p>
 
                             <div className="mt-12">
-                                <h4 className="text-[20px] text-[#666]">
+                                <h4 className="text-[1rem] text-[#666]">
                                     Sarah Johnson
                                 </h4>
 
-                                <p className="text-[18px] text-[#777] mt-1">
+                                <p className="text-[1rem] text-[#777] mt-1">
                                     from TechSphere
                                 </p>
                             </div>
@@ -90,17 +90,17 @@ const Review = () => {
                         />
 
                         <div className="p-6 flex flex-col justify-between flex-1">
-                            <p className="text-[22px]  font-medium text-[#222]">
+                            <p className="text-[1.125rem]  font-medium text-[#222]">
                                 “ Remarkable expertise and quick turnaround: [Link]. Their
                                 insights were invaluable: [Link].”
                             </p>
 
                             <div className="mt-16">
-                                <h4 className="text-[20px] text-[#666]">
+                                <h4 className="text-[1rem] text-[#666]">
                                     Michael Chen
                                 </h4>
 
-                                <p className="text-[18px] text-[#777] mt-1">
+                                <p className="text-[1rem] text-[#777] mt-1">
                                     from InnovateNow
                                 </p>
                             </div>
