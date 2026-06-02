@@ -71,20 +71,20 @@ const Process = () => {
         >
             <div className="flex flex-col xl:flex-row justify-between gap-24">
 
-                <div className="xl:w-[35%] xl:sticky xl:top-[15%] h-fit">
-                    <h2 className="text-[2.25rem] leading-10  ">
+                <div className="xl:w-[35%] xl:sticky text-center xl:top-[15%] h-fit">
+                    <h2 className="text-[2.25rem] font-medium lg:font-normal text-primary leading-10  ">
                         You search it,
                         <br />
                         we verify it.
                     </h2>
 
-                    <p className="mt-7 text-[1.125rem] leading-8 text-[#6B6B6B] ">
+                    <p className="mt-7 text-[1.125rem] tracking-tight leading-8 text-[#6B6B6B] ">
                         Our team of verification specialists and AI systems work together
                         to ensure every listing, agent, and builder you see on Brisky is
                         legitimate from search to settlement.
                     </p>
 
-                    <button className="mt-4 bg-[#2C3F24] text-white px-6 py-3 rounded-lg text-[0.875rem]">
+                    <button className="mt-4 bg-primary text-white px-6 py-3 rounded-lg text-[0.875rem]">
                         Explore More
                     </button>
                 </div>
@@ -101,18 +101,18 @@ const Process = () => {
                                 className="w-full h-80 object-cover"
                             />
 
-                            <div className="flex gap-[1.2rem] p-6">
+                            <div className="flex gap-[1.2rem] p-4 lg:p-6">
 
-                                <span className="text-[3rem] text-[#E5E3D8] font-medium leading-none">
+                                <span className="text-[2.3972rem] lg:text-[3rem] text-[#E5E3D8] font-medium leading-none">
                                     {step.id}
                                 </span>
 
                                 <div>
-                                    <h3 className="text-[1.125rem] text-[#222] font-medium">
+                                    <h3 className=" text-[1.375rem] lg:text-[1.125rem] text-[#222] font-medium">
                                         {step.title}
                                     </h3>
 
-                                    <p className="mt-[0.8rem] text-[1rem] font-medium leading-[1.7rem] text-[#6B6B6B]">
+                                    <p className="lg:mt-[0.8rem] text-[0.7991rem] lg:text-[1rem] font-medium lg:leading-[1.7rem] text-[#6B6B6B]">
                                         {step.desc}
                                     </p>
                                 </div>

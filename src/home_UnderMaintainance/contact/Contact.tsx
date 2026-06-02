@@ -2,7 +2,7 @@
 
 const Contact = () => {
     return (
-        <div className="w-full bg-[#2C3F24]  px-[5%] py-[8rem]">
+        <div className="w-full bg-primary  px-[5%] py-32">
 
             <div className="flex flex-col lg:flex-row justify-between items-center ">
 
@@ -23,9 +23,9 @@ const Contact = () => {
                         free walkthrough of the platform.
                     </p>
 
-                    <div className="flex items-center gap-[1.25rem] mt-[2.5rem]">
+                    <div className="flex items-center gap-5 mt-10">
 
-                        <button className="px-5 py-3 bg-white text-[#2C3F24] rounded-lg text-[1.25rem] font-medium">
+                        <button className="px-5 py-3 bg-white text-primary rounded-lg text-[1.25rem] font-medium">
                             List your business
                         </button>
 

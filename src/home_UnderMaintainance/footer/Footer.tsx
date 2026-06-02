@@ -23,7 +23,7 @@ const Footer = () => {
 
                         {/* COLUMN 1 */}
                         <div className="">
-                            <h4 className="text-[#2C3F24]  font-medium text-[1rem] tracking-wider mb-4">
+                            <h4 className="text-primary  font-medium text-[1rem] tracking-wider mb-4">
                                 Platform
                             </h4>
 
@@ -38,7 +38,7 @@ const Footer = () => {
 
                         {/* COLUMN 2 */}
                         <div>
-                            <h4 className="text-[#2C3F24] font-medium text-[1rem] tracking-wider mb-4">
+                            <h4 className="text-primary font-medium text-[1rem] tracking-wider mb-4">
                                 Resources
                             </h4>
 
@@ -52,7 +52,7 @@ const Footer = () => {
                         </div>
 
                         <div>
-                            <h4 className="text-[#2C3F24] font-medium text-[1rem] tracking-wider mb-4">
+                            <h4 className="text-primary font-medium text-[1rem] tracking-wider mb-4">
                                 Contact
                             </h4>
 
@@ -65,7 +65,7 @@ const Footer = () => {
 
                     </div>
 
-                    <div className=" border-t-2 border-[#CFCFCA]     pt-5 flex flex-wrap items-center justify-between gap-4">
+                    <div className=" border-t-2 border-yellowgray-50     pt-5 flex flex-wrap items-center justify-between gap-4">
 
                         <p className="text-[#6B6B6B] text-[0.75rem]">
                             © 2026 Brisky Pty Ltd

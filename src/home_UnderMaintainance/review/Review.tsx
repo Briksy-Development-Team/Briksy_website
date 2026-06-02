@@ -10,21 +10,21 @@ const Review = () => {
 
 
                 <div className="xl:w-[24%] pt-8">
-                    <p className="uppercase tracking-[1px] text-[0.6875rem] font-medium text-[#8b8577] mb-2">
+                    <p className="uppercase tracking-[1px] text-[0.6875rem] font-medium text-yellowgray-50 mb-2">
                         Reviews
                     </p>
 
-                    <h2 className="text-[2.25rem] leading-17  text-[#222] mb-0">
+                    <h2 className="text-[2.25rem] leading-17   mb-0">
                         Success Stories
                     </h2>
 
-                    <p className="text-[1.125rem]  text-[#666] ">
+                    <p className="text-[1.125rem]  text-gray-100 ">
                         Our team of verification specialists and AI systems work together
                         to ensure every listing, agent, and builder you see on Brisky is
                         legitimate from search to settlement.
                     </p>
 
-                    <button className="mt-10 px-5 py-3 rounded-xl font-medium bg-[#243d1f] text-white text-[0.875rem]">
+                    <button className="mt-10 px-5 py-3 rounded-xl font-medium bg-primary text-white text-[0.875rem]">
                         Next
                     </button>
                 </div>
@@ -45,11 +45,11 @@ const Review = () => {
                             </p>
 
                             <div className="mt-16">
-                                <h4 className="text-[1rem] text-[#666]">
+                                <h4 className="text-[1rem] text-gray-100">
                                     Pankit Patel
                                 </h4>
 
-                                <p className="text-[1rem] text-[#777] mt-1">
+                                <p className="text-[1rem] text-gray-100 mt-1">
                                     from ELsolveIT
                                 </p>
                             </div>
@@ -65,11 +65,11 @@ const Review = () => {
                             </p>
 
                             <div className="mt-12">
-                                <h4 className="text-[1rem] text-[#666]">
+                                <h4 className="text-[1rem] text-gray-100">
                                     Sarah Johnson
                                 </h4>
 
-                                <p className="text-[1rem] text-[#777] mt-1">
+                                <p className="text-[1rem] text-gray-100 mt-1">
                                     from TechSphere
                                 </p>
                             </div>
@@ -96,11 +96,11 @@ const Review = () => {
                             </p>
 
                             <div className="mt-16">
-                                <h4 className="text-[1rem] text-[#666]">
+                                <h4 className="text-[1rem] text-gray-100">
                                     Michael Chen
                                 </h4>
 
-                                <p className="text-[1rem] text-[#777] mt-1">
+                                <p className="text-[1rem] text-gray-100 mt-1">
                                     from InnovateNow
                                 </p>
                             </div>
