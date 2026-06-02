@@ -2,12 +2,12 @@
 
 const Contact = () => {
     return (
-        <div className="w-full bg-primary  px-[5%] py-32">
+        <div className="w-full bg-primary  px-[5%] font-inter py-10 lg:py-32">
 
-            <div className="flex flex-col lg:flex-row justify-between items-center ">
+            <div className="flex flex-col lg:flex-row  justify-between lg:items-center space-y-6 ">
 
                 <div className="lg:w-[40%]">
-                    <h2 className="text-white text-[2.25rem] leading-tight font-normal">
+                    <h2 className="text-white  text-[2.25rem] leading-tight font-normal">
                         Schedule a free
                         <br />
                         consultation to
@@ -25,12 +25,12 @@ const Contact = () => {
 
                     <div className="flex items-center gap-5 mt-10">
 
-                        <button className="px-5 py-3 bg-white text-primary rounded-lg text-[1.25rem] font-medium">
-                            List your business
+                        <button className="px-5  gap-x-3 py-3 flex bg-white text-primary rounded-3xl lg:rounded-lg text-[0.875rem] lg:text-[1.25rem] font-semibold lg:font-medium">
+                            List your business  <p className="lg:hidden">→</p>
                         </button>
 
-                        <button className="px-5 py-3 border border-white text-white rounded-lg text-[1.25rem] font-medium">
-                            Book a Call
+                        <button className="lg:px-5 py-3 lg:border flex gap-x-3 border-white text-white rounded-lg text-[0.875rem] lg:text-[1.25rem] font-semibold lg:font-medium">
+                            Book a call <p className="lg:hidden">→</p>
                         </button>
 
                     </div>

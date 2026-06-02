@@ -6,28 +6,25 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
-        <footer className="w-full h-[90vh] font-helvetica  overflow-hidden">
+        <footer className="w-full lg:h-[90vh] px-[5%] lg:px-0 font-helvetica  overflow-hidden">
 
-            <div className="flex flex-col pt-20  xl:flex-row justify-between ">
+            <div className="flex flex-col pt-20  xl:flex-row justify-between  ">
 
-                {/* LEFT SIDE */}
-                <div className="xl:w-[45%] flex flex-col pl-16   justify-evenly">
+                <div className="xl:w-[45%] flex flex-col lg:pl-16   justify-evenly">
 
 
                     <div className="w-full">
                         <img src={Logo} alt="" className="w-full" />
                     </div>
 
-                    {/* LINKS */}
-                    <div className="flex gap-28  flex-wrap">
+                    <div className="flex lg:gap-28 gap-10 py-8 lg:pt-0  ">
 
-                        {/* COLUMN 1 */}
                         <div className="">
-                            <h4 className="text-primary  font-medium text-[1rem] tracking-wider mb-4">
+                            <h4 className="text-primary  font-medium text-[0.75rem] lg:text-[1rem] tracking-wider mb-4">
                                 Platform
                             </h4>
 
-                            <ul className="flex flex-col gap-[0.9rem] text-[0.8125rem] tracking-wide text-[#222222]">
+                            <ul className="flex flex-col gap-2 lg:gap-[0.9rem] text-[0.75rem] lg:text-[0.8125rem] tracking-wide text-[#222222]">
                                 <li>Property Search</li>
                                 <li>Find Builders</li>
                                 <li>For Agencies</li>
@@ -38,11 +35,11 @@ const Footer = () => {
 
                         {/* COLUMN 2 */}
                         <div>
-                            <h4 className="text-primary font-medium text-[1rem] tracking-wider mb-4">
+                            <h4 className="text-primary font-medium text-[0.75rem] lg:text-[1rem] tracking-wider mb-4">
                                 Resources
                             </h4>
 
-                            <ul className="flex flex-col gap-[0.9rem] text-[0.8125rem] tracking-wide text-[#222222]">
+                            <ul className="flex flex-col gap-2 lg:gap-[0.9rem] text-[0.75rem] lg:text-[0.8125rem] tracking-wide text-[#222222]">
                                 <li>About Brisky</li>
                                 <li>How We Verify</li>
                                 <li>Featured Listings</li>
@@ -52,11 +49,11 @@ const Footer = () => {
                         </div>
 
                         <div>
-                            <h4 className="text-primary font-medium text-[1rem] tracking-wider mb-4">
+                            <h4 className="text-primary font-medium text-[0.75rem] lg:text-[1rem] tracking-wider mb-4">
                                 Contact
                             </h4>
 
-                            <ul className="flex flex-col gap-[0.9rem] text-[0.8125rem] tracking-wide text-[#222222]">
+                            <ul className="flex flex-col gap-2 lg:gap-[0.9rem] text-[0.75rem] lg:text-[0.8125rem] tracking-wide text-[#222222]">
                                 <li>Call Us</li>
                                 <li>Email Us</li>
                                 <li>Help Centre</li>
@@ -65,13 +62,13 @@ const Footer = () => {
 
                     </div>
 
-                    <div className=" border-t-2 border-yellowgray-50     pt-5 flex flex-wrap items-center justify-between gap-4">
+                    <div className=" border-t border-yellowgray-50/40     pt-2 flex flex-wrap lg:items-center justify-between gap-4">
 
                         <p className="text-[#6B6B6B] text-[0.75rem]">
                             © 2026 Brisky Pty Ltd
                         </p>
 
-                        <div className="flex gap-7 text-[#6B6B6B] text-[0.8rem]">
+                        <div className="flex flex-col lg:flex-row text-end lg:gap-7 text-[#6B6B6B] text-[0.8rem]">
                             <Link to="/terms">Terms</Link>
                             <Link to="/terms">Privacy</Link>
                             <Link to="/terms">Compliance</Link>
