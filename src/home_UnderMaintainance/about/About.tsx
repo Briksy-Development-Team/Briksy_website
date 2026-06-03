@@ -127,17 +127,17 @@ const About = () => {
   return (
     <section ref={sectionRef} className="w-full bg-[#fcfafa] space-y-24 py-20 overflow-hidden">
       <div className="flex flex-col lg:flex-row px-10 text-center space-y-8 lg:space-y-0 lg:text-start lg:px-0 w-full border-none lg:border-b  border-[#E5E3D8] ">
-        <div className="lg:w-1/2 font-inter lg:px-14">
+        <div className="lg:w-1/2 font-inter lg:px-10 xl:px-14">
           <p className="  text-[0.875rem]   lg:text-[0.6875rem]  tracking-widest uppercase mb-10 lg:mb-4 text-yellowgray-50">
             Platform Overview
           </p>
           <h2 className=" text-[2.25rem]  lg:text-[2.25rem] font-medium lg:font-normal leading-tight text-[#1A1A1A]">
-            Reshaping the way <br className="hidden" />
-            you find and build <br className="hidden" />
+            Reshaping the way <br className="hidden lg:block" />
+            you find and build <br className="hidden lg:block" />
             property in Australia.
           </h2>
         </div>
-        <div className="lg:w-1/2 lg:px-24 font-helvetica flex flex-col gap-4 justify-center">
+        <div className="lg:w-2/3 xl:w-1/2 lg:px-10 xl:px-24 font-helvetica flex flex-col gap-4 justify-center">
           <p className="text-[1.125rem]  text-gray-100 leading-relaxed">
             Brisky brings together the best of property search, professional
             services, and verified trust into a single, editorial digital
@@ -149,7 +149,7 @@ const About = () => {
             listing goes through our multi-stage verification process before
             going live.{" "}
           </p>
-          <div className="lg:mt-2 lg:w-[25%]  cursor-pointer">
+          <div className="lg:mt-2 xl:w-[25%] lg:w-[35%]  cursor-pointer">
             <p className="text-[0.875rem] font-medium  lg:border-b lg:border-black pb-1">
               Explore the platform →
             </p>
@@ -172,7 +172,7 @@ const About = () => {
         </div>
 
         <div className=" lg:absolute lg:right-[5%] px-10 lg:px-0 lg:bottom-[5%] z-10 lg:max-w-[22rem] ">
-          <h3 className="text-[2.25rem] hidden lg:block  leading-8 text-primary">
+          <h3 className="text-[2.25rem] hidden lg:block  leading-8 ">
             We found a better way
           </h3>
           <h3 className="text-[2.25rem] lg:hidden text-center lg;text-start font-medium lg:font-normal leading-10 ">
@@ -186,11 +186,11 @@ const About = () => {
         </div>
       </div>
 
-      <div className="w-full  text-2xl px-10  lg:px-20 font-helvetica lg:py-16 flex flex-col lg:flex-row md:items-center  space-y-8 lg:space-y-0  justify-between  ">
+      <div className="w-full  text-2xl px-10  xl:px-20 font-helvetica lg:py-16 flex flex-col lg:flex-row md:items-center  space-y-8 lg:space-y-0  justify-between  ">
         {features.map((feature, index) => (
           <div
             key={index}
-            className="flex lg:w-1/4 md:w-[70%] bg-white-50 border border-white-100 rounded-xl flex-col gap-5 lg:bg-transparent lg:border-none"
+            className="flex xl:w-1/4 md:w-[70%] p-3 lg:w-[90%] bg-white-50 border border-white-100 rounded-xl flex-col gap-5 lg:bg-transparent lg:border-none"
           >
             <div className="flex justify-center lg:justify-start">
               <img
@@ -205,7 +205,7 @@ const About = () => {
                 {feature.title}
               </h3>
 
-              <p className="text-[1.125rem] text-gray-100">
+              <p className="text-[1.125rem]  lg:text-[1rem] text-gray-100">
                 {feature.description}
               </p>
             </div>
