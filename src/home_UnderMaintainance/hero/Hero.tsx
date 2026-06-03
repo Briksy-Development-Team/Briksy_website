@@ -23,7 +23,7 @@ const Hero = () => {
                         </h2>
                     </div>
 
-                    <p className="mt-6  lg:w-[50%] w-[90%] text-[1rem] lg:text-[1.125rem]  text-white/90 font-helvetica font-normal">
+                    <p className="mt-6  md:w-[50%] w-[90%] text-[1rem] lg:text-[1.125rem]  text-white/90 font-helvetica font-normal">
                         Connect with verified agents, agencies, and builders to find
                         property, hire trades, and invest with confidence across Australia.
                     </p>

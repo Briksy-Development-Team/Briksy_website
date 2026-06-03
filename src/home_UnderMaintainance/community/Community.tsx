@@ -6,7 +6,7 @@ const Community = () => {
         <div className='lg:h-screen w-screen relative space-y-36 flex flex-col lg:flex-row lg:items-center 
         justify-between py-8 lg:pl-32 px-8 lg:pr-10'>
             <img src={CommunityBg} alt="" className='absolute h-full w-full -z-10 object-cover  inset-0' />
-            <div className='h-[60%]  lg:w-[45%] font-helvetica  text-[#EEECE0] backdrop-blur-none
+            <div className='h-[60%] md:w-[70%]  lg:w-[45%] font-helvetica  text-[#EEECE0] backdrop-blur-none
              lg:backdrop-blur-2xl   lg:px-8 flex flex-col  py-8'>
                 <p className='text-[0.6875rem]  lg:block hidden pb-8'>OUR COMMITMENT</p>
                 <span className='flex flex-col justify-between h-full'>

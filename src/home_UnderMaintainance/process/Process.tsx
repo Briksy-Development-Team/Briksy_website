@@ -74,7 +74,7 @@ const Process = () => {
                 <div className="xl:w-[35%] xl:sticky text-center xl:top-[15%] h-fit">
                     <h2 className="text-[2.25rem] font-medium lg:font-normal text-primary leading-10  ">
                         You search it,
-                        <br />
+                        <br className="" />
                         we verify it.
                     </h2>
 
