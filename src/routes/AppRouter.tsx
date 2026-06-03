@@ -8,6 +8,7 @@ import Forgot from '../login-signup/forgot/Forgot'
 import ProtectedRoute from './ProtectedRoute'
 import Terms from '../home_UnderMaintainance/terms/Terms'
 import Pricing from '../home_UnderMaintainance/subscription/Pricing'
+import HomeA from '../navbaranimation/HomeA'
 
 const AppRouter = () => {
     // const AppRouter = ({ dark, setDark }: AppRouterProps) => {
@@ -49,6 +50,8 @@ const AppRouter = () => {
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<SignUp />} />
             <Route path='/forgot' element={<Forgot />} />
+            <Route path='/nav' element={<HomeA />} />
+
 
 
         </Routes>

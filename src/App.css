@@ -2,3 +2,18 @@
   width: 0;
   background-color: transparent;
 }
+
+
+.search-expanded {
+  width: fit-content;
+}
+
+.search-expanded .search-pill {
+  width: 50rem;
+  height: 4rem;
+}
+
+.search-collapsed .search-pill {
+  width: 18rem;
+  height: 2.75rem;
+}
