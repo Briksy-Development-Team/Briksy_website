@@ -7,14 +7,13 @@ import SearchBar from "./SearchBar";
 gsap.registerPlugin(ScrollTrigger);
 
 type Props = {
-  heroAnchorRef: React.RefObject<HTMLDivElement>;
-  navAnchorRef: React.RefObject<HTMLDivElement>;
-  expandedAnchorRef: React.RefObject<HTMLDivElement>;
-  tabsRef: React.RefObject<HTMLDivElement>;
+  heroAnchorRef: React.RefObject<HTMLDivElement | null>;
+  navAnchorRef: React.RefObject<HTMLDivElement | null>;
+  expandedAnchorRef: React.RefObject<HTMLDivElement | null>;
+  tabsRef: React.RefObject<HTMLDivElement | null>;
   mode: "collapsed" | "search" | "ai";
   setMode: (mode: "collapsed" | "search" | "ai") => void;
 };
-
 const FloatingSearch = ({
   heroAnchorRef,
   navAnchorRef,
@@ -100,7 +99,7 @@ const FloatingSearch = ({
               overflow: "hidden",
               duration: 0.3,
               overwrite: "auto",
-              pointerEvents: p > 0.05 ? "none" : "auto", 
+              pointerEvents: p > 0.05 ? "none" : "auto",
             });
           }
           const labels = search.querySelectorAll(".search-label");

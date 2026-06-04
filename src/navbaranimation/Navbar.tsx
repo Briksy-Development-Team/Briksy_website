@@ -2,13 +2,12 @@ import { Menu, Globe, Grid2x2, List, MapPinned } from "lucide-react";
 
 
 type NavbarProps = {
-    navAnchorRef: React.RefObject<HTMLDivElement>;
-    tabsRef: React.RefObject<HTMLDivElement>;
-    expandedAnchorRef: React.RefObject<HTMLDivElement>;
+    navAnchorRef: React.RefObject<HTMLDivElement | null>;
+    tabsRef: React.RefObject<HTMLDivElement | null>;
+    expandedAnchorRef: React.RefObject<HTMLDivElement | null>;
     mode: "collapsed" | "search" | "ai";
     setMode: (mode: "collapsed" | "search" | "ai") => void;
 };
-
 const Navbar = ({
     navAnchorRef,
     tabsRef,

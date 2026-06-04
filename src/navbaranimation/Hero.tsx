@@ -1,7 +1,7 @@
 import heroBg from "../assest/hero/herobg.svg";
 
 type HeroProps = {
-    heroAnchorRef: React.RefObject<HTMLDivElement>;
+    heroAnchorRef: React.RefObject<HTMLDivElement | null>;
 };
 
 const Hero = ({ heroAnchorRef }: HeroProps) => {
