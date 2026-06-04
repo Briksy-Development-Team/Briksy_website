@@ -4,15 +4,16 @@ import Navbar from "./Navbar";
 import FloatingSearch from "./FloatingSearch";
 import Nothing from "./Nothing";
 
-const HomeA = () => {
-  const heroAnchorRef = useRef(null);
-  const navAnchorRef = useRef(null);
-  const expandedAnchorRef = useRef(null);
-  const tabsRef = useRef(null);
 
-  const [mode, setMode] = useState<
-    "collapsed" | "search" | "ai"
-  >("collapsed");
+
+
+const HomeA = () => {
+  const heroAnchorRef = useRef<HTMLDivElement>(null);
+  const navAnchorRef = useRef<HTMLDivElement>(null);
+  const expandedAnchorRef = useRef<HTMLDivElement>(null);
+  const tabsRef = useRef<HTMLDivElement>(null);
+
+  const [mode, setMode] = useState<"collapsed" | "search" | "ai">("collapsed");
 
   return (
     <div className="bg-[#EEEADE] min-h-screen">
@@ -24,9 +25,7 @@ const HomeA = () => {
         setMode={setMode}
       />
 
-      <Hero
-        heroAnchorRef={heroAnchorRef}
-      />
+      <Hero heroAnchorRef={heroAnchorRef} />
 
       <FloatingSearch
         heroAnchorRef={heroAnchorRef}
@@ -34,7 +33,7 @@ const HomeA = () => {
         expandedAnchorRef={expandedAnchorRef}
         tabsRef={tabsRef}
         mode={mode}
-        setMode={setMode}   
+        setMode={setMode}
       />
 
       <Nothing />

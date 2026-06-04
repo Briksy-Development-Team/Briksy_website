@@ -1,6 +1,12 @@
 import { Search, Sparkles, AudioLines } from "lucide-react";
 
-const SearchBar = ({ mode, setMode }) => {
+
+type SearchBarProps = {
+    mode: "collapsed" | "search" | "ai";
+    setMode: (mode: "collapsed" | "search" | "ai") => void;
+};
+
+const SearchBar = ({ mode, setMode }: SearchBarProps) => {
     const isCollapsed = mode === "collapsed";
     const isAi = mode === "ai";
 
@@ -14,13 +20,13 @@ const SearchBar = ({ mode, setMode }) => {
                     }
                 }}
             >
-              
+
                 <div className={`transition-all duration-500 ease-out flex items-center justify-center overflow-hidden
                     ${isAi ? "w-[52px] opacity-100 scale-100 mr-3" : "w-0 opacity-0 scale-0 mr-0"}
                 `}>
                     <button
                         onClick={(e) => {
-                            e.stopPropagation(); 
+                            e.stopPropagation();
                             setMode("search");
                         }}
                         className="w-[52px] h-[52px] rounded-full bg-[#30452A] flex items-center justify-center shrink-0 hover:scale-105 transition-transform"
@@ -101,14 +107,14 @@ const SearchBar = ({ mode, setMode }) => {
                     </div>
                 </div>
 
-                
+
                 <div className={`transition-all duration-500 ease-out flex items-center justify-center overflow-hidden
                     ${!isAi ? "opacity-100 scale-100 ml-3" : "w-0 opacity-0 scale-50 ml-0"}
                     ${!isAi && isCollapsed ? "w-[42px]" : !isAi ? "w-[52px]" : ""}
                 `}>
                     <button
                         onClick={(e) => {
-                            e.stopPropagation(); 
+                            e.stopPropagation();
                             setMode("ai");
                         }}
                         className={`rounded-full bg-[#30452A] flex items-center justify-center shrink-0 hover:scale-105 transition-transform

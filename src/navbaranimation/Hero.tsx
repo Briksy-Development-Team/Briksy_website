@@ -1,6 +1,10 @@
 import heroBg from "../assest/hero/herobg.svg";
 
-const Hero = ({ heroAnchorRef }) => {
+type HeroProps = {
+    heroAnchorRef: React.RefObject<HTMLDivElement>;
+};
+
+const Hero = ({ heroAnchorRef }: HeroProps) => {
     return (
         <section className="pt-20 p-8">
             <div className="relative h-[90vh] rounded-[30px] overflow-hidden">
