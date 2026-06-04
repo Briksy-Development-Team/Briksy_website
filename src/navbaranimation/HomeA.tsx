@@ -4,14 +4,11 @@ import Navbar from "./Navbar";
 import FloatingSearch from "./FloatingSearch";
 import Nothing from "./Nothing";
 
-
-
-
 const HomeA = () => {
-  const heroAnchorRef = useRef<HTMLDivElement>(null);
-  const navAnchorRef = useRef<HTMLDivElement>(null);
-  const expandedAnchorRef = useRef<HTMLDivElement>(null);
-  const tabsRef = useRef<HTMLDivElement>(null);
+  const heroAnchorRef = useRef<HTMLDivElement>(null) as React.MutableRefObject<HTMLDivElement>;
+  const navAnchorRef = useRef<HTMLDivElement>(null) as React.MutableRefObject<HTMLDivElement>;
+  const expandedAnchorRef = useRef<HTMLDivElement>(null) as React.MutableRefObject<HTMLDivElement>;
+  const tabsRef = useRef<HTMLDivElement>(null) as React.MutableRefObject<HTMLDivElement>;
 
   const [mode, setMode] = useState<"collapsed" | "search" | "ai">("collapsed");
 
