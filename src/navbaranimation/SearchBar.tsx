@@ -37,7 +37,7 @@ const SearchBar = ({ mode, setMode }: SearchBarProps) => {
 
                 <div
                     className={`relative flex-1 bg-white rounded-full shadow-lg overflow-hidden transition-all duration-300
-                        ${isCollapsed && !isAi ? "h-12" : "h-16"}
+                        ${isCollapsed && !isAi ? "h-14" : "h-16"}
                     `}
                 >
                     <div className={`absolute inset-0 flex items-center transition-all duration-500 ease-out
