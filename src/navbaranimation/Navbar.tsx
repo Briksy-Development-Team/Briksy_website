@@ -1,4 +1,5 @@
 import { Menu, Globe, Grid2x2, List, MapPinned } from "lucide-react";
+import { Link } from "react-router-dom";
 
 
 type NavbarProps = {
@@ -27,9 +28,9 @@ const Navbar = ({
             `}
         >
             <div className="h-20 flex items-center justify-between px-10">
-                <h1 className="text-4xl font-medium text-[#30452A] shrink-0">
+                <Link to="/" className="text-4xl font-medium text-[#30452A] shrink-0">
                     briksy<span className="text-red-500">.</span>
-                </h1>
+                </Link>
 
                 <div className="relative flex items-center flex-1 justify-center">
 
