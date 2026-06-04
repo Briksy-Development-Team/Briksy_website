@@ -8,7 +8,6 @@ import Dollar from "../../assest/about/dollar.svg";
 import HouseV from "../../assest/videos/homeVideo.mp4"
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
-// animation in about us on sroll video play frame by frame
 const FRAME_COUNT = 210;
 const getFrameSrc = (i: number) =>
   `/frames-webp/frame_${String(i).padStart(4, "0")}.webp`;

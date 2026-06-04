@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import Hero from "./Hero";
 import Navbar from "./Navbar";
 import FloatingSearch from "./FloatingSearch";
-import Nothing from "./Nothing";
+import Nothing from "./TrendingProperties";
 
 const HomeA = () => {
   const heroAnchorRef = useRef<HTMLDivElement>(null) as React.MutableRefObject<HTMLDivElement>;
