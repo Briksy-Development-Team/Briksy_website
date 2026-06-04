@@ -40,6 +40,7 @@ const AppRouter = () => {
                 <Route path='/terms' element={<Terms />} />
                 <Route path='/subs' element={<Pricing />} />
 
+                <Route path='/nav' element={<HomeA />} />
 
                 <Route element={<ProtectedRoute />}>
                     {/* <Route path='/profile' element={<Profile />} /> */}
@@ -50,7 +51,6 @@ const AppRouter = () => {
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<SignUp />} />
             <Route path='/forgot' element={<Forgot />} />
-            <Route path='/nav' element={<HomeA />} />
 
 
 
