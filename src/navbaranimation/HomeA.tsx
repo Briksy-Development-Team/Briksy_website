@@ -1,27 +1,40 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Hero from "./Hero";
 import Navbar from "./Navbar";
+import FloatingSearch from "./FloatingSearch";
 import Nothing from "./Nothing";
 
 const HomeA = () => {
-  const heroRef = useRef(null);
-  const heroSearchRef = useRef(null);
+  const heroAnchorRef = useRef(null);
+  const navAnchorRef = useRef(null);
+  const expandedAnchorRef = useRef(null);
+  const tabsRef = useRef(null);
 
-  const navSearchRef = useRef(null);
-  const navTabsRef = useRef(null);
+  const [mode, setMode] = useState<
+    "collapsed" | "search" | "ai"
+  >("collapsed");
 
   return (
     <div className="bg-[#EEEADE] min-h-screen">
       <Navbar
-        navSearchRef={navSearchRef}
-        navTabsRef={navTabsRef}
+        navAnchorRef={navAnchorRef}
+        expandedAnchorRef={expandedAnchorRef}
+        tabsRef={tabsRef}
+        mode={mode}
+        setMode={setMode}
       />
 
       <Hero
-        heroRef={heroRef}
-        heroSearchRef={heroSearchRef}
-        navSearchRef={navSearchRef}
-        navTabsRef={navTabsRef}
+        heroAnchorRef={heroAnchorRef}
+      />
+
+      <FloatingSearch
+        heroAnchorRef={heroAnchorRef}
+        navAnchorRef={navAnchorRef}
+        expandedAnchorRef={expandedAnchorRef}
+        tabsRef={tabsRef}
+        mode={mode}
+        setMode={setMode}   
       />
 
       <Nothing />
