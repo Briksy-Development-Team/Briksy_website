@@ -135,14 +135,14 @@ const SliderRow = ({ title, data }: SliderRowProps) => {
           320: { slidesPerView: 1, spaceBetween: 16 },
           520: { slidesPerView: 1.5, spaceBetween: 16 },
           768: { slidesPerView: 2.2, spaceBetween: 20 },
-          1024: { slidesPerView: 3.3, spaceBetween: 24 },
-          1280: { slidesPerView: 3.5, spaceBetween: 20 },
+          1024: { slidesPerView: 3, spaceBetween: 24 },
+          1280: { slidesPerView: 4, spaceBetween: 20 },
         }}
         className="w-full pb-4"
       >
         {data.map((property) => (
           <SwiperSlide key={property.id} className="py-2 px-2">
-            <div className="bg-white rounded-[20px]   overflow-hidden  transition-shadow duration-300 group h-[396px] w-[320px] flex flex-col">
+            <div className="bg-white rounded-[20px]   overflow-hidden shadow-lg transition-shadow duration-300 group h-[396px] w-[320px] flex flex-col">
 
               <div className="relative p-2 pb-0 h-[240px] overflow-hidden shrink-0">
                 <img
