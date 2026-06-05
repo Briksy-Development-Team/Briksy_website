@@ -3,6 +3,7 @@ import Hero from "./Hero";
 import Navbar from "./Navbar";
 import FloatingSearch from "./FloatingSearch";
 import Nothing from "./TrendingProperties";
+import Footer from "../home_UnderMaintainance/footer/Footer";
 
 const HomeA = () => {
   const heroAnchorRef = useRef<HTMLDivElement>(null) as React.MutableRefObject<HTMLDivElement>;
@@ -13,7 +14,7 @@ const HomeA = () => {
   const [mode, setMode] = useState<"collapsed" | "search" | "ai">("collapsed");
 
   return (
-    <div className="bg-[#EEEADE] min-h-screen">
+    <div className=" min-h-screen">
       <Navbar
         navAnchorRef={navAnchorRef}
         expandedAnchorRef={expandedAnchorRef}
@@ -34,6 +35,7 @@ const HomeA = () => {
       />
 
       <Nothing />
+      <Footer />
     </div>
   );
 };

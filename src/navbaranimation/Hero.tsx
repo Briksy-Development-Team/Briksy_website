@@ -6,8 +6,8 @@ type HeroProps = {
 
 const Hero = ({ heroAnchorRef }: HeroProps) => {
     return (
-        <section className="pt-20 p-8">
-            <div className="relative h-[90vh] rounded-[30px] overflow-hidden">
+        <section className="pt-28 p-8">
+            <div className="relative h-[80vh] rounded-[30px] overflow-hidden">
                 <img
                     src={heroBg}
                     alt=""

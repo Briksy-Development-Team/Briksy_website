@@ -37,7 +37,7 @@ const PROPERTIES: Property[] = [
   {
     id: "3",
     badge: "NEW LISTING",
-    image: "https://images.unsplash.com/photo-1600607687931-cecebd802404?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80",
     location: "Bengaluru, Karnataka",
     title: "Modern 2 BHK in Whitefield Tech Hub",
     details: "Starting from ₹22,000/mo · 980 sqft",
