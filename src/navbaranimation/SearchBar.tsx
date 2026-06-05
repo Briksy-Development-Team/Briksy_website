@@ -147,10 +147,8 @@ const SearchBar = ({ mode, setMode }: SearchBarProps) => {
                             onClick={(e) => {
                                 e.stopPropagation();
                                 if (window.scrollY > 100) {
-                                    // Scrolled down: Tell Navbar to expand in AI mode
                                     setMode("ai");
                                 } else {
-                                    // Top of page: Stay in Hero, just morph locally
                                     setLocalAi(true);
                                 }
                             }}

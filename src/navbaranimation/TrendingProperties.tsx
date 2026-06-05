@@ -120,7 +120,7 @@ const SliderRow = ({ title, data }: SliderRowProps) => {
           </button>
           <button
             onClick={() => swiperInstance?.slideNext()}
-            className="w-8 h-8 rounded-full flex items-center justify-center bg-[#253221] hover:bg-[#1a2417] transition-colors z-10"
+            className="w-8 h-8 rounded-full flex items-center justify-center bg-[#C9470B] hover:bg-[#1a2417] transition-colors z-10"
           >
             <ChevronRight size={16} className="text-white" />
           </button>
@@ -136,7 +136,7 @@ const SliderRow = ({ title, data }: SliderRowProps) => {
           520: { slidesPerView: 1.5, spaceBetween: 16 },
           768: { slidesPerView: 2.2, spaceBetween: 20 },
           1024: { slidesPerView: 3.3, spaceBetween: 24 },
-          1280: { slidesPerView: 4.5, spaceBetween: 20 },
+          1280: { slidesPerView: 3.5, spaceBetween: 20 },
         }}
         className="w-full pb-4"
       >
