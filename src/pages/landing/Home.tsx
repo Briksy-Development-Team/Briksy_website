@@ -1,10 +1,11 @@
 import Hero from './hero/Hero'
 import About from './about/About'
 import Community from './community/Community'
-import Review from './review/Review'
 import Process from './process/Process'
 import Contact from './contact/Contact'
 import Footer from './footer/Footer'
+import Blogs from './blogs/Blogs'
+import Review from './reviews/Review'
 
 const Home = () => {
     return (
@@ -12,8 +13,9 @@ const Home = () => {
             <Hero />
             <About />
             <Community />
-            <Process />
             <Review />
+            <Process />
+            <Blogs />
             <Contact />
             <Footer />
         </div>
