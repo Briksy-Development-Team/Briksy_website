@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-
+import type { Swiper as SwiperType } from "swiper";
 // REMOVED: EffectCards imports
 import "swiper/css";
 
@@ -64,7 +64,7 @@ const reviews = [
 ];
 
 const Review = () => {
-    const swiperRef = useRef(null);
+const swiperRef = useRef<SwiperType | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
 
     return (

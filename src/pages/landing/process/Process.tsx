@@ -1,4 +1,3 @@
-import React from "react";
 import Hand from "../../../assets/utils/Hand.svg";
 import Tick from "../../../assets/utils/Tick.svg";
 import Search from "../../../assets/utils/Search.svg";
