@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom'
-import Navbar from '../navbar/Navbar'
+import Navbar from '../components/navbar/Navbar'
 // import { profileData } from '../data/profileDummydata'
-import Contact from '../home_UnderMaintainance/contact/Contact'
-import Footer from '../home_UnderMaintainance/footer/Footer'
+import Contact from '../pages/landing/contact/Contact'
+import Footer from '../pages/landing/footer/Footer'
 
 const MainLayout = () => {
     // const MainLayout = ({ dark, setDark }: any) => {

@@ -1,14 +1,14 @@
 import { Route, Routes } from 'react-router-dom'
-// import Profile from '../profile/Profile'
-import Home from '../home_UnderMaintainance/Home'
-import Login from '../login-signup/login/Login'
+// import Profile from '../pages/profile/Profile'
+import Home from '../pages/landing/Home'
+import Login from '../pages/auth/login/Login'
 import MainLayout from './MainLayout'
-import SignUp from '../login-signup/signup/SignUp'
-import Forgot from '../login-signup/forgot/Forgot'
+import SignUp from '../pages/auth/signup/SignUp'
+import Forgot from '../pages/auth/forgot/Forgot'
 import ProtectedRoute from './ProtectedRoute'
-import Terms from '../home_UnderMaintainance/terms/Terms'
-import Pricing from '../home_UnderMaintainance/subscription/Pricing'
-import HomeA from '../navbaranimation/HomeA'
+import Terms from '../pages/landing/terms/Terms'
+import Pricing from '../pages/landing/subscription/Pricing'
+import HomeA from '../pages/home/HomeA'
 
 const AppRouter = () => {
     // const AppRouter = ({ dark, setDark }: AppRouterProps) => {
@@ -40,7 +40,6 @@ const AppRouter = () => {
                 <Route path='/terms' element={<Terms />} />
                 <Route path='/subs' element={<Pricing />} />
 
-
                 <Route element={<ProtectedRoute />}>
                     {/* <Route path='/profile' element={<Profile />} /> */}
                 </Route>
@@ -51,8 +50,6 @@ const AppRouter = () => {
             <Route path='/register' element={<SignUp />} />
             <Route path='/forgot' element={<Forgot />} />
             <Route path='/nav' element={<HomeA />} />
-
-
 
         </Routes>
     )
