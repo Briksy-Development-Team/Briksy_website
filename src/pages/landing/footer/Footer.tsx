@@ -57,8 +57,8 @@ const Footer = () => {
                     <p>© 2026 Brikshy</p>
 
                     <div className="flex gap-8">
-                        <Link to="/">Privacy Policy</Link>
-                        <Link to="/">Terms & Conditions</Link>
+                        <Link to="/terms">Privacy Policy</Link>
+                        <Link to="/terms">Terms & Conditions</Link>
                     </div>
 
                 </div>

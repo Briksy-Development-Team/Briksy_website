@@ -8,7 +8,7 @@ const stats = [
 const About = () => {
     return (
         <section className=" pb-20">
-            <div className="mx-auto w-[85%] -translate-y-24 rounded-3xl bg-white px-10 py-14">
+            <div className="mx-auto w-[90%] -translate-y-16 rounded-3xl bg-white px-10 py-14">
                 <p className="text-center text-xs font-semibold tracking-[0.2em] text-gray-400">
                     PLATFORM OVERVIEW
                 </p>
