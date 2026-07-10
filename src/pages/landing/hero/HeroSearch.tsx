@@ -26,12 +26,12 @@ const HeroSearch = () => {
         <>
             <div className="w-full flex flex-col items-center">
 
-                <div className={`flex gap-3 w-full transition-all duration-300 ${isAi ? "opacity-0 pointer-events-none h-0 overflow-hidden" : "opacity-100 h-auto"}`}>
+                <div className={`flex gap-x-4 w-full transition-all duration-300 ${isAi ? "opacity-0 pointer-events-none h-0 overflow-hidden" : "opacity-100 h-auto"}`}>
                     {tabs.map((tab) => (
                         <button
                             key={tab}
                             onClick={() => setActiveTab(tab)}
-                            className={`px-14 h-12 rounded-2xl text-base font-medium transition-all duration-300 ${activeTab === tab
+                            className={`px-14 h-10 rounded-xl text-base font-medium transition-all duration-300 ${activeTab === tab
                                 ? "bg-[#2B241F] text-white"
                                 : "bg-white text-gray-700 hover:bg-gray-100"
                                 }`}
@@ -41,7 +41,7 @@ const HeroSearch = () => {
                     ))}
                 </div>
 
-                <div className="flex items-center gap-3 mt-4 w-full">
+                <div className="flex items-center  mt-2 w-full">
 
                     <div className={`transition-all duration-500 overflow-hidden flex items-center ${isAi ? "w-14 opacity-100" : "w-0 opacity-0"}`}>
                         <button
@@ -52,16 +52,16 @@ const HeroSearch = () => {
                         </button>
                     </div>
 
-                    <div className="flex items-center flex-1 h-16 bg-white rounded-xl overflow-hidden shadow-xl pr-2 relative">
+                    <div className="flex items-center flex-1  h-14 bg-white rounded-xl overflow-hidden shadow-xl pr-2 relative">
 
-                        <div className={`absolute inset-0 flex items-center pr-2 transition-all duration-500 ${isAi ? "opacity-0 scale-95 pointer-events-none" : "opacity-100 scale-100"}`}>
+                        <div className={`absolute inset-0  flex items-center pr-2  transition-all duration-500 ${isAi ? "opacity-0 scale-95 pointer-events-none" : "opacity-100 scale-100"}`}>
                             <input
                                 type="text"
                                 value={query}
                                 onChange={(e) => setQuery(e.target.value)}
                                 onKeyDown={(e) => e.key === "Enter" && handleSearch()}
                                 placeholder="Search Your Desired Location..."
-                                className="flex-1 h-full pl-7 pr-4 text-base outline-none text-gray-700 placeholder:text-gray-400"
+                                className="flex-1 h-full pl-4 pr-4 text-base outline-none text-gray-700 placeholder:text-gray-400"
                             />
                             <button className="flex items-center justify-center text-gray-500 hover:text-gray-700 transition px-3">
                                 <SlidersHorizontal size={20} />
@@ -74,7 +74,7 @@ const HeroSearch = () => {
                             </button>
                         </div>
 
-                        <div className={`absolute inset-0 flex items-center pr-2 transition-all duration-500 ${isAi ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"}`}>
+                        <div className={`absolute  inset-0 flex items-center pr-2 transition-all duration-500 ${isAi ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"}`}>
                             <input
                                 type="text"
                                 placeholder="Ask what you are looking for..."
@@ -95,7 +95,7 @@ const HeroSearch = () => {
                     <div className={`transition-all duration-500 overflow-hidden flex items-center ${isAi ? "w-0 opacity-0" : "w-16 opacity-100"}`}>
                         <button
                             onClick={() => setIsAi(true)}
-                            className="w-16 h-16 rounded-xl bg-white shadow-xl flex items-center justify-center hover:bg-gray-100 transition shrink-0"
+                            className="w-11 h-11 rounded-xl ml-2 bg-white shadow-xl  flex items-center justify-center hover:bg-gray-100 transition shrink-0"
                         >
                             <Sparkles size={20} />
                         </button>
@@ -104,7 +104,7 @@ const HeroSearch = () => {
 
                 <div className={`w-full transition-all duration-300 `}>
                     <div className="flex items-center gap-2  justify-center text-white my-5">
-                        <span className="text-base">Try an example prompt</span>
+                        <span className="text-sm">Try an example prompt</span>
                         <RefreshCw size={16} />
                     </div>
                     <div className="flex justify-center gap-8 w-full">
@@ -112,7 +112,7 @@ const HeroSearch = () => {
                             <button
                                 key={prompt}
                                 onClick={() => { setQuery(prompt); handleSearch(); }}
-                                className="flex-1 px-3 py-2 rounded-xl whitespace-nowrap bg-white text-sm text-[#4A3A2B] shadow-lg hover:-translate-y-1 transition-all duration-300"
+                                className="flex-1 px-3 py-2 rounded-xl whitespace-nowrap bg-white text-xs text-[#4A3A2B] shadow-lg hover:-translate-y-1 transition-all duration-300"
                             >
                                 {prompt}
                             </button>
