@@ -54,7 +54,7 @@ const Footer = () => {
             <div className="bg-[#342511] text-[#F8F4EE] ">
                 <div className=" mx-[5%]   py-4 flex flex-col md:flex-row justify-between items-center gap-4">
 
-                    <p>© 2026 Brikshy</p>
+                    <p>© 2026 Briksy</p>
 
                     <div className="flex gap-8">
                         <Link to="/terms">Privacy Policy</Link>
