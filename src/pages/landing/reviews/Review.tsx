@@ -64,19 +64,19 @@ const reviews = [
 ];
 
 const Review = () => {
-const swiperRef = useRef<SwiperType | null>(null);
+    const swiperRef = useRef<SwiperType | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
 
     return (
         <section className="py-20 font-helvetica overflow-hidden">
-            <div className="mx-[5%] px-8">
-                <div className="pt-20 grid lg:grid-cols-2 gap-24">
+            <div className="lg:mx-[5%] px-4 lg:px-8">
+                <div className="pt-20 grid lg:grid-cols-2 gap-10 lg:gap-24">
                     <div>
-                        <h2 className="text-4xl font-light mb-6">
+                        <h2 className="text-[2.25rem] sm:text-[1.875rem] font-medium lg:font-normal mb-6">
                             Why Thousands Choose Brisky
                         </h2>
 
-                        <p className="text-xl  text-[#8B6F54] leading-8">
+                        <p className="text-[1rem] w-full sm:w-[70%] text-[#8B6F54] leading-8">
                             Brisky brings together verified professionals, trusted
                             organizations, and quality property listings into one simple
                             platform making property decisions faster, easier and more
@@ -84,8 +84,8 @@ const swiperRef = useRef<SwiperType | null>(null);
                         </p>
                     </div>
 
-                    <div className="flex flex-col justify-between min-h-[450px] min-w-0">
-                        <div className="text-xl font-semibold text-[#4E3728] mb-10">
+                    <div className="flex flex-col justify-evenly min-h-[450px] min-w-0">
+                        <div className="text-xl font-semibold text-[#4E3728] mb-5">
                             {String(activeIndex + 1).padStart(2, "0")}
                             <span className="text-[#B9916D]">
                                 {" "}
@@ -95,7 +95,9 @@ const swiperRef = useRef<SwiperType | null>(null);
 
                         <Swiper
                             slidesPerView={1}
-                            spaceBetween={30} /* ADDED: Gap between slides during transition */
+                            spaceBetween={
+                                30
+                            } /* ADDED: Gap between slides during transition */
                             speed={600}
                             grabCursor={true}
                             className="w-full"
@@ -104,13 +106,13 @@ const swiperRef = useRef<SwiperType | null>(null);
                         >
                             {reviews.map((review) => (
                                 <SwiperSlide key={review.id}>
-                                    <div className="flex flex-col gap-6  rounded-2xl p-8 ">
+                                    <div className="flex flex-col gap-6  rounded-2xl lg:p-8 ">
                                         {review.title.map((paragraph, i) => (
                                             <p
                                                 key={i}
-                                                className="text-2xl leading-10 text-black whitespace-normal break-words"
+                                                className=" text-[1.25rem] lg:text-[1.125rem] leading-snug lg:leading-loose text-[#6B6B6B] whitespace-normal break-words"
                                             >
-                                                {paragraph}
+                                                "{paragraph}"
                                             </p>
                                         ))}
                                     </div>
@@ -118,7 +120,7 @@ const swiperRef = useRef<SwiperType | null>(null);
                             ))}
                         </Swiper>
 
-                        <div className="flex items-center justify-between mt-16">
+                        <div className="flex items-center justify-between mt-8 lg:mt-16">
                             <div className="flex items-center gap-4">
                                 <img
                                     src={reviews[activeIndex].image}
@@ -139,7 +141,7 @@ const swiperRef = useRef<SwiperType | null>(null);
                                 </div>
                             </div>
 
-                            <div className="flex gap-3">
+                            <div className="flex gap-3 px-2 ">
                                 <button
                                     onClick={() => swiperRef.current?.slidePrev()}
                                     className="w-8 h-8 font-bold rounded-full border border-[#D6B18B] text-[#D6B18B] flex items-center justify-center transition hover:bg-[#D6B18B] hover:text-white"

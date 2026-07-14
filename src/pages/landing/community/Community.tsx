@@ -58,7 +58,7 @@ const Community = () => {
 
         const trigger = ScrollTrigger.create({
             trigger: sectionRef.current,
-            start: "top top",
+            start: "top 20%",
             end: "+=2200",
             pin: true,
             scrub: 0.5,
@@ -78,13 +78,13 @@ const Community = () => {
         <>
             <div
                 ref={sectionRef}
-                className="h-screen w-full bg-[#F7F3EE] flex flex-col lg:flex-row items-center justify-between px-8 lg:px-24"
+                className=" w-full bg-[#F7F3EE] flex flex-col lg:flex-row items-center justify-between px-8 lg:px-24"
             >
                 <div className="w-full lg:w-1/2   h-auto flex flex-col gap-8">
                     {sections.map((item, i) => (
                         <div key={item.title}>
                             <h2
-                                className={`transition-all duration-500  ${active === i ? "text-5xl text-[#342511]" : "text-2xl text-gray-400"
+                                className={`transition-all text-[1.875rem]  font-medium lg:text-[2.25rem] duration-500  ${active === i ? " text-[#342511]" : " text-gray-400"
                                     }`}
                             >
                                 {item.title}
@@ -94,7 +94,7 @@ const Community = () => {
                                 className={`overflow-hidden transition-all duration-500 ${active === i ? " opacity-100 mt-3" : "max-h-0 opacity-0"
                                     }`}
                             >
-                                <p className="text-[#8B6F54]  text-2xl leading-relaxed  w-[80%]">
+                                <p className="text-[#8B6F54]  lg:text-[1rem] leading-relaxed  w-[80%]">
                                     {item.description}
                                 </p>
                                 <button className="mt-5 px-5 py-2 rounded-lg bg-[#342511] text-white">
@@ -107,7 +107,7 @@ const Community = () => {
                     ))}
                 </div>
 
-                <div className="w-full lg:w-1/2 h-full flex items-center justify-center">
+                <div className="w-full lg:w-1/2 h-full hidden lg:flex items-center justify-center">
                     <canvas ref={canvasRef} className="w-full h-full" />
                 </div>
 

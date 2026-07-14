@@ -36,20 +36,20 @@ const AppRouter = () => {
 
         <Routes>
             <Route element={<MainLayout />}>
-                <Route path='/' element={<Home />} />
                 <Route path='/terms' element={<Terms />} />
                 <Route path='/subs' element={<Pricing />} />
 
                 <Route element={<ProtectedRoute />}>
                     {/* <Route path='/profile' element={<Profile />} /> */}
                 </Route>
+
+                <Route path='/' element={<Home />} />
+                <Route path='/nav' element={<HomeA />} />
             </Route>
 
-            {/* Routes WITHOUT Navbar */}
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<SignUp />} />
             <Route path='/forgot' element={<Forgot />} />
-            <Route path='/nav' element={<HomeA />} />
 
         </Routes>
     )

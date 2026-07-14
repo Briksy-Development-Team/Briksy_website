@@ -26,10 +26,10 @@ const Process = () => {
   return (
     <section className="bg-[#F7F3EA] font-helvetica py-24 px-6">
       <div className="mx-auto text-center">
-        <h2 className="font-serif text-4xl md:text-5xl text-[#342511]">
+        <h2 className="font-serif text- lg:text-[2.25rem] md:text-5xl text-[#342511]">
           Everything You Need in One Platform
         </h2>
-        <p className="mt-4 text-[#8B6F54] text-lg max-w-2xl mx-auto leading-relaxed">
+        <p className="mt-4 text-[#8B6F54] text-[1rem] lg:text-[1.5rem] max-w-2xl mx-auto leading-relaxed">
           Frontier models trained across medical imaging, pathology, genomics,
           and clinical text, designed for medicine. Built in kaiko's AI research
           lab.
@@ -37,19 +37,19 @@ const Process = () => {
 
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
           {features.map(({ icon, title, description }) => (
-            <div key={title} className="flex flex-col items-center">
+            <div key={title} className="flex flex-col items-center sm:items-start lg:items-center text-center sm:text-start lg:text-center">
               <img src={icon} alt={title} className="w-40  mb-6" />
-              <h3 className="text-3xl font-semibold text-[#342511] mb-3">
+              <h3 className="lg:text-[1.25rem] font-semibold text-center sm:text-start lg:text-center text-[#342511] mb-3">
                 {title}
               </h3>
-              <p className="text-[#8B6F54] leading-relaxed max-w-sm text-lg ">
+              <p className="text-[#8B6F54]  leading-relaxed max-w-sm lg:text-[1rem] ">
                 {description}
               </p>
             </div>
           ))}
         </div>
 
-        <button className="mt-14 inline-flex items-center gap-2 border border-[#8B6F54] text-[#8B6F54] px-6 py-3 rounded-xl text-sm font-medium hover:bg-[#EFE9DD] transition-colors">
+        <button className="mt-14 inline-flex items-center gap-2 border border-[#8B6F54] text-[#8B6F54] px-6 py-3 rounded-xl lg:text-[0.875rem] font-medium hover:bg-[#EFE9DD] transition-colors">
           See How it works
           <span aria-hidden="true">→</span>
         </button>

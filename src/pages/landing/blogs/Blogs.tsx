@@ -2,6 +2,12 @@ import Imgone from "../../../assets/reviews/img1.svg";
 import Imgtwo from "../../../assets/reviews/img2.svg";
 import Imgthree from "../../../assets/reviews/img3.svg";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/pagination";
+
 const reviews = [
     {
         image: Imgone,
@@ -29,69 +35,96 @@ const reviews = [
     },
 ];
 
+const ReviewCard = ({ image, imagePosition, quote, name, company }) => {
+    const imageElement = (
+        <img
+            src={image}
+            alt={name}
+            className="h-64 w-full object-cover"
+        />
+    );
+
+    const content = (
+        <div className="flex flex-1 flex-col justify-between p-6">
+            <p className="text-lg font-medium text-[#222]">
+                “ {quote} ”
+            </p>
+
+            <div className={imagePosition === "top" ? "mt-12" : "mt-10"}>
+                <h4 className="text-base font-medium">{name}</h4>
+                <p className="mt-1 text-gray-500">from {company}</p>
+            </div>
+        </div>
+    );
+
+    return (
+        <div className="flex h-130 flex-col overflow-hidden rounded-3xl border border-[#ddd8cf] bg-white">
+            {imagePosition === "top" ? (
+                <>
+                    {imageElement}
+                    {content}
+                </>
+            ) : (
+                <>
+                    {content}
+                    {imageElement}
+                </>
+            )}
+        </div>
+    );
+};
+
 const Blogs = () => {
     return (
         <section className="w-full font-helvetica">
-            <div className="flex flex-col xl:flex-row gap-8 py-20 px-[5%]">
-                <div className="xl:w-[24%] pt-8">
-                    <p className="uppercase tracking-[1px] text-[0.6875rem] font-medium text-yellowgray-50 mb-2">
+            <div className="flex flex-col gap-8 px-[5%] py-20 xl:flex-row">
+                <div className="xl:w-[24%] pt-8 flex flex-col items-center lg:items-start ">
+                    <p className="mb-2 text-[0.75rem] font-medium uppercase tracking-[1px] text-yellowgray-50">
                         BLOGS
                     </p>
 
-                    <h2 className="text-[2.25rem] leading-snug font-medium mb-0">
-                        Latest Property <br /> Insights & <br />
+                    <h2 className="text-[2.25rem] text-center lg:text-start  font-medium leading-snug">
+                        Latest Property <br />
+                        Insights & <br className="hidden lg:flex" />
                         Resources
                     </h2>
 
-                    <button className="mt-10 px-5 py-3 rounded-xl font-medium bg-[#342511] text-white text-[0.875rem]">
+                    <button className="mt-10 rounded-xl bg-[#342511] w-36 px-5 py-3 text-sm font-medium text-white">
                         View All Articles
                     </button>
                 </div>
 
-                <div className="xl:w-[80%] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7">
-                    {reviews.map(({ image, imagePosition, quote, name, company }) => {
-                        const img = (
-                            <img
-                                src={image}
-                                alt={`${name} review`}
-                                className="w-full h-[50%] object-cover"
-                            />
-                        );
-
-                        const content = (
-                            <div className="p-6 flex flex-col justify-between flex-1">
-                                <p className="text-[1.125rem] font-medium text-[#222]">
-                                    “ {quote} ”
-                                </p>
-
-                                <div className={imagePosition === "top" ? "mt-16" : "mt-12"}>
-                                    <h4 className="text-[1rem] text-gray-100">{name}</h4>
-                                    <p className="text-[1rem] text-gray-100 mt-1">
-                                        from {company}
-                                    </p>
-                                </div>
-                            </div>
-                        );
-
-                        return (
-                            <div
-                                key={name}
-                                className="rounded-3xl overflow-hidden border border-[#ddd8cf] bg-white flex flex-col"
-                            >
-                                {imagePosition === "top" ? (
-                                    <>
-                                        {img}
-                                        {content}
-                                    </>
-                                ) : (
-                                    <>
-                                        {content}
-                                        {img}
-                                    </>
-                                )}
-                            </div>
-                        );
-                    })}
+                <div className="w-full xl:w-[76%]">
+                    <Swiper
+                        modules={[Pagination]}
+                        pagination={{ clickable: true }}
+                        spaceBetween={24}
+                        slidesPerView={1}
+                        breakpoints={{
+                            640: {
+                                slidesPerView: 1.4,
+                            },
+                            768: {
+                                slidesPerView: 2,
+                            },
+                            1280: {
+                                slidesPerView: 3,
+                            },
+                        }}
+                        style={
+                            {
+                                "--swiper-pagination-color": "#562F00",
+                                "--swiper-pagination-bullet-inactive-color": "#562F00",
+                                "--swiper-pagination-bullet-inactive-opacity": "0.3",
+                            } as React.CSSProperties
+                        }
+                    >
+                        {reviews.map((review) => (
+                            <SwiperSlide key={review.name} className="pb-12">
+                                <ReviewCard {...review} />
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
                 </div>
             </div>
         </section>

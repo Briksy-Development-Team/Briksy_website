@@ -1,10 +1,10 @@
 import HeroV from "../../assets/videos/Hero.mp4";
+import { useOutletContext } from "react-router-dom";
+import HeroSearchBar from "../../components/search-nav/HeroSearchBar";
 
-type HeroProps = {
-    heroAnchorRef: React.RefObject<HTMLDivElement | null>;
-};
+const Hero = () => {
+    const { mode, setMode } = useOutletContext<{ mode: "collapsed" | "search" | "ai", setMode: (m: "collapsed" | "search" | "ai") => void }>();
 
-const Hero = ({ heroAnchorRef }: HeroProps) => {
     return (
         <section className="relative w-full min-h-screen overflow-hidden">
             <video
@@ -40,8 +40,9 @@ const Hero = ({ heroAnchorRef }: HeroProps) => {
                     your entire property journey all in one place.
                 </p>
 
-                {/* Anchor — FloatingSearch positions itself here and animates on scroll */}
-                <div ref={heroAnchorRef} className="mt-8 w-full max-w-4xl h-[180px]" />
+                <div className="mt-8 w-full max-w-4xl">
+                    <HeroSearchBar mode={mode} setMode={setMode} />
+                </div>
             </div>
         </section>
     );

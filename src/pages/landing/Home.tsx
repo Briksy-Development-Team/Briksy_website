@@ -9,7 +9,7 @@ import Review from './reviews/Review'
 
 const Home = () => {
     return (
-        <div className='bg-[#F7F3EE]'>
+        <div className='bg-[#F7F3EE] min-h-screen'>
             <Hero />
             <About />
             <Community />
