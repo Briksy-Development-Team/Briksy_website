@@ -8,7 +8,7 @@ import Forgot from '../pages/auth/forgot/Forgot'
 import ProtectedRoute from './ProtectedRoute'
 import Terms from '../pages/landing/terms/Terms'
 import Pricing from '../pages/landing/subscription/Pricing'
-import HomeA from '../pages/home/HomeA'
+import HomeA from '../pages/home/Home'
 
 const AppRouter = () => {
     // const AppRouter = ({ dark, setDark }: AppRouterProps) => {

@@ -47,13 +47,13 @@ const Hero = () => {
           </p>
         </div>
 
-        <h1 className="max-w-4xl text-center text-[3rem] sm:text-[3.75rem] lg:text-[3.625rem] font-light leading-tight text-white">
+        <h1 className="max-w-4xl text-center text-[3rem] sm:text-[3.75rem] lg:text-[3.625rem] font-normal leading-tight text-white">
           Find your place for
           <br />
           you and yours
         </h1>
 
-        <p className="mt-5 max-w-xl text-center text-base leading-7 text-white/90">
+        <p className="mt-5 max-w-xl text-center text-[1rem] leading-7 text-white/90">
           Search properties, connect with verified professionals, and manage
           your entire property journey all in one place.
         </p>

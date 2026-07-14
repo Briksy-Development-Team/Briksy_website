@@ -1,17 +1,12 @@
-import HeroV from "../../assets/videos/Hero.mp4";
 import { useOutletContext } from "react-router-dom";
-import HeroSearchBar from "../../components/search-nav/HeroSearchBar";
+import HeroSearchBar from "../../../components/search-nav/HeroSearchBar";
 
 const Hero = () => {
     const { mode, setMode } = useOutletContext<{ mode: "collapsed" | "search" | "ai", setMode: (m: "collapsed" | "search" | "ai") => void }>();
 
     return (
         <section className="relative w-full min-h-screen overflow-hidden">
-            <video
-                src={HeroV}
-                className="absolute inset-0 h-full w-full object-cover"
-                autoPlay muted loop playsInline
-            />
+        
 
             <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 pt-14 pb-32">
                 {/* Badge */}
