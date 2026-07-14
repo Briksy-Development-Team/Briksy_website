@@ -56,8 +56,7 @@ export function useNavExpand(
   mode: "collapsed" | "search" | "ai",
   onPanelHidden: () => void
 ) {
-  const tl = useRef<gsap.core.Timeline>();
-
+  const tl = useRef<gsap.core.Timeline | null>(null);
   useGSAP(() => {
     if (!navRef.current || !panelRef.current) return;
 

@@ -9,7 +9,7 @@ type Mode = "collapsed" | "search" | "ai";
 type Props = { mode: Mode; setMode: (m: Mode) => void; hasHero?: boolean };
 
 
-export const NavSearchButton = ({ mode, setMode, hasHero = true }: Props) => {
+export const NavSearchButton = ({  setMode, hasHero = true }: Props) => {
     const btnRef = useRef<HTMLButtonElement>(null);
     useScrollFade(btnRef, "in", hasHero);
 
