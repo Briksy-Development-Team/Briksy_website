@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import { NavSearchButton, NavSearchPanel } from "./NavSearchBar";
 import { useNavExpand, SCROLL_THRESHOLD } from "../search/FloatingSearch";
-import Logo from "../../assets/logo/briksy.svg";
 import LogoB from "../../assets/logo/briksyB.svg";
 import LanguageModal from "./LanguageModal.tsx";
 import ProfileDropdown from "./ProfileDropdown.tsx";
@@ -24,7 +23,6 @@ const Navbar = ({ mode, setMode, hasHero = true }: NavbarProps) => {
   });
   const navRef = useRef<HTMLElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
-  const [isScrolled, setIsScrolled] = useState(!hasHero);
   const [pastHero, setPastHero] = useState(!hasHero);
   const pastHeroRef = useRef(pastHero);
 
@@ -36,8 +34,6 @@ const Navbar = ({ mode, setMode, hasHero = true }: NavbarProps) => {
 
     const onScroll = () => {
       if (document.body.style.position === "fixed") return;
-
-      setIsScrolled(window.scrollY > 100);
 
       const isPast = window.scrollY > SCROLL_THRESHOLD;
 
@@ -59,21 +55,18 @@ const Navbar = ({ mode, setMode, hasHero = true }: NavbarProps) => {
     if (navbarMode !== "collapsed") setShowPanel(true);
   }, [navbarMode]);
 
-  const iconColor = isScrolled ? "text-gray-800" : "text-white";
-
   return (
     <>
       <nav
         ref={navRef}
         style={{ height: 80 }}
-        className={`fixed top-0 left-0 right-0 z-50 overflow-visible
-                    ${isScrolled ? "bg-[#F8F4EE] border-b border-[#d8d8d8]" : "bg-transparent border-b border-transparent"}
-                    transition-colors duration-300`}
+        className="fixed top-0 left-0 right-0 z-50 overflow-visible
+                  bg-[#F8F4EE] border-b border-[#d8d8d8]"
       >
-        <div className="h-20 flex items-center justify-between px-10">
+        <div className="h-20 flex items-center justify-between px-2 sm:px-4 lg:px-10">
           <Link to="/" className=" shrink-0">
             <img
-              src={isScrolled ? LogoB : Logo}
+              src={LogoB}
               alt="Briksy"
               className="h-10 w-auto transition-opacity duration-300"
             />
@@ -92,13 +85,13 @@ const Navbar = ({ mode, setMode, hasHero = true }: NavbarProps) => {
 
             <button
               onClick={() => setLangModalOpen(true)}
-              className={`hover:opacity-70 transition-colors ${iconColor}`}
+              className="hover:opacity-70 transition-colors text-gray-800"
               aria-label="Language and region"
             >
               <Globe size={18} />
             </button>
 
-            <ProfileDropdown isScrolled={isScrolled} />
+            <ProfileDropdown />
           </div>
         </div>
 

@@ -78,7 +78,7 @@ const Community = () => {
         <>
             <div
                 ref={sectionRef}
-                className=" w-full bg-[#F7F3EE] flex flex-col lg:flex-row items-center justify-between px-8 lg:px-24"
+                className=" w-full  lg:h-[80vh] flex flex-col lg:flex-row items-center justify-between px-8 lg:px-24"
             >
                 <div className="w-full lg:w-1/2   h-auto flex flex-col gap-8">
                     {sections.map((item, i) => (
@@ -107,16 +107,14 @@ const Community = () => {
                     ))}
                 </div>
 
-                <div className="w-full lg:w-1/2 h-full hidden lg:flex items-center justify-center">
+                <div className="w-full lg:w-1/2  h-full hidden lg:flex items-center justify-center">
                     <canvas ref={canvasRef} className="w-full h-full" />
                 </div>
-
             </div>
 
             <div className="h-[1.5px] bg-[#E5E3D8] w-[90%] mx-auto" />
         </>
     );
-}
-
+};
 
 export default Community;

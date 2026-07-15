@@ -1,9 +1,9 @@
-import Hero from './hero/Hero'
+import Hero from '../../components/hero/Hero'
 import About from './about/About'
 import Community from './community/Community'
 import Process from './process/Process'
 import Contact from '../../components/contact/Contact'
-import Footer from './footer/Footer'
+import Footer from '../../components/footer/Footer'
 import Blogs from './blogs/Blogs'
 import Review from './reviews/Review'
 

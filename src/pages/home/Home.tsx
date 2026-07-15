@@ -1,16 +1,18 @@
-import Hero from "./hero/Hero";
-import Footer from "../landing/footer/Footer";
+import Footer from "../../components/footer/Footer";
 import OverLook from "./overlook/OverLook";
-import PropertyList from "./propertytlist/PropertyList";
 import ServiceList from "./servicelist/ServiceList";
 import Contact from "../../components/contact/Contact";
+import Hero from "../../components/hero/Hero";
+import TrendingProperty from "./trendingproperty/TrendingProperty";
+import Process from "./Process/Process";
 
 const HomeA = () => {
   return (
     <div className=" min-h-screen">
       <Hero />
       <OverLook />
-      <PropertyList />
+      <Process />
+      <TrendingProperty />
       <ServiceList />
       <Contact />
       <Footer />

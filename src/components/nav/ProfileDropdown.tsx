@@ -2,17 +2,14 @@ import { Menu, HelpCircle, LogOut } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import Place from "../../assets/place holder/place.svg";
 
-type ProfileDropdownProps = {
-    isScrolled: boolean;
-};
 
-const ProfileDropdown = ({ isScrolled }: ProfileDropdownProps) => {
+
+const ProfileDropdown = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const close = (e: MouseEvent) => {
-            // Don't close the dropdown if they are interacting with a modal portal
             if (document.body.style.position === "fixed") return;
 
             if (
@@ -30,11 +27,9 @@ const ProfileDropdown = ({ isScrolled }: ProfileDropdownProps) => {
         <div className="relative" ref={dropdownRef}>
             <button
                 onClick={() => setDropdownOpen((v) => !v)}
-                className={`p-2 rounded-3xl space-x-2 border flex items-center justify-center transition-colors ${
-                    isScrolled
-                        ? "border-gray-300 text-gray-800"
-                        : "border-white/40 text-white"
-                }`}
+                className="p-2 rounded-3xl space-x-2 border flex items-center justify-center transition-colors 
+                   
+                    border-gray-300 text-gray-800"
             >
                 <Menu size={20} />
                 <img src={Place} alt="profile" />
@@ -43,11 +38,7 @@ const ProfileDropdown = ({ isScrolled }: ProfileDropdownProps) => {
             {dropdownOpen && (
                 <div className="absolute right-0 mt-2 w-72 bg-white rounded-2xl shadow-xl border border-[#88867A] py-2 z-50">
                     <button className="w-full flex items-center gap-3 px-5 py-4 hover:bg-gray-50 transition-colors">
-                        <HelpCircle
-                            size={20}
-                            className="text-gray-800"
-                            strokeWidth={1.5}
-                        />
+                        <HelpCircle size={20} className="text-gray-800" strokeWidth={1.5} />
                         <span className="font-semibold text-gray-900 text-sm">
                             Help Or Contact Us
                         </span>
