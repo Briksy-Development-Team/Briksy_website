@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Search, SlidersHorizontal, Sparkles, AudioLines } from "lucide-react";
-import AiVoiceModal from "./AiVoiceModal";
-import { useScrollFade } from "./FloatingSearch";
+import AiVoiceModal from "../search/AiVoiceModal";
+import { useScrollFade } from "../search/FloatingSearch";
 import Filter from "../filter/Filter"
 
 

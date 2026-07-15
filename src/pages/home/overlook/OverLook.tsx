@@ -144,7 +144,7 @@ const OverLook = () => {
     };
 
     return (
-        <section className="w-[90%] mx-auto rounded-3xl bg-white p-8 font-helvetica">
+        <section className="w-[95%] mx-auto rounded-3xl bg-white p-8 font-helvetica">
             <h2 className="text-[2rem] font-medium text-center">
                 Explore all things property
             </h2>

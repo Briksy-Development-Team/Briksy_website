@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Contacts from "../../../assets/videos/Contact.mp4";
+import Contacts from "../../assets/videos/Contact.mp4";
 
 const badges = ["ABN verification required", "No setup fees", "Cancel anytime"];
 

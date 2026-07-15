@@ -1,6 +1,6 @@
 import HeroB from "../../../assets/hero/herobg.svg";
 import { useOutletContext } from "react-router-dom";
-import HeroSearchBar from "../../../components/search-nav/HeroSearchBar";
+import HeroSearchBar from "../../../components/search/HeroSearchBar";
 
 const Hero = () => {
   const { mode, setMode } = useOutletContext<{

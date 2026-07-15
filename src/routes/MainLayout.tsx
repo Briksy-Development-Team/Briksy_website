@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
-import Navbar from '../components/search-nav/Navbar'
+import Navbar from '../components/nav/Navbar'
 
 const MainLayout = () => {
     const [mode, setMode] = useState<"collapsed" | "search" | "ai">("collapsed");
