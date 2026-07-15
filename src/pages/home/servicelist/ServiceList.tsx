@@ -361,7 +361,7 @@ const ServiceList = () => {
         </div>
 
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {data.map((item, index) => (
+          {data.map((item) => (
             <div
               key={item.id}
               className="rounded-3xl p-4  hover:bg-[#E7D0B3] group border border-[#E2CBB3]"

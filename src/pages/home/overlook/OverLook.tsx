@@ -113,7 +113,7 @@ const OverLook = () => {
         if (tab === activeTab) return;
 
         const cards = cardsRef.current?.children;
-
+        if (!cards) return;
         gsap.to(cards, {
             opacity: 0,
             y: 20,
