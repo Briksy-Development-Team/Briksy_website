@@ -5,8 +5,12 @@ const Hero = () => {
     const { mode, setMode } = useOutletContext<{ mode: "collapsed" | "search" | "ai", setMode: (m: "collapsed" | "search" | "ai") => void }>();
 
     return (
-        <section className="relative w-full min-h-screen overflow-hidden">
-        
+        <section className="relative min-h-screen w-full overflow-hidden font-helvetica">
+            <div style={{ height: 150, overflow: 'auto', border: '5px solid red', position: 'fixed', top: 20, left: 20, zIndex: 999999, background: 'white' }}>
+                <div style={{ height: 2000, background: 'linear-gradient(lightblue, darkblue)' }}>
+                    scroll me — top left corner
+                </div>
+            </div>
 
             <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 pt-14 pb-32">
                 {/* Badge */}

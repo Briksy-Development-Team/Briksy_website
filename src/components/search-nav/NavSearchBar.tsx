@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from "react";
 import { Search, SlidersHorizontal, Sparkles, AudioLines } from "lucide-react";
 import AiVoiceModal from "./AiVoiceModal";
 import { useScrollFade } from "./FloatingSearch";
+import Filter from "../filter/Filter"
+
 
 const BTN = "flex items-center justify-center rounded-xl bg-[#3D2A0B] text-white hover:bg-[#2f2008] transition";
 
@@ -9,7 +11,7 @@ type Mode = "collapsed" | "search" | "ai";
 type Props = { mode: Mode; setMode: (m: Mode) => void; hasHero?: boolean };
 
 
-export const NavSearchButton = ({  setMode, hasHero = true }: Props) => {
+export const NavSearchButton = ({ setMode, hasHero = true }: Props) => {
     const btnRef = useRef<HTMLButtonElement>(null);
     useScrollFade(btnRef, "in", hasHero);
 
@@ -29,6 +31,8 @@ export const NavSearchButton = ({  setMode, hasHero = true }: Props) => {
 export const NavSearchPanel = ({ mode, setMode }: Props) => {
     const [query, setQuery] = useState("");
     const [voiceOpen, setVoiceOpen] = useState(false);
+    const [filterOpen, setFilterOpen] = useState(false);
+
     const wrapRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -70,7 +74,8 @@ export const NavSearchPanel = ({ mode, setMode }: Props) => {
                             autoFocus
                             className="flex-1 h-full pl-5 pr-4 text-sm outline-none text-gray-700 placeholder:text-gray-400"
                         />
-                        <button className="flex items-center justify-center text-gray-400 hover:text-gray-600 transition px-3">
+                        <button onClick={() => setFilterOpen(true)}
+                            className="flex items-center justify-center text-gray-400 hover:text-gray-600 transition px-3">
                             <SlidersHorizontal size={18} />
                         </button>
                         <button className={`${BTN} w-10 h-10`}>
@@ -82,6 +87,8 @@ export const NavSearchPanel = ({ mode, setMode }: Props) => {
                     </button>
                 </>
             )}
+            <Filter isOpen={filterOpen} onClose={() => setFilterOpen(false)} />
+
             <AiVoiceModal isOpen={voiceOpen} onClose={() => setVoiceOpen(false)} />
         </div>
     );

@@ -7,6 +7,7 @@ import {
   AudioLines,
 } from "lucide-react";
 import AiVoiceModal from "./AiVoiceModal";
+import Filter from "../filter/Filter"
 import { useScrollFade } from "./FloatingSearch";
 
 const TABS = ["Buy", "Rent", "Sold", "Address", "Agents"];
@@ -25,6 +26,7 @@ const HeroSearchBar = ({ mode, setMode }: Props) => {
   const [activeTab, setActiveTab] = useState("Buy");
   const [query, setQuery] = useState("");
   const [voiceOpen, setVoiceOpen] = useState(false);
+  const [filterOpen, setFilterOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   useScrollFade(rootRef, "out");
 
@@ -62,11 +64,10 @@ const HeroSearchBar = ({ mode, setMode }: Props) => {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`lg:px-14 h-11 px-8 rounded-xl text-[0.875rem] lg:text-[1rem] font-medium transition-all duration-300 ${
-                  activeTab === tab
-                    ? "bg-[#2B241F] text-white"
-                    : "bg-white text-gray-700 hover:bg-gray-100"
-                }`}
+                className={`lg:px-14 h-11 px-8 rounded-xl text-[0.875rem] lg:text-[1rem] font-medium transition-all duration-300 ${activeTab === tab
+                  ? "bg-[#2B241F] text-white"
+                  : "bg-white text-gray-700 hover:bg-gray-100"
+                  }`}
               >
                 {tab}
               </button>
@@ -82,7 +83,8 @@ const HeroSearchBar = ({ mode, setMode }: Props) => {
                 placeholder="Search Your Desired Location..."
                 className="flex-1 h-full pl-7 pr-4 text-base outline-none text-gray-700 placeholder:text-gray-400"
               />
-              <button className="flex items-center justify-center text-gray-500 hover:text-gray-700 transition px-3">
+              <button onClick={() => setFilterOpen(true)}
+                className="flex items-center justify-center text-gray-500 hover:text-gray-700 transition px-3">
                 <SlidersHorizontal size={20} />
               </button>
               <button className={`${BTN} w-11 h-11`}>
@@ -102,6 +104,7 @@ const HeroSearchBar = ({ mode, setMode }: Props) => {
       <div className="flex items-center gap-2 mt-8 text-white">
         <span className="text-base">Try an example prompt</span>
         <RefreshCw size={16} />
+
       </div>
       <div className="mt-3 flex w-full flex-wrap justify-center gap-4 px-10">
         {PROMPTS.map((prompt) => (
@@ -129,6 +132,7 @@ const HeroSearchBar = ({ mode, setMode }: Props) => {
           </button>
         ))}
       </div>
+      <Filter isOpen={filterOpen} onClose={() => setFilterOpen(false)} />
       <AiVoiceModal isOpen={voiceOpen} onClose={() => setVoiceOpen(false)} />
     </div>
   );
