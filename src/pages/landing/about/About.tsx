@@ -13,7 +13,7 @@ const About = () => {
                     PLATFORM OVERVIEW
                 </p>
 
-                <p className="mx-auto mt-4 w-full  font-medium xl:w-[70%] sm:text-[1.875rem] text-center xl:text-[2.25rem] leading-tight tracking-tight text-gray-800">
+                <p className="mx-auto mt-4 w-full   xl:w-[70%] sm:text-[1.875rem] text-center xl:text-[2.25rem] leading-tight tracking-tight text-gray-800">
                     Briksy connects buyers, builders, agents, and trusted property
                     professionals in one seamless platform. Every profile is verified,
                     and every listing is reviewed before it goes live.
