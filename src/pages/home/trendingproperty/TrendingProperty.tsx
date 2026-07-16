@@ -114,7 +114,7 @@ const TrendingProperty = () => {
                         slidesPerView: 5.2,
                     },
                     1536: {
-                        slidesPerView: 8,
+                        slidesPerView: 6,
                     },
                 }}
             >

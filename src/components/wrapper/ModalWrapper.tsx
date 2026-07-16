@@ -17,7 +17,6 @@ const ModalWrapper = ({ isOpen, children }: ModalWrapperProps) => {
             body.style.top = `-${scrollY}px`;
             body.style.left = "0";
             body.style.right = "0";
-            // Add these two lines to prevent iOS rendering bugs
             body.style.width = "100%";
             body.style.height = "100dvh";
             body.style.overflow = "hidden";
@@ -27,7 +26,6 @@ const ModalWrapper = ({ isOpen, children }: ModalWrapperProps) => {
                 body.style.top = "";
                 body.style.left = "";
                 body.style.right = "";
-                // Clean up the added styles
                 body.style.width = "";
                 body.style.height = "";
                 body.style.overflow = "";

@@ -23,7 +23,12 @@ type LanguageModalProps = {
     onSelect: (lang: Lang) => void;
 };
 
-const LanguageModal = ({ isOpen, onClose, selectedLang, onSelect }: LanguageModalProps) => {
+const LanguageModal = ({
+    isOpen,
+    onClose,
+    selectedLang,
+    onSelect,
+}: LanguageModalProps) => {
     const isSelected = (lang: Lang) =>
         selectedLang.label === lang.label && selectedLang.region === lang.region;
 
@@ -34,9 +39,11 @@ const LanguageModal = ({ isOpen, onClose, selectedLang, onSelect }: LanguageModa
                 onClick={() => onSelect(lang)}
                 className={
                     compact
-                        ? `px-4 py-2 w-28 rounded-lg text-sm font-medium transition-colors ${selected ? "bg-[#D97706] text-white" : "bg-gray-100 text-gray-700"}`
-                        : `text-left px-4 py-2 rounded-lg text-sm transition-colors ${selected ? "bg-[#D97706] text-white" : "hover:bg-gray-50 text-gray-800"}`
+                        ? `px-3 sm:px-4 py-2 w-24 sm:w-28 rounded-lg text-sm font-medium transition-colors shrink-0 ${selected ? "bg-[#342511] text-white" : "border border-gray-200 text-gray-700 hover:bg-gray-50"}`
+                        : `text-left px-3 sm:px-4 py-2 rounded-lg text-sm transition-colors ${selected ? "bg-[#342511] text-white" : "hover:bg-gray-50 text-gray-800"}`
                 }
+                onWheel={(e) => e.stopPropagation()}
+                onTouchMove={(e) => e.stopPropagation()}
             >
                 <div className={compact ? "font-semibold" : "font-medium"}>
                     {lang.label}
@@ -51,25 +58,27 @@ const LanguageModal = ({ isOpen, onClose, selectedLang, onSelect }: LanguageModa
     return (
         <ModalWrapper isOpen={isOpen}>
             <div
-                className="fixed inset-0 z-[100] flex pt-16 items-start justify-center"
+                className="fixed inset-0 z-[100] flex items-start sm:items-center justify-center p-4 pt-10 sm:pt-4 overflow-y-auto"
                 onClick={onClose}
+                onWheel={(e) => e.stopPropagation()}
+                onTouchMove={(e) => e.stopPropagation()}
             >
-                {/* Backdrop */}
-                <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+                <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" />
                 <div
-                    className="bg-white rounded-2xl shadow-2xl h-[60%] w-[35%] p-6 relative"
+                    className="relative bg-white rounded-2xl shadow-2xl w-full max-w-[560px] max-h-[85vh] sm:max-h-[70vh] p-5 sm:p-6 overflow-y-auto"
                     onClick={(e) => e.stopPropagation()}
                 >
                     <button
                         onClick={onClose}
                         className="absolute top-4 left-4 text-gray-500 hover:text-gray-800 transition-colors"
                     >
-                        <X size={28} />
+                        <X size={24} className="sm:hidden" />
+                        <X size={28} className="hidden sm:block" />
                     </button>
 
                     <div className="flex justify-start mt-10 mb-6">
-                        <div className="border-b-2 border-[#D97706] pb-1 px-2">
-                            <span className="text-sm font-semibold text-[#D97706]">
+                        <div className="border-b-2 border-[#342511] pb-1 px-2">
+                            <span className="text-sm font-semibold text-[#342511]">
                                 Language
                             </span>
                         </div>
@@ -78,7 +87,7 @@ const LanguageModal = ({ isOpen, onClose, selectedLang, onSelect }: LanguageModa
                     <p className="text-sm font-semibold text-gray-900 mb-3">
                         Suggested languages and regions
                     </p>
-                    <div className="flex gap-3 mb-6">
+                    <div className="flex flex-wrap gap-3 mb-6">
                         {LANGUAGES.slice(0, 2).map((lang) => (
                             <LangButton
                                 key={`s-${lang.label}-${lang.region}`}
@@ -88,10 +97,14 @@ const LanguageModal = ({ isOpen, onClose, selectedLang, onSelect }: LanguageModa
                         ))}
                     </div>
 
-                    <p className="text-sm font-semibold pt-10 text-gray-900 mb-3">
+                    <p
+                        onWheel={(e) => e.stopPropagation()}
+                        onTouchMove={(e) => e.stopPropagation()}
+                        className="text-sm font-semibold pt-6 sm:pt-10 text-gray-900 mb-3"
+                    >
                         Choose a language and region
                     </p>
-                    <div className="grid grid-cols-5 gap-3">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
                         {LANGUAGES.map((lang) => (
                             <LangButton key={`${lang.label}-${lang.region}`} lang={lang} />
                         ))}

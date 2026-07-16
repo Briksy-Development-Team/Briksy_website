@@ -43,48 +43,62 @@ export const NavSearchPanel = ({ mode, setMode }: Props) => {
     }, [setMode]);
 
     return (
-        <div ref={wrapRef} className="flex items-center gap-3 w-full max-w-[900px] mx-auto">
+        <div ref={wrapRef} className="flex items-center gap-3 justify-center w-full max-w-[900px] mx-auto">
             {mode === "ai" ? (
                 <>
-                    <button onClick={() => setMode("search")} className={`${BTN} w-11 h-11 shrink-0`}>
-                        <Search size={18} />
-                    </button>
-                    <div className="flex items-center flex-1 h-16 bg-white rounded-xl overflow-hidden shadow-xl pr-2">
-                        <input
-                            type="text"
-                            placeholder="Ask what you are looking for..."
-                            className="flex-1 h-full pl-7 pr-4 text-base outline-none text-gray-700 placeholder:text-gray-400"
-                        />
-                        <button onClick={() => setVoiceOpen(true)} className="flex items-center justify-center text-gray-500 hover:text-gray-700 transition px-3">
-                            <AudioLines size={20} />
+                    <div className="flex items-center gap-3 w-[90%] sm:w-[80%] lg:w-full">
+                        <button
+                            onClick={() => setMode("search")}
+                            className={`${BTN} w-11 h-11 sm:w-12 sm:h-12 lg:w-14  lg:h-14 shrink-0`}
+                        >
+                            <Search size={18} />
                         </button>
-                        <button className={`${BTN} w-11 h-11`}>
-                            <Sparkles size={18} />
-                        </button>
+                        <div className="flex items-center flex-1 h-11 sm:h-12 lg:h-14 bg-white rounded-xl overflow-hidden shadow-xl pr-2">
+                            <input
+                                type="text"
+                                placeholder="Ask what you are looking for..."
+                                className="flex-1 h-full pl-3 lg:pl-7 pr-4 text-base w-[50%]  outline-none text-gray-700 placeholder:text-gray-400"
+                            />
+                            <button
+                                onClick={() => setVoiceOpen(true)}
+                                className="flex items-center justify-center text-gray-500 hover:text-gray-700 transition px-3"
+                            >
+                                <AudioLines size={20} />
+                            </button>
+                            <button className={`${BTN} w-8 h-8 sm:w-10 sm:h-10`}>
+                                <Sparkles size={18} />
+                            </button>
+                        </div>
                     </div>
                 </>
             ) : (
                 <>
-                    <div className="flex items-center flex-1 h-14 bg-white rounded-xl overflow-hidden shadow-md pr-2">
-                        <input
-                            type="text"
-                            value={query}
-                            onChange={(e) => setQuery(e.target.value)}
-                            placeholder="Search Your Desired Location..."
-                            autoFocus
-                            className="flex-1 h-full pl-5 pr-4 text-sm outline-none text-gray-700 placeholder:text-gray-400"
-                        />
-                        <button onClick={() => setFilterOpen(true)}
-                            className="flex items-center justify-center text-gray-400 hover:text-gray-600 transition px-3">
-                            <SlidersHorizontal size={18} />
-                        </button>
-                        <button className={`${BTN} w-10 h-10`}>
-                            <Search size={16} />
+                    <div className="flex items-center gap-3  w-[90%] sm:w-[80%] lg:w-full ">
+                        <div className="flex items-center flex-1 h-11 sm:h-12 lg:h-14 bg-white rounded-xl   overflow-hidden shadow-xl pr-2">
+                            <input
+                                type="text"
+                                value={query}
+                                onChange={(e) => setQuery(e.target.value)}
+                                placeholder="Search Your Desired Location..."
+                                className="flex-1 h-full pl-3 lg:pl-7 pr-4  text-base w-[50%] outline-none text-gray-700 placeholder:text-gray-400"
+                            />
+                            <button
+                                onClick={() => setFilterOpen(true)}
+                                className="flex items-center justify-center text-gray-500 hover:text-gray-700 transition px-3"
+                            >
+                                <SlidersHorizontal size={20} />
+                            </button>
+                            <button className={`${BTN} w-8 h-8 sm:w-10 sm:h-10`}>
+                                <Search size={18} />
+                            </button>
+                        </div>
+                        <button
+                            onClick={() => setMode("ai")}
+                            className="w-11 h-11 sm:w-12 sm:h-12 lg:w-14  lg:h-14 rounded-xl bg-white shadow-xl flex items-center justify-center hover:bg-gray-100 transition shrink-0"
+                        >
+                            <Sparkles size={20} />
                         </button>
                     </div>
-                    <button onClick={() => setMode("ai")} className="w-14 h-14 rounded-xl bg-white shadow-md flex items-center justify-center hover:bg-gray-100 transition shrink-0">
-                        <Sparkles size={18} />
-                    </button>
                 </>
             )}
             <Filter isOpen={filterOpen} onClose={() => setFilterOpen(false)} />

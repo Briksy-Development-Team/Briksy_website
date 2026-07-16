@@ -9,7 +9,7 @@ import ProtectedRoute from './ProtectedRoute'
 import Terms from '../pages/landing/terms/Terms'
 import Pricing from '../pages/landing/subscription/Pricing'
 import HomeA from '../pages/home/Home'
-import FilterResult from '../pages/home/filter_components/FilterResult'
+import SearchPage from '../pages/searchdata/SearchPage'
 
 const AppRouter = () => {
     // const AppRouter = ({ dark, setDark }: AppRouterProps) => {
@@ -46,7 +46,7 @@ const AppRouter = () => {
 
                 <Route path='/' element={<Home />} />
                 <Route path='/nav' element={<HomeA />} />
-                <Route path='/search' element={<FilterResult />} />
+                <Route path='/result' element={<SearchPage />} />
             </Route>
 
             <Route path='/login' element={<Login />} />

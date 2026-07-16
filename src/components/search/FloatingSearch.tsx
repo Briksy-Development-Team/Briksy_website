@@ -5,7 +5,7 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const SCROLL_THRESHOLD = 400; // px scrolled before hero -> navbar crossfade fires
+export const SCROLL_THRESHOLD = 400; 
 
 export function useScrollFade(ref: React.RefObject<HTMLElement | null>, direction: "in" | "out" = "out", enabled = true) {
   useGSAP(() => {
@@ -14,7 +14,6 @@ export function useScrollFade(ref: React.RefObject<HTMLElement | null>, directio
     const before = direction === "out" ? 1 : 0;
     const after = direction === "out" ? 0 : 1;
 
-    // no hero on this page to scroll past — just show the "settled" state permanently
     if (!enabled) {
       gsap.set(ref.current, { opacity: after, pointerEvents: "auto" });
       return;
@@ -64,7 +63,7 @@ export function useNavExpand(
       paused: true,
       onReverseComplete: onPanelHidden,
     })
-      .to(navRef.current, { height: 220, duration: 0.35, ease: "power2.out" }, 0)
+      .to(navRef.current, { height: 200, duration: 0.35, ease: "power2.out" }, 0)
       .fromTo(
         panelRef.current,
         { opacity: 0, y: -12 },
