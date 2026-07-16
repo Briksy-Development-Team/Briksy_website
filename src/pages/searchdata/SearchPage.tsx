@@ -160,7 +160,7 @@ const SearchPage = () => {
   ];
 
   return (
-    <div className="min-h-screen font-helvetica bg-[#F8F4EE] pt-24">
+    <div className="min-h-screen font-helvetica bg-[#F8F4EE] py-24">
       <div className="mx-auto  px-[5%]">
         <Toolbar
           view={view}

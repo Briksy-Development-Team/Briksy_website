@@ -1,4 +1,3 @@
-import Footer from "../../components/footer/Footer";
 import OverLook from "./overlook/OverLook";
 import ServiceList from "./servicelist/ServiceList";
 import Contact from "../../components/contact/Contact";
@@ -15,7 +14,6 @@ const HomeA = () => {
       <TrendingProperty />
       <ServiceList />
       <Contact />
-      <Footer />
     </div>
   );
 };
