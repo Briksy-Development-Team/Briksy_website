@@ -3,6 +3,7 @@ import { Search, SlidersHorizontal, Sparkles, AudioLines } from "lucide-react";
 import AiVoiceModal from "../search/AiVoiceModal";
 import { useScrollFade } from "../search/FloatingSearch";
 import Filter from "../filter/Filter"
+import { useNavigate } from "react-router-dom";
 
 
 const BTN = "flex items-center justify-center rounded-xl bg-[#3D2A0B] text-white hover:bg-[#2f2008] transition";
@@ -32,6 +33,7 @@ export const NavSearchPanel = ({ mode, setMode }: Props) => {
     const [query, setQuery] = useState("");
     const [voiceOpen, setVoiceOpen] = useState(false);
     const [filterOpen, setFilterOpen] = useState(false);
+    const navigate = useNavigate();
 
     const wrapRef = useRef<HTMLDivElement>(null);
 
@@ -88,7 +90,7 @@ export const NavSearchPanel = ({ mode, setMode }: Props) => {
                             >
                                 <SlidersHorizontal size={20} />
                             </button>
-                            <button className={`${BTN} w-8 h-8 sm:w-10 sm:h-10`}>
+                            <button onClick={() => (navigate("/result"))} className={`${BTN} w-8 h-8 sm:w-10 sm:h-10`}>
                                 <Search size={18} />
                             </button>
                         </div>

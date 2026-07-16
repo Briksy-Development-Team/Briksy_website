@@ -9,6 +9,7 @@ import {
 import AiVoiceModal from "./AiVoiceModal";
 import Filter from "../filter/Filter";
 import { useScrollFade } from "./FloatingSearch";
+import { useNavigate } from "react-router-dom";
 
 const TABS = ["Buy", "Rent", "Sold", "Address", "Agents"];
 const PROMPTS = [
@@ -29,6 +30,7 @@ const HeroSearchBar = ({ mode, setMode }: Props) => {
   const [filterOpen, setFilterOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   useScrollFade(rootRef, "out");
+  const navigate = useNavigate();
 
   return (
     <div ref={rootRef} className="w-full flex flex-col items-center">
@@ -64,10 +66,11 @@ const HeroSearchBar = ({ mode, setMode }: Props) => {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`lg:px-14 h-11 px-6 sm:px-8 rounded-xl text-[0.875rem] lg:text-[1rem] font-medium transition-all duration-300 ${activeTab === tab
-                  ? "bg-[#2B241F] text-white"
-                  : "bg-white text-gray-700 hover:bg-gray-100"
-                  }`}
+                className={`lg:px-14 h-11 px-6 sm:px-8 rounded-xl text-[0.875rem] lg:text-[1rem] font-medium transition-all duration-300 ${
+                  activeTab === tab
+                    ? "bg-[#2B241F] text-white"
+                    : "bg-white text-gray-700 hover:bg-gray-100"
+                }`}
               >
                 {tab}
               </button>
@@ -89,7 +92,10 @@ const HeroSearchBar = ({ mode, setMode }: Props) => {
               >
                 <SlidersHorizontal size={20} />
               </button>
-              <button className={`${BTN} w-8 h-8 sm:w-10 sm:h-10`}>
+              <button
+                onClick={() => navigate("/result")}
+                className={`${BTN} w-8 h-8 sm:w-10 sm:h-10`}
+              >
                 <Search size={18} />
               </button>
             </div>
