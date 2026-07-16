@@ -15,9 +15,9 @@ const ListCard = ({ item }: { item: Property }) => (
             />
         </div>
 
-        <div className="flex flex-1 justify-between gap-3">
+        <div className="flex flex-1 justify-between  gap-2 lg:gap-3">
             <div className="min-w-0">
-                <span className="inline-flex rounded-full border border-[#E6E6E6] bg-white px-3 py-1 text-xs font-medium shadow-md">
+                <span className="inline-flex rounded-full border border-[#E6E6E6] bg-white px-3 py-1 text-[0.6875rem] font-medium shadow-md">
                     {item.badge}
                 </span>
 
@@ -29,7 +29,7 @@ const ListCard = ({ item }: { item: Property }) => (
                     {item.hours} · {item.date}
                 </p>
 
-                <div className="mt-1 flex items-center gap-1 text-[0.75rem] text-[#666]">
+                <div className="mt-1 flex items-center  gap-0.5 lg:gap-1 text-[0.6rem] sm:text-[0.75rem] text-[#666]">
                     <span className="font-semibold text-black">
                         From ₹{item.price.toLocaleString()}
                     </span>
@@ -38,7 +38,7 @@ const ListCard = ({ item }: { item: Property }) => (
 
                     <span>·</span>
 
-                    <Star size={12} fill="currentColor" className="text-[#666]" />
+                    <Star size={10} fill="currentColor" className="text-[#666] -mt-1" />
 
                     <span>{item.rating}</span>
 
