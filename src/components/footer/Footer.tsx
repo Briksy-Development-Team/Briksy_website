@@ -2,31 +2,59 @@ import { Link } from "react-router-dom";
 import Logo from "../../assets/logo/briksyB.svg";
 
 const footerLinks = [
-    ["Projects", "Expertise", "About"],
-    ["Culture", "Awards", "Careers", "Contact"],
-    ["Articles", "Podcasts", "Publications", "News"],
-    ["LinkedIn", "Instagram"],
+    {
+        title: "Platform",
+        links: [
+            "Find Professionals",
+            "For Agencies",
+            "For Agents",
+            "Pricing",
+        ],
+    },
+    {
+        title: "Company",
+        links: [
+            "About Briksy",
+            "How We Verify",
+            "Careers",
+            "Contact",
+        ],
+    },
+    {
+        title: "Connect",
+        links: [
+            "LinkedIn",
+            "Instagram",
+            "Facebook",
+        ],
+    },
 ];
 
 const Footer = () => {
     return (
-        <footer className="font-helvetica border-t-2 border-[#E4DDD3]">
+        <footer className="font-helvetica border-t-2 border-[#E2CBB3]">
             <div className="w-[95%] mx-auto py-5">
                 <div className="flex justify-between items-start">
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-10 sm:gap-10 lg:gap-20">
-                        {footerLinks.map((column, index) => (
-                            <ul key={index} className="space-y-0">
-                                {column.map((item) => (
-                                    <li key={item}>
-                                        <Link
-                                            to="/"
-                                            className="lg:text-[1.5rem] sm:text-[0.75rem] text-[1rem]  hover:text-[#A6632F] transition-colors"
-                                        >
-                                            {item}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
+                        {footerLinks.map((column) => (
+                            <div key={column.title}>
+                                <h4 className="font-medium text-[#8B6F54] lg:text-[1.125rem] text-[0.875rem] mb-2">
+                                    {column.title}
+                                </h4>
+
+                                <ul className="space-y-1">
+                                    {column.links.map((item) => (
+                                        <li key={item}>
+                                            <Link
+                                                to="/"
+                                                className="text-[0.875rem] text-[#342511] lg:text-[1rem] hover:text-[#A6632F] transition-colors"
+                                            >
+                                                {item}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         ))}
                     </div>
 
@@ -55,12 +83,6 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    <a
-                        href="https://www.briksy.com"
-                        className="lg:text-[2rem] font-medium hidden md:flex text-[#F15A24]"
-                    >
-                        www.briksy.com
-                    </a>
                 </div>
 
             </div>

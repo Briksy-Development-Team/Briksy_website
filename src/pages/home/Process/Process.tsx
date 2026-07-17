@@ -35,23 +35,26 @@ const Process = () => {
     const rightBubble = useRef<HTMLDivElement>(null);
 
     useGSAP(() => {
-        const tl = gsap.timeline({ repeat: -1, yoyo: true });
-
-        tl.to(leftBubble.current, {
-            y: -10,
-            rotation: -1,
-            duration: 2.5,
+        gsap.to(leftBubble.current, {
+            y: -14,
+            x: 4,
+            rotation: -2,
+            duration: 2.2,
             ease: "sine.inOut",
-        }).to(
-            rightBubble.current,
-            {
-                y: -8,
-                rotation: 1,
-                duration: 3,
-                ease: "sine.inOut",
-            },
-            0.6,
-        );
+            repeat: -1,
+            yoyo: true,
+        });
+
+        gsap.to(rightBubble.current, {
+            y: -10,
+            x: -3,
+            rotation: 2,
+            duration: 2.6,
+            ease: "sine.inOut",
+            repeat: -1,
+            yoyo: true,
+            delay: 0.4, 
+        });
     });
 
     return (
