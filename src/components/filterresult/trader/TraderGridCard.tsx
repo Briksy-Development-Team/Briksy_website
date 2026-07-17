@@ -7,7 +7,7 @@ type Props = {
 };
 
 const TraderGridCard = ({ item }: Props) => (
-  <div className="rounded-3xl border border-[#E6E6E6] text-[#342511] bg-white px-6 py-6 text-center">
+  <div className="rounded-3xl border border-[#E6E6E6] w-[300px] md:w-auto mx-auto text-[#342511] bg-white px-6 py-6 text-center">
     <div className="flex justify-center">
       <div className="relative">
         <img
