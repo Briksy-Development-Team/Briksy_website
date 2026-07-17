@@ -7,7 +7,7 @@ type Props = {
 };
 
 const BuilderListCard = ({ item }: Props) => (
-  <div className="flex items-center gap-3 px-4 py-2 lg:gap-4 border3 text-[#342511] hover:bg-white border border-[#E7E7E4] rounded-[1.25rem]">
+  <div className="flex items-center gap-3 relative px-4 py-2 lg:gap-4 border3 text-[#342511] hover:bg-white border border-[#E7E7E4] rounded-[1.25rem]">
     <div className="relative shrink-0">
       <img
         src={item.avatar}
@@ -48,7 +48,7 @@ const BuilderListCard = ({ item }: Props) => (
     </div>
 
     <button
-      className="mt-1 shrink-0"
+      className="mt-1    absolute right-4 top-4 shrink-0"
       aria-label={
         item.isFavourite ? "Remove from favourites" : "Add to favourites"
       }

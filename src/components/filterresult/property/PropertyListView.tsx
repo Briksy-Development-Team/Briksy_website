@@ -6,7 +6,7 @@ type Props = {
 };
 
 const PropertyListView = ({ properties }: Props) => (
-  <div className="grid grid-cols-1 gap-x-10 gap-y-8 xl:grid-cols-3">
+  <div className="grid grid-cols-1 gap-x-10 gap-y-8 lg:grid-cols-2 xl:grid-cols-3">
     {properties.map((item) => (
       <PropertyListCard key={item.id} item={item} />
     ))}
