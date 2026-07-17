@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Contacts from "../../assets/videos/Contact.mp4";
 
 const badges = ["ABN verification required", "No setup fees", "Cancel anytime"];
 
 const Contact = () => {
+  const navigate = useNavigate();
   return (
     <div className="w-full px-[5%] font-helvetica  py-10 lg:py-14">
       <div className="w-full bg-[#F0ECE5] rounded-[2rem] lg:px-8 p-4  flex flex-col lg:flex-row items-center justify-between gap-10">
@@ -27,12 +28,12 @@ const Contact = () => {
 
           <p className="text-[#5C5347] text-[1rem] mt-6 max-w-lg">
             Join <span className="font-semibold text-[1.25rem] text-[#2E2620]">340+</span>{" "}
-            verified builders, brokers, and trades on BRIKSY. List your
+            verified builders, brokers, and trades on Briksy. List your
             services, manage enquiries, and grow your business.
           </p>
 
           <div className="flex items-center gap-4 mt-10">
-            <button className="sm:px-6 sm:py-3 px-3 py-2  bg-[#342511] text-white rounded-xl text-[0.8rem] sm:text-[1rem] font-medium">
+            <button onClick={() => navigate("/coming-soon")} className="sm:px-6 sm:py-3 px-3 py-2  bg-[#342511] text-white rounded-xl text-[0.8rem] sm:text-[1rem] font-medium">
               List Your Business
             </button>
 

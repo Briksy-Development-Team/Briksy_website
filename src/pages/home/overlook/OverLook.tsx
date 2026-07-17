@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import { ArrowUpRight } from "lucide-react";
 import Overone from "../../../assets/home/overone.svg";
@@ -101,7 +102,7 @@ const DATA: Record<Tab, CardData[]> = {
 
 const OverLook = () => {
   const [activeTab, setActiveTab] = useState<Tab>("Buying");
-
+  const navigate = useNavigate();
   const cardsRef = useRef<HTMLDivElement>(null);
 
   const changeTab = (tab: Tab) => {
@@ -181,7 +182,7 @@ const OverLook = () => {
               {item.description}
             </p>
 
-            <button className="flex items-center gap-2 mt-5 font-medium hover:gap-3 transition-all">
+            <button onClick={() => navigate("/coming-soon")} className="flex items-center gap-2 mt-5 font-medium hover:gap-3 transition-all">
               Know more
               <ArrowUpRight size={18} />
             </button>

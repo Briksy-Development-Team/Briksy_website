@@ -7,6 +7,7 @@ import Lenis from "lenis";
 import { testConnection } from "./api/clients.api";
 import AppRouter from "./routes/AppRouter";
 import { AuthProvider } from "./auth/AuthContext";
+import ScrollToTop from "./components/utils/ScrollToTop";
 
 gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.config({ ignoreMobileResize: true });
@@ -32,9 +33,11 @@ function App() {
     };
   }, []);
 
+
   return (
     <AuthProvider>
       <BrowserRouter>
+        <ScrollToTop />
         <AppRouter />
       </BrowserRouter>
     </AuthProvider>

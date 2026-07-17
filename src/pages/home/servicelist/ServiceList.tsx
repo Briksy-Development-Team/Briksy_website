@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { mockTraders } from "../../../data/mockTraders";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -22,6 +23,7 @@ const rotate = <T,>(arr: T[], n: number): T[] => [
 
 const ServiceList = () => {
   const [activeIdx, setActiveIdx] = useState(0);
+  const navigate = useNavigate();
 
   const items = rotate(mockTraders, activeIdx);
 
@@ -38,7 +40,7 @@ const ServiceList = () => {
             </p>
           </div>
 
-          <button className="flex items-center gap-2 font-medium text-[#562F00]">
+          <button onClick={() => navigate("/coming-soon")} className="flex items-center gap-2 font-medium text-[#562F00]">
             View All
             <ArrowUpRight size={24} />
           </button>

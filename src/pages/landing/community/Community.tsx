@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -31,6 +32,7 @@ const Community = () => {
     const sectionRef = useRef<HTMLDivElement>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [active, setActive] = useState(0);
+    const navigate = useNavigate();
 
     useGSAP(() => {
         const canvas = canvasRef.current;
@@ -97,7 +99,7 @@ const Community = () => {
                                 <p className="text-[#8B6F54]  lg:text-[1rem] leading-relaxed  w-[80%]">
                                     {item.description}
                                 </p>
-                                <button className="mt-5 px-5 py-2 rounded-lg bg-[#342511] text-white">
+                                <button onClick={() => navigate("/coming-soon")} className="mt-5 px-5 py-2 rounded-lg bg-[#342511] text-white">
                                     Start Searching
                                 </button>
                             </div>

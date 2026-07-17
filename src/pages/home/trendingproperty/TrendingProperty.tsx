@@ -1,11 +1,12 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import { useNavigate } from "react-router-dom";
 import { mockProperties } from "../../../data/mockProperties";
 import PropertyGridCard from "../../../components/filterresult/property/PropertyGridCard";
 import "swiper/css";
 import { ArrowUpRight } from "lucide-react";
 
 const TrendingProperty = () => {
+    const navigate = useNavigate();
     return (
         <section className="py-20 font-helvetica">
             <div className="w-[95%] mx-auto">
@@ -17,7 +18,7 @@ const TrendingProperty = () => {
                         <p className="text-[0.875rem] lg:text-[1rem]">Verified solo traders and specialists</p>
                     </div>
 
-                    <button className="flex items-center   gap-2 text-[#562F00] font-medium">
+                    <button onClick={() => navigate("/coming-soon")} className="flex items-center   gap-2 text-[#562F00] font-medium">
                         View All
                         <ArrowUpRight size={24} />
                     </button>

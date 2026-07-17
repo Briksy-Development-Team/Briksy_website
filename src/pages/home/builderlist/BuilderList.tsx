@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import { useNavigate } from "react-router-dom";
 import { mockBuilders } from "../../../data/mockBuilders";
 import "swiper/css";
 import BuilderGridCard from "../../../components/filterresult/builder/BuilderGridCard";
@@ -7,6 +7,7 @@ import BuilderGridCard from "../../../components/filterresult/builder/BuilderGri
 
 
 const   BuilderList = () => {
+    const navigate = useNavigate();
     return (
         <section className="py-20 font-helvetica">
             <div className="w-[95%] mx-auto">
@@ -16,7 +17,7 @@ const   BuilderList = () => {
                     </h2>
                     <p className="text-[0.875rem] lg:text-[1rem]">Trusted agencies and builders</p>
 
-                    <button className="absolute right-0 flex items-center gap-2 text-lg font-medium text-[#562F00] transition-all hover:gap-3">
+                    <button onClick={() => navigate("/coming-soon")} className="absolute right-0 flex items-center gap-2 text-lg font-medium text-[#562F00] transition-all hover:gap-3">
                         View All
                         <span>↗</span>
                     </button>

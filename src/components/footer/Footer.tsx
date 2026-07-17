@@ -46,7 +46,7 @@ const Footer = () => {
                                     {column.links.map((item) => (
                                         <li key={item}>
                                             <Link
-                                                to="/"
+                                                to={item === "Pricing" ? "/subs" : "/coming-soon"}
                                                 className="text-[0.875rem] text-[#342511] lg:text-[1rem] hover:text-[#A6632F] transition-colors"
                                             >
                                                 {item}
@@ -60,9 +60,9 @@ const Footer = () => {
 
                     <div className=" items-center hidden sm:flex gap-8 lg:text-[1rem] sm:text-[0.625rem] ">
 
-                        <Link to="/">Terms of Use</Link>
+                        <Link to="/terms">Terms of Use</Link>
 
-                        <Link to="/">T&amp;C</Link>
+                        <Link to="/terms">T&amp;C</Link>
                     </div>
                 </div>
 

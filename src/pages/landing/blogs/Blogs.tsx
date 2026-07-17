@@ -4,6 +4,7 @@ import Imgthree from "../../../assets/reviews/img3.svg";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
+import { useNavigate } from "react-router-dom";
 import type { CSSProperties } from "react";
 
 import "swiper/css";
@@ -92,6 +93,7 @@ const ReviewCard = ({
 };
 
 const Blogs = () => {
+  const navigate = useNavigate();
   return (
     <section className="w-full font-helvetica">
       <div className="flex flex-col gap-8 px-[5%] py-20 xl:flex-row">
@@ -106,7 +108,7 @@ const Blogs = () => {
             Resources
           </h2>
 
-          <button className="mt-10 w-36 rounded-xl bg-[#342511] px-5 py-3 text-sm font-medium text-white">
+          <button onClick={() => navigate("/coming-soon")} className="mt-10 w-36 rounded-xl bg-[#342511] px-5 py-3 text-sm font-medium text-white">
             View All Articles
           </button>
         </div>

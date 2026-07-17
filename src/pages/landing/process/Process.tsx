@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import Hand from "../../../assets/utils/Hand.svg";
 import Tick from "../../../assets/utils/Tick.svg";
 import Search from "../../../assets/utils/Search.svg";
@@ -23,6 +24,7 @@ const features = [
 ];
 
 const Process = () => {
+  const navigate = useNavigate();
   return (
     <section className="bg-[#F7F3EA] font-helvetica py-24 px-6">
       <div className="mx-auto text-center">
@@ -49,7 +51,7 @@ const Process = () => {
           ))}
         </div>
 
-        <button className="mt-14 inline-flex items-center gap-2 border border-[#8B6F54] text-[#8B6F54] px-6 py-3 rounded-xl lg:text-[0.875rem] font-medium hover:bg-[#EFE9DD] transition-colors">
+        <button onClick={() => navigate("/coming-soon")} className="mt-14 inline-flex items-center gap-2 border border-[#8B6F54] text-[#8B6F54] px-6 py-3 rounded-xl lg:text-[0.875rem] font-medium hover:bg-[#EFE9DD] transition-colors">
           See How it works
           <span aria-hidden="true">→</span>
         </button>

@@ -54,7 +54,7 @@ const Pricing = () => {
   const [activeCard, setActiveCard] = useState(2);
 
   return (
-    <section className="w-full bg-[#F7F7F4] px-[5%] py-28 lg:py-[15rem]">
+    <section className="w-full  px-[5%] py-28 lg:py-[15rem]">
       <div className="flex flex-col items-center text-center">
         <p className="text-[0.875rem] uppercase tracking-widest text-[#8A8A84]">Subscription Plans</p>
         <h1 className=" lg:mt-[2rem] text-primary">
