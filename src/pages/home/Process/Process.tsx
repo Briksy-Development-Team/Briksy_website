@@ -14,7 +14,7 @@ const features = [
         icon: Tick,
         title: "Verified Professionals",
         description:
-            "Every builder, broker, and agent is ABN-verified before they can list on BRISKY.",
+            "Every builder, broker, and agent is ABN-verified before they can list on BRIKSY.",
     },
     {
         icon: Search,
@@ -53,65 +53,67 @@ const Process = () => {
             ease: "sine.inOut",
             repeat: -1,
             yoyo: true,
-            delay: 0.4, 
+            delay: 0.4,
         });
     });
 
     return (
-        <section className="w-[95%] mx-auto py-24 font-helvetica">
-            <h2 className="text-center text-[3.625rem] leading-tight font-medium text-[#342511]">
+        <section className="w-[95%] mx-auto py-16 md:py-20 lg:py-24 font-helvetica">
+            <h2 className="text-center text-[2rem] sm:text-[2.5rem] lg:text-[3.625rem] leading-tight font-medium text-[#342511]">
                 Trust and safety features
                 <br />
                 for your protection
             </h2>
 
-            <p className="mt-3 text-[1rem] text-center text-[#342511]">
-                Every interaction on BRISKY is designed to keep you safe and informed
+            <p className="mt-3 text-sm sm:text-[1rem] text-center text-[#342511] px-4">
+                Every interaction on BRIKSY is designed to keep you safe and informed
             </p>
 
-            <div className="mt-24 flex items-center justify-center gap-32">
-                <div className="relative">
+            <div className="mt-12 md:mt-16 lg:mt-24 flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-32">
+                <div className="relative w-full max-w-[420px] lg:w-[420px]">
                     <img
                         src={People}
                         alt="Professionals"
-                        className="h-[520px] w-[420px] rounded-2xl object-cover"
+                        className="h-[380px] sm:h-[460px] lg:h-[520px] w-full object-cover rounded-2xl"
                     />
 
                     <div
                         ref={leftBubble}
-                        className="absolute -left-24 bottom-24 flex items-center gap-3 rounded-full bg-white px-6 py-2 shadow-xl"
+                        className="absolute left-2 sm:-left-8 lg:-left-24 bottom-24 flex items-center gap-2 sm:gap-3 rounded-full bg-white px-4 sm:px-6 py-2 shadow-xl max-w-[80%] sm:max-w-none"
                     >
                         <CheckCircle2
-                            size={22}
-                            className="text-[#F97316]"
+                            size={20}
+                            className="shrink-0 text-[#F97316]"
                             strokeWidth={2}
                         />
 
-                        <span className="font-medium text-[#342511]">
+                        <span className="font-medium text-[#342511] text-xs sm:text-sm lg:text-base">
                             Job Assigned Successfully
                         </span>
                     </div>
 
                     <div
                         ref={rightBubble}
-                        className="absolute -right-16 bottom-8 flex items-center gap-3 rounded-full bg-white px-6 py-2 shadow-xl"
+                        className="absolute right-2 sm:-right-4 lg:-right-16 bottom-8 flex items-center gap-2 sm:gap-3 rounded-full bg-white px-4 sm:px-6 py-2 shadow-xl"
                     >
-                        <ThumbsUp size={20} className="text-[#F97316]" strokeWidth={2} />
+                        <ThumbsUp size={18} className="shrink-0 text-[#F97316]" strokeWidth={2} />
 
-                        <span className="font-medium text-[#342511]">Job Completed</span>
+                        <span className="font-medium text-[#342511] text-xs sm:text-sm lg:text-base">
+                            Job Completed
+                        </span>
                     </div>
                 </div>
 
-                <div className="grid max-w-[560px] grid-cols-2 gap-x-16 gap-y-10">
+                <div className="grid w-full max-w-[560px] grid-cols-1 sm:grid-cols-2 gap-x-16 gap-y-8 sm:gap-y-10 px-4 lg:px-0">
                     {features.map(({ icon, title, description }) => (
                         <div key={title}>
-                            <img src={icon} alt={title} className="mb-2 h-20 w-20" />
+                            <img src={icon} alt={title} className="mb-2 h-14 w-14 sm:h-20 sm:w-20" />
 
-                            <h3 className="text-[1.5rem] font-medium text-[#342511]">
+                            <h3 className="text-lg sm:text-[1.5rem] font-medium text-[#342511]">
                                 {title}
                             </h3>
 
-                            <p className="mt-2 text-[0.875rem]  leading-snug text-[#342511]">
+                            <p className="mt-2 text-[0.875rem] leading-snug text-[#342511]">
                                 {description}
                             </p>
                         </div>

@@ -98,7 +98,7 @@ const PropertyList = () => {
         <section className="py-20  font-helvetica">
             <div className="w-[95%] mx-auto">
                 <div className="relative flex items-center justify-center mb-10">
-                    <h2 className="text-[2.75rem] font-semibold text-[#242424]">
+                    <h2 className="lg:text-[2.75rem] text-[1.875rem] font-medium text-[#242424]">
                         Our Featured Properties
                     </h2>
 

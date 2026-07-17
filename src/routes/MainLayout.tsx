@@ -6,7 +6,7 @@ import Footer from '../components/footer/Footer';
 const MainLayout = () => {
     const [mode, setMode] = useState<"collapsed" | "search" | "ai">("collapsed");
     const location = useLocation();
-    const hasHero = location.pathname === '/' || location.pathname === '/nav';
+    const hasHero = location.pathname === '/' || location.pathname === '/home';
 
     return (
         <div>

@@ -48,35 +48,3 @@ export function useScrollFade(ref: React.RefObject<HTMLElement | null>, directio
     return () => trigger.kill();
   }, [enabled]);
 }
-
-export function useNavExpand(
-  navRef: React.RefObject<HTMLElement | null>,
-  panelRef: React.RefObject<HTMLElement | null>,
-  mode: "collapsed" | "search" | "ai",
-  onPanelHidden: () => void
-) {
-  const tl = useRef<gsap.core.Timeline | null>(null);
-  useGSAP(() => {
-    if (!navRef.current || !panelRef.current) return;
-
-    tl.current = gsap.timeline({
-      paused: true,
-      onReverseComplete: onPanelHidden,
-    })
-      .to(navRef.current, { height: 200, duration: 0.35, ease: "power2.out" }, 0)
-      .fromTo(
-        panelRef.current,
-        { opacity: 0, y: -12 },
-        { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" },
-        0.1
-      );
-  }, []);
-
-  useGSAP(() => {
-    if (mode !== "collapsed") {
-      tl.current?.play();
-    } else {
-      tl.current?.reverse();
-    }
-  }, [mode]);
-}

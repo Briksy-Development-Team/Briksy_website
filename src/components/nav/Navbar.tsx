@@ -1,8 +1,8 @@
+import { useState, useRef, useEffect } from "react";
 import { Globe } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useState, useRef, useEffect } from "react";
 import { NavSearchButton, NavSearchPanel } from "./NavSearchBar";
-import { useNavExpand, SCROLL_THRESHOLD } from "../search/FloatingSearch";
+import { SCROLL_THRESHOLD } from "../search/FloatingSearch";
 import LogoB from "../../assets/logo/briksyB.svg";
 import LanguageModal from "./LanguageModal.tsx";
 import ProfileDropdown from "./ProfileDropdown.tsx";
@@ -21,25 +21,19 @@ const Navbar = ({ mode, setMode, hasHero = true }: NavbarProps) => {
     label: "English",
     region: "UK",
   });
-  const navRef = useRef<HTMLElement>(null);
-  const panelRef = useRef<HTMLDivElement>(null);
   const [pastHero, setPastHero] = useState(!hasHero);
   const pastHeroRef = useRef(pastHero);
 
   const navbarMode = pastHero ? mode : "collapsed";
-  const [showPanel, setShowPanel] = useState(navbarMode !== "collapsed");
+  const isExpanded = navbarMode !== "collapsed";
 
   useEffect(() => {
     if (!hasHero) return;
 
     const onScroll = () => {
       if (document.body.style.position === "fixed") return;
-
       const isPast = window.scrollY > SCROLL_THRESHOLD;
-
-      if (isPast !== pastHeroRef.current) {
-        setMode("collapsed");
-      }
+      if (isPast !== pastHeroRef.current) setMode("collapsed");
       pastHeroRef.current = isPast;
       setPastHero(isPast);
     };
@@ -49,33 +43,23 @@ const Navbar = ({ mode, setMode, hasHero = true }: NavbarProps) => {
     return () => window.removeEventListener("scroll", onScroll);
   }, [hasHero, setMode]);
 
-  useNavExpand(navRef, panelRef, navbarMode, () => setShowPanel(false));
-
-  useEffect(() => {
-    if (navbarMode !== "collapsed") setShowPanel(true);
-  }, [navbarMode]);
-
   return (
     <>
       <nav
-        ref={navRef}
-        style={{ height: 80 }}
-        className="fixed top-0 left-0 right-0 z-50 overflow-visible
-                  bg-[#F8F4EE] border-b border-[#d8d8d8]"
+        className={`fixed left-0 right-0 top-0 z-50 overflow-hidden bg-[#F8F4EE] border-b border-[#d8d8d8] transition-[height] duration-300 ease-out ${
+          isExpanded ? "h-[200px]" : "h-20"
+        }`}
       >
-        <div className="h-20 flex items-center justify-between px-2 sm:px-4 lg:px-10">
-          <Link to="/" className=" shrink-0">
-            <img
-              src={LogoB}
-              alt="Briksy"
-              className="h-10 w-auto transition-opacity duration-300"
-            />
+        {/* Top bar */}
+        <div className="flex h-20 items-center justify-between px-2 sm:px-4 lg:px-10">
+          <Link to="/" className="shrink-0">
+            <img src={LogoB} alt="Briksy" className="h-10 w-auto" />
           </Link>
 
           <div className="flex-1" />
 
-          <div className="flex items-center gap-6 shrink-0">
-            {navbarMode === "collapsed" && (
+          <div className="flex shrink-0 items-center gap-6">
+            {pastHero && navbarMode === "collapsed" && (
               <NavSearchButton
                 mode={navbarMode}
                 setMode={setMode}
@@ -85,7 +69,7 @@ const Navbar = ({ mode, setMode, hasHero = true }: NavbarProps) => {
 
             <button
               onClick={() => setLangModalOpen(true)}
-              className="hover:opacity-70 transition-colors text-gray-800"
+              className="text-gray-800 transition hover:opacity-70"
               aria-label="Language and region"
             >
               <Globe size={18} />
@@ -95,17 +79,16 @@ const Navbar = ({ mode, setMode, hasHero = true }: NavbarProps) => {
           </div>
         </div>
 
+        {/* Expanded search panel — fades in with the height */}
         <div
-          ref={panelRef}
-          className="px-2 sm:px-4 lg:px-10 pb-8"
-          style={{
-            pointerEvents: navbarMode !== "collapsed" ? "auto" : "none",
-          }}
+          className={`px-2 pb-8 sm:px-4 lg:px-10 transition-[opacity,transform] duration-300 ${
+            isExpanded
+              ? "pointer-events-auto translate-y-0 opacity-100"
+              : "pointer-events-none -translate-y-2 opacity-0"
+          }`}
         >
           <div className="mt-6">
-            {showPanel && (
-              <NavSearchPanel mode={navbarMode} setMode={setMode} />
-            )}
+            <NavSearchPanel mode={navbarMode} setMode={setMode} />
           </div>
         </div>
       </nav>

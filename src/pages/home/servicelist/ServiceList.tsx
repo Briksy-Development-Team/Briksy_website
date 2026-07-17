@@ -332,28 +332,27 @@ const ServiceList = () => {
   return (
     <section className="py-20 font-helvetica ">
       <div className="w-[95%] mx-auto">
-        <div className="flex justify-between items-start">
+        <div className="flex justify-between lg:items-center items-end">
           <div className="text-center">
-            <h2 className="text-[2.75rem] font-medium tracking-tight">
+            <h2 className="lg:text-[2.75rem] text-[1.875rem] font-medium tracking-tight">
               Explore Our
               Service Providers
             </h2>
           </div>
 
-          <button className="flex items-center gap-2 text-[#562F00] font-medium">
+          <button className="flex items-center   gap-2 text-[#562F00] font-medium">
             View All
             <ArrowUpRight size={24} />
           </button>
         </div>
 
-        <div className="mt-10 flex text-[1rem] flex-wrap justify-start  gap-4">
+        <div className="mt-10 flex text-[1rem] flex-wrap sm:justify-start  justify-center gap-4">
           {tabs.map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`min-w-[140px] rounded-xl border border-[#DBDAD3] py-2 transition ${
-                activeTab === tab ? "bg-[#242424] text-white" : "bg-white "
-              }`}
+              className={`min-w-[140px] rounded-xl border border-[#DBDAD3] py-2 transition ${activeTab === tab ? "bg-[#242424] text-white" : "bg-white "
+                }`}
             >
               {tab}
             </button>

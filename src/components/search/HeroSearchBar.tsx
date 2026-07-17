@@ -45,8 +45,8 @@ const HeroSearchBar = ({ mode, setMode }: Props) => {
   return (
     <div ref={rootRef} className="flex w-full flex-col items-center">
       <div
-        className={`flex w-full flex-wrap justify-center gap-3 overflow-hidden transition-all duration-300 sm:w-[80%] sm:justify-start lg:w-full ${
-          isAi ? "max-h-0 opacity-0" : "max-h-20 opacity-100"
+        className={`flex w-[90%] flex-wrap justify-center gap-3 sm:w-[80%] sm:justify-start lg:w-full transition-opacity duration-300 ${
+          isAi ? "pointer-events-none opacity-0" : "opacity-100"
         }`}
       >
         {TABS.map((tab, i) => (

@@ -27,7 +27,7 @@ const Contact = () => {
 
           <p className="text-[#5C5347] text-[1rem] mt-6 max-w-lg">
             Join <span className="font-semibold text-[1.25rem] text-[#2E2620]">340+</span>{" "}
-            verified builders, brokers, and trades on BRISKY. List your
+            verified builders, brokers, and trades on BRIKSY. List your
             services, manage enquiries, and grow your business.
           </p>
 
