@@ -10,8 +10,14 @@ import AiVoiceModal from "./AiVoiceModal";
 import Filter from "../filter/Filter";
 import { useScrollFade } from "./FloatingSearch";
 import { useNavigate } from "react-router-dom";
+import type { ResultType } from "../../types/search";
 
-const TABS = ["Buy", "Rent", "Sold", "Address", "Agents"];
+const TABS: { label: string; resultType: ResultType }[] = [
+  { label: "Buy",      resultType: "property" },
+  { label: "Sold",     resultType: "property" },
+  { label: "Builders", resultType: "builder"  },
+  { label: "Agents",   resultType: "trader"   },
+];
 const PROMPTS = [
   "3-bedroom house in Richmond under $800k",
   "Mortgage broker for first home buyer in Melbourne",
@@ -24,7 +30,7 @@ type Mode = "collapsed" | "search" | "ai";
 type Props = { mode: Mode; setMode: (m: Mode) => void };
 
 const HeroSearchBar = ({ mode, setMode }: Props) => {
-  const [activeTab, setActiveTab] = useState("Buy");
+  const [activeTab, setActiveTab] = useState(TABS[0].label);
   const [query, setQuery] = useState("");
   const [voiceOpen, setVoiceOpen] = useState(false);
   const [filterOpen, setFilterOpen] = useState(false);
@@ -64,15 +70,14 @@ const HeroSearchBar = ({ mode, setMode }: Props) => {
           <div className="flex flex-wrap justify-center  sm:justify-start gap-3 w-[90%] sm:w-[80%] lg:w-full">
             {TABS.map((tab) => (
               <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`lg:px-14 h-11 px-6 sm:px-8 rounded-xl text-[0.875rem] lg:text-[1rem] font-medium transition-all duration-300 ${
-                  activeTab === tab
-                    ? "bg-[#2B241F] text-white"
-                    : "bg-white text-gray-700 hover:bg-gray-100"
-                }`}
+                key={tab.label}
+                onClick={() => setActiveTab(tab.label)}
+                className={`lg:px-14 h-11 px-6 sm:px-8 rounded-xl text-[0.875rem] lg:text-[1rem] font-medium transition-all duration-300 ${activeTab === tab.label
+                  ? "bg-[#2B241F] text-white"
+                  : "bg-white text-gray-700 hover:bg-gray-100"
+                  }`}
               >
-                {tab}
+                {tab.label}
               </button>
             ))}
           </div>
@@ -93,7 +98,10 @@ const HeroSearchBar = ({ mode, setMode }: Props) => {
                 <SlidersHorizontal size={20} />
               </button>
               <button
-                onClick={() => navigate("/result")}
+                onClick={() => {
+                  const selected = TABS.find((t) => t.label === activeTab);
+                  navigate(`/result?type=${selected?.resultType ?? "property"}`);
+                }}
                 className={`${BTN} w-8 h-8 sm:w-10 sm:h-10`}
               >
                 <Search size={18} />
@@ -119,20 +127,8 @@ const HeroSearchBar = ({ mode, setMode }: Props) => {
             key={prompt}
             onClick={() => setQuery(prompt)}
             className="
-                w-full
-                max-w-[320px]
-                flex-none
-                rounded-xl
-                bg-white/90
-                px-4
-                py-2
-                text-center
-                text-[0.7rem]
-                text-[#4A3A2B]
-                shadow-lg
-                transition-all
-                duration-300
-                hover:-translate-y-1
+                w-full max-w-[320px] flex-none rounded-md border border-[#98928E] px-4
+                 py-2 text-center text-[0.7rem] lg:text-[0.875rem] text-[#4A3A2B] transition-all duration-300 hover:-translate-y-1
             "
           >
             {prompt}

@@ -97,7 +97,7 @@ const Navbar = ({ mode, setMode, hasHero = true }: NavbarProps) => {
 
         <div
           ref={panelRef}
-          className="px-10 pb-8"
+          className="px-2 sm:px-4 lg:px-10 pb-8"
           style={{
             pointerEvents: navbarMode !== "collapsed" ? "auto" : "none",
           }}

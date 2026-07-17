@@ -17,28 +17,28 @@ const Hero = () => {
             <img
               src="https://i.pravatar.cc/40?img=1"
               alt=""
-              className="h-6 w-6 rounded-full border-2 border-black "
+              className="lg:h-6 lg:w-6  w-4 h-4 rounded-full border-2 border-black "
             />
             <img
               src="https://i.pravatar.cc/40?img=2"
               alt=""
-              className="h-6 w-6 rounded-full border-2 border-black "
+              className="lg:h-6 lg:w-6 w-4 h-4  rounded-full border-2 border-black "
             />
             <img
               src="https://i.pravatar.cc/40?img=3"
               alt=""
-              className="h-6 w-6 rounded-full border-2 border-black "
+              className="lg:h-6 lg:w-6 w-4 h-4 rounded-full border-2 border-black "
             />
             <img
               src="https://i.pravatar.cc/40?img=4"
               alt=""
-              className="h-6 w-6 rounded-full border-2 border-black "
+              className="lg:h-6 lg:w-6 w-4 h-4 rounded-full border-2 border-black "
             />
           </div>
 
           <p className="leading-tight  ">
-            <span className="font-semibold text-[1.2rem] text-orange-300">340+</span>{" "}
-            <span className="italic font-medium text-[1rem]  text-black">verified builders and professionals</span>
+            <span className="font-semibold text-[0.8rem]  lg:text-[1.2rem] text-orange-300">340+</span>{" "}
+            <span className="italic font-medium lg:text-[1rem] text-[0.685rem] text-black">verified builders and professionals</span>
           </p>
         </div>
 

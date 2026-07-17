@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import type { SortType, ViewType } from "../../pages/searchdata/SearchPage";
+import type { SortType, ViewType } from "../../types/search";
 import GridIcon from "../../assets/filter/grid.svg?react";
 import ListIcon from "../../assets/filter/list.svg?react";
 import MapIcon from "../../assets/filter/map.svg?react";

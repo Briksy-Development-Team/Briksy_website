@@ -9,7 +9,7 @@ import ProtectedRoute from './ProtectedRoute'
 import Terms from '../pages/landing/terms/Terms'
 import Pricing from '../pages/landing/subscription/Pricing'
 import HomeA from '../pages/home/Home'
-import SearchPage from '../pages/searchdata/SearchPage'
+import SearchPage from '../pages/searchresult/SearchPage'
 
 const AppRouter = () => {
     // const AppRouter = ({ dark, setDark }: AppRouterProps) => {

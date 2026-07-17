@@ -1,19 +1,8 @@
-import type { Property } from "../../types/property";
 
-type Props = {
-    properties: Property[];
-};
-
-const MapView = ({ properties }: Props) => {
-    return (
-        <div className="h-[700px] rounded-xl bg-gray-300 flex flex-col items-center justify-center">
-            <h2>Google Map</h2>
-
-            {properties.map((property) => (
-                <p key={property.id}>{property.title}</p>
-            ))}
-        </div>
-    );
-};
+const MapView = () => (
+  <div className="flex h-[700px] flex-col items-center justify-center rounded-xl bg-gray-300">
+    <h2 className="text-lg font-medium text-gray-600">Google Map</h2>
+  </div>
+);
 
 export default MapView;
