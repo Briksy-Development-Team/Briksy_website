@@ -6,8 +6,8 @@ type Props = {
 };
 
 const PropertyGridCard = ({ item }: Props) => (
-  <div>
-    <div className="relative h-[250px] overflow-hidden rounded-3xl">
+  <div className="rounded-3xl border border-[#E6E6E6] text-[#342511] bg-white  text-center">
+    <div className="relative h-[250px]  overflow-hidden rounded-t-3xl">
       <img
         src={item.image}
         alt={item.title}
@@ -29,14 +29,14 @@ const PropertyGridCard = ({ item }: Props) => (
       </button>
     </div>
 
-    <div className="mt-4">
-      <h3 className="line-clamp-2 text-[0.875rem] font-medium leading-[1.3]">
+    <div className="mt-4 p-4 flex text-[#342511] flex-col items-start">
+      <h3 className="line-clamp-2 text-[0.875rem] lg:text-[1rem] font-bold leading-[1.3]">
         {item.title}
       </h3>
-      <p className="mt-1 text-[0.875rem] font-semibold">
+      <p className="mt-1 text-[0.875rem] lg:text-[1rem] font-semibold">
         ${item.price.toLocaleString()}
       </p>
-      <p className="mt-1 text-[0.75rem] text-[#6C6C6C]">
+      <p className="mt-1 text-[0.75rem] text-[0.875rem] text-[#342511]">
         {item.beds} Bed {item.baths} Bath&nbsp;&nbsp;{item.sqm} sqm
       </p>
       <div className="mt-2 flex items-center gap-2">
@@ -45,7 +45,7 @@ const PropertyGridCard = ({ item }: Props) => (
           alt={item.posterName}
           className="h-6 w-6 rounded-full object-cover"
         />
-        <span className="text-[0.75rem] text-[#6C6C6C]">{item.posterName}</span>
+        <span className="text-[0.75rem] text-[0.875rem] text-[#342511]">{item.posterName}</span>
       </div>
     </div>
   </div>

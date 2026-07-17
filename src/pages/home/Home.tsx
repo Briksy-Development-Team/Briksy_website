@@ -4,6 +4,7 @@ import Contact from "../../components/contact/Contact";
 import Hero from "../../components/hero/Hero";
 import TrendingProperty from "./trendingproperty/TrendingProperty";
 import Process from "./Process/Process";
+import BuilderList from "./builderlist/BuilderList";
 
 const HomeA = () => {
   return (
@@ -11,6 +12,7 @@ const HomeA = () => {
       <Hero />
       <OverLook />
       <Process />
+      <BuilderList />
       <TrendingProperty />
       <ServiceList />
       <Contact />

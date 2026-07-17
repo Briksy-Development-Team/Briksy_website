@@ -59,7 +59,6 @@ const Footer = () => {
                     </div>
 
                     <div className=" items-center hidden sm:flex gap-8 lg:text-[1rem] sm:text-[0.625rem] ">
-                        <span>© 2025 Briksy. All Rights Reserved.</span>
 
                         <Link to="/">Terms of Use</Link>
 
@@ -82,6 +81,7 @@ const Footer = () => {
                             <p>Project Management</p>
                         </div>
                     </div>
+                    <span className="hidden sm:flex "> © 2025 Briksy. All Rights Reserved.</span>
 
                 </div>
 

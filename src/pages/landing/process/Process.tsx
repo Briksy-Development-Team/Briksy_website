@@ -26,10 +26,10 @@ const Process = () => {
   return (
     <section className="bg-[#F7F3EA] font-helvetica py-24 px-6">
       <div className="mx-auto text-center">
-        <h2 className="font-serif text- lg:text-[2.25rem] md:text-5xl text-[#342511]">
+        <h2 className=" text- lg:text-[2.25rem] md:text-5xl text-[#342511]">
           Everything You Need in One Platform
         </h2>
-        <p className="mt-4 text-[#8B6F54] text-[1rem] lg:text-[1.5rem] max-w-2xl mx-auto leading-relaxed">
+        <p className="mt-4 text-[#8B6F54] text-[1rem] lg:text-[1rem] max-w-2xl mx-auto leading-relaxed">
           Frontier models trained across medical imaging, pathology, genomics,
           and clinical text, designed for medicine. Built in kaiko's AI research
           lab.

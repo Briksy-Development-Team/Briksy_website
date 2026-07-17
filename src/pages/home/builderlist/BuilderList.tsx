@@ -1,25 +1,24 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { mockProperties } from "../../../data/mockProperties";
-import PropertyGridCard from "../../../components/filterresult/property/PropertyGridCard";
+import { mockBuilders } from "../../../data/mockBuilders";
 import "swiper/css";
-import { ArrowUpRight } from "lucide-react";
+import BuilderGridCard from "../../../components/filterresult/builder/BuilderGridCard";
 
-const TrendingProperty = () => {
+
+
+const   BuilderList = () => {
     return (
         <section className="py-20 font-helvetica">
             <div className="w-[95%] mx-auto">
-                <div className="flex justify-between lg:items-center items-end">
-                    <div className="relative mb-10 flex flex-col text-[#342511] items-start justify-center">
-                        <h2 className="lg:text-[2.75rem] text-[1.875rem] font-medium tracking-tight">
-                            Explore Our Service Providers
-                        </h2>
-                        <p className="text-[0.875rem] lg:text-[1rem]">Verified solo traders and specialists</p>
-                    </div>
+                <div className="relative mb-10 flex flex-col text-[#342511] items-start justify-center">
+                    <h2 className="text-[30px] font-medium  lg:text-[44px]">
+                        Featured Businesses
+                    </h2>
+                    <p className="text-[0.875rem] lg:text-[1rem]">Trusted agencies and builders</p>
 
-                    <button className="flex items-center   gap-2 text-[#562F00] font-medium">
+                    <button className="absolute right-0 flex items-center gap-2 text-lg font-medium text-[#562F00] transition-all hover:gap-3">
                         View All
-                        <ArrowUpRight size={24} />
+                        <span>↗</span>
                     </button>
                 </div>
                 <Swiper
@@ -43,9 +42,9 @@ const TrendingProperty = () => {
                         },
                     }}
                 >
-                    {mockProperties.map((item) => (
+                    {mockBuilders.map((item) => (
                         <SwiperSlide key={item.id}>
-                            <PropertyGridCard item={item} />
+                            <BuilderGridCard item={item} />
                         </SwiperSlide>
                     ))}
                 </Swiper>
@@ -54,4 +53,4 @@ const TrendingProperty = () => {
     );
 };
 
-export default TrendingProperty;
+export default BuilderList;

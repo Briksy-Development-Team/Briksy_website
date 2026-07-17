@@ -17,7 +17,7 @@ import TraderListCard from "../../components/filterresult/trader/TraderListCard"
 
 
 const GRID = "grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4";
-const LIST = "grid grid-cols-1 gap-x-10 gap-y-8 lg:grid-cols-2 xl:grid-cols-3";
+const LIST = "grid grid-cols-1 gap-x-10 gap-y-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3";
 
 const renderResults = (view: ViewType, resultType: ResultType) => {
   if (view === "map") return <MapView />;

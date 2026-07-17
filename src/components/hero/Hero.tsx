@@ -125,11 +125,11 @@ const Hero = () => {
 
     tl.from(
       leftImgs ?? [],
-      { x: -offScreenX, opacity: 0, duration: 1, stagger: 0.08 },
+      { x: -offScreenX, opacity: 0, duration: 2, stagger: 0.08 },
       0,
     ).from(
       rightImgs ?? [],
-      { x: offScreenX, opacity: 0, duration: 1, stagger: 0.08 },
+      { x: offScreenX, opacity: 0, duration: 2, stagger: 0.08 },
       0,
     );
   }, []);
@@ -170,7 +170,7 @@ const Hero = () => {
           </div>
 
           <p className="leading-tight  ">
-            <span className="font-semibold text-[0.8rem]  lg:text-[1.2rem] text-orange-300">
+            <span className="font-semibold text-[0.8rem]  lg:text-[1.2rem] text-[#342511]">
               340+
             </span>{" "}
             <span className="italic font-medium lg:text-[1rem] text-[0.685rem] text-black">
