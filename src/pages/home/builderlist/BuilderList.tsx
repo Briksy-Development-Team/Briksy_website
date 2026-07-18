@@ -6,7 +6,7 @@ import BuilderGridCard from "../../../components/filterresult/builder/BuilderGri
 
 
 
-const   BuilderList = () => {
+const BuilderList = () => {
     const navigate = useNavigate();
     return (
         <section className="py-20 font-helvetica">

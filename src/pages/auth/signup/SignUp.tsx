@@ -95,7 +95,7 @@ const SignUp = () => {
         <div className='w-[40%] min-w-[320px] rounded-3xl bg-white'>
           <div className='bg-[#EEECE099] rounded-3xl flex p-3 m-2 flex-col items-center space-y-8'>
             <div className='flex flex-col items-center pt-6 space-y-3 justify-center'>
-              <h1 className='text-5xl text-[#2C3F24] font-medium tracking-tighter'>
+              <h1 className='text-5xl text-primary font-medium tracking-tighter'>
                 Create Your Account
               </h1>
               <p className='text-base text-center font-medium tracking-tight'>
@@ -171,13 +171,13 @@ const SignUp = () => {
                   <button
                     type='submit'
                     disabled={isSubmitting}
-                    className='w-full bg-[#2C3F24] text-white py-3 rounded-lg font-semibold disabled:opacity-70'
+                    className='w-full bg-primary text-white py-3 rounded-lg font-semibold disabled:opacity-70'
                   >
                     {isSubmitting ? 'CREATING ACCOUNT...' : 'CREATE ACCOUNT'}
                   </button>
                   <div className='text-start font-medium text-sm'>
                     <span className='text-gray-600'>Already have an account? </span>
-                    <Link to='/login' className='text-[#2C3F24] font-medium hover:underline'>
+                    <Link to='/login' className='text-primary font-medium hover:underline'>
                       Sign In
                     </Link>
                   </div>

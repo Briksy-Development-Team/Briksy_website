@@ -7,7 +7,7 @@ type Props = {
 };
 
 const BuilderListCard = ({ item }: Props) => (
-  <div className="flex items-center gap-3 relative px-4 py-2 lg:gap-4 border3 text-[#342511] hover:bg-white border border-[#E7E7E4] rounded-[1.25rem]">
+  <div className="flex items-center gap-3 relative px-4 py-4 lg:gap-4 border3 text-[#342511] bg-white border border-[#E7E7E4] rounded-[1.25rem]">
     <div className="relative shrink-0">
       <img
         src={item.avatar}
@@ -30,7 +30,7 @@ const BuilderListCard = ({ item }: Props) => (
         {item.tags.map((tag, i) => (
           <span
             key={`${tag}-${i}`}
-            className="rounded-full border border-[#E6E6E6] bg-white/50 px-2 py-0.5 text-[0.75rem] text-black"
+            className="rounded-full border  px-2 py-0.5 text-[0.75rem] border-[#E6E6E6] bg-[#342511]  text-[#E7E7E4]"
           >
             {tag}
           </span>

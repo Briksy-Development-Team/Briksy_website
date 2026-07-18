@@ -131,20 +131,20 @@ const Login = () => {
                 )}
                 <div className='w-full flex flex-col gap-2'>
                   <div className='flex justify-end text-sm'>
-                    <Link to='/forgot' className='text-[#2C3F24] font-medium hover:underline'>
+                    <Link to='/forgot' className='text-primary font-medium hover:underline'>
                       Forgot password?
                     </Link>
                   </div>
                   <button
                     type='submit'
                     disabled={isSubmitting}
-                    className='w-full bg-[#2C3F24] text-white py-3 rounded-lg font-semibold disabled:opacity-70'
+                    className='w-full bg-primary text-white py-3 rounded-lg font-semibold disabled:opacity-70'
                   >
                     {isSubmitting ? 'SIGNING IN...' : 'SIGN IN'}
                   </button>
                   <div className='text-start font-medium text-sm'>
                     <span className='text-gray-600'>Don’t have an account? </span>
-                    <Link to='/register' className='text-[#2C3F24] font-medium hover:underline'>
+                    <Link to='/register' className='text-primary font-medium hover:underline'>
                       Sign up
                     </Link>
                   </div>

@@ -54,7 +54,7 @@ const BuilderGridCard = ({ item }: Props) => {
             {item.tags.map((tag, index) => (
               <span
                 key={index}
-                className="rounded-full bg-[#F3EFEC] px-4 py-1 text-[0.75rem] "
+                className="rounded-full border-[#E6E6E6] bg-[#342511]  text-[#E7E7E4] px-4 py-1 text-[0.75rem] "
               >
                 {tag}
               </span>

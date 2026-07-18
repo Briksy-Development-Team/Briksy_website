@@ -6,8 +6,8 @@ type Props = {
 };
 
 const PropertyListCard = ({ item }: Props) => (
-  <div className="flex items-center gap-3 px-4 py-2 lg:gap-4  hover:bg-white border border-[#E7E7E4] rounded-[1.25rem]">
-    <div className="relative h-[100px] w-[108px] shrink-0 overflow-hidden rounded-2xl">
+  <div className="flex items-center gap-3 px-2 py-2 lg:gap-4  bg-white border border-[#E7E7E4] rounded-[1.25rem]">
+    <div className="relative h-full  w-[108px] shrink-0 overflow-hidden rounded-2xl">
       <img
         src={item.image}
         alt={item.title}

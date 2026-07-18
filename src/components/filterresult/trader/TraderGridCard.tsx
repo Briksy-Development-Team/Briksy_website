@@ -42,7 +42,7 @@ const TraderGridCard = ({ item }: Props) => (
       {item.tags.map((tag, i) => (
         <span
           key={`${tag}-${i}`}
-          className="rounded-full border border-[#E6E6E6] bg-white/50 px-2.5 py-0.5 text-[0.6875rem] text-[#222222]"
+          className="rounded-full border  px-2.5 py-0.5 text-[0.6875rem] border-[#E6E6E6] bg-[#342511]  text-[#E7E7E4]"
         >
           {tag}
         </span>
