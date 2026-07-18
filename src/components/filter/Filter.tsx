@@ -30,7 +30,7 @@ const STATUS_CONFIG: Record<Status, StatusConfig> = {
       "Rural",
       "Villa",
       "Block Of Units",
-    ],
+      "commercial property",],
     priceLabel: "Price",
     priceCheckboxLabel: "Only show properties with price",
   },
@@ -46,6 +46,7 @@ const STATUS_CONFIG: Record<Status, StatusConfig> = {
       "Block Of Units",
       "Retirement Living",
       "Duplex",
+      "commercial property",
     ],
     priceLabel: "Rent",
     priceUnit: "/week",
@@ -63,6 +64,7 @@ const STATUS_CONFIG: Record<Status, StatusConfig> = {
       "Rural",
       "Villa",
       "Block Of Units",
+      "commercial property",
     ],
     priceLabel: "Sold price",
     priceCheckboxLabel: "Only show properties with sold price",
@@ -139,11 +141,10 @@ const Filter = ({ isOpen, onClose }: FilterProp) => {
                   <button
                     key={tab}
                     onClick={() => setStatus(tab)}
-                    className={`flex-1 py-2 rounded-lg border text-sm font-medium transition-colors ${
-                      status === tab
-                        ? "bg-[#3D2C1D] text-white border-[#3D2C1D]"
-                        : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50"
-                    }`}
+                    className={`flex-1 py-2 rounded-lg border text-sm font-medium transition-colors ${status === tab
+                      ? "bg-[#3D2C1D] text-white border-[#3D2C1D]"
+                      : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50"
+                      }`}
                   >
                     {tab}
                   </button>

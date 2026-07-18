@@ -33,7 +33,7 @@ const ServiceList = () => {
         <div className="flex items-end justify-between lg:items-center">
           <div className="mb-10 flex flex-col items-start justify-center text-[#342511]">
             <h2 className="text-[1.875rem] font-medium tracking-tight lg:text-[2.75rem]">
-              Explore Our Service Providers
+              Top Professionals
             </h2>
             <p className="text-[0.875rem] lg:text-[1rem]">
               Verified solo traders and specialists
@@ -51,9 +51,8 @@ const ServiceList = () => {
             <button
               key={tab}
               onClick={() => setActiveIdx(i)}
-              className={`min-w-[140px] rounded-xl border border-[#DBDAD3] py-2 transition ${
-                activeIdx === i ? "bg-[#242424] text-white" : "bg-white"
-              }`}
+              className={`min-w-[140px] rounded-xl border border-[#DBDAD3] py-2 transition ${activeIdx === i ? "bg-[#242424] text-white" : "bg-white"
+                }`}
             >
               {tab}
             </button>

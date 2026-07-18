@@ -1,5 +1,5 @@
 import "./App.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -8,6 +8,7 @@ import { testConnection } from "./api/clients.api";
 import AppRouter from "./routes/AppRouter";
 import { AuthProvider } from "./auth/AuthContext";
 import ScrollToTop from "./components/utils/ScrollToTop";
+import Loader from "./components/loader/Loader";
 
 gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.config({ ignoreMobileResize: true });
@@ -16,7 +17,7 @@ export const lenisInstance: { current: Lenis | null } = { current: null };
 
 function App() {
   useEffect(() => { testConnection(); }, []);
-
+  const [loaded, setLoaded] = useState(false);
   useEffect(() => {
     const lenis = new Lenis({ duration: 1.1, smoothWheel: true, autoRaf: false });
     lenisInstance.current = lenis;
@@ -35,12 +36,16 @@ function App() {
 
 
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <ScrollToTop />
-        <AppRouter />
-      </BrowserRouter>
-    </AuthProvider>
+    <>
+      {!loaded && <Loader onComplete={() => setLoaded(true)} />}
+
+      <AuthProvider>
+        <BrowserRouter>
+          <ScrollToTop />
+          <AppRouter />
+        </BrowserRouter>
+      </AuthProvider>
+    </>
   );
 }
 

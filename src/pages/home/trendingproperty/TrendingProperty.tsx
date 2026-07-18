@@ -13,7 +13,7 @@ const TrendingProperty = () => {
                 <div className="flex justify-between lg:items-center items-end">
                     <div className="relative mb-10 flex flex-col text-[#342511] items-start justify-center">
                         <h2 className="lg:text-[2.75rem] text-[1.875rem] font-medium tracking-tight">
-                            Explore Our Service Providers
+                            Featured Properties
                         </h2>
                         <p className="text-[0.875rem] lg:text-[1rem]">Verified solo traders and specialists</p>
                     </div>

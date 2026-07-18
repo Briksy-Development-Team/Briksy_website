@@ -13,18 +13,21 @@ import { useNavigate } from "react-router-dom";
 import type { ResultType } from "../../types/search";
 
 const TABS: { label: string; resultType: ResultType }[] = [
-  { label: "Buy",      resultType: "property" },
-  { label: "Sold",     resultType: "property" },
-  { label: "Builders", resultType: "builder"  },
-  { label: "Agents",   resultType: "trader"   },
-];
+  { label: "Buy", resultType: "property" },
+  { label: "Sold", resultType: "property" },
+  { label: "Builders", resultType: "builder" },
+  { label: "Agents", resultType: "trader" },
+  { label: "Traders", resultType: "trader" },];
 
 const PROMPTS = [
   "3-bedroom house in Richmond under $800k",
   "Mortgage broker for first home buyer in Melbourne",
   "Landscaper for backyard renovation in Brisbane",
 ];
-
+const AGENT_OPTIONS = [
+  { label: "Real Estate Agents", resultType: "trader" as ResultType },
+  { label: "Buyers Agents", resultType: "trader" as ResultType },
+];
 const BTN =
   "flex items-center justify-center rounded-xl bg-[#3D2A0B] text-white hover:bg-[#2f2008] transition";
 
@@ -36,6 +39,7 @@ const HeroSearchBar = ({ mode, setMode }: Props) => {
   const [query, setQuery] = useState("");
   const [voiceOpen, setVoiceOpen] = useState(false);
   const [filterOpen, setFilterOpen] = useState(false);
+  const [agentMenuOpen, setAgentMenuOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   useScrollFade(rootRef, "out");
   const navigate = useNavigate();
@@ -45,30 +49,81 @@ const HeroSearchBar = ({ mode, setMode }: Props) => {
   return (
     <div ref={rootRef} className="flex w-full flex-col items-center">
       <div
-        className={`flex w-[90%] flex-wrap justify-center gap-3 sm:w-[80%] sm:justify-start lg:w-full transition-opacity duration-300 ${
-          isAi ? "pointer-events-none opacity-0" : "opacity-100"
-        }`}
+        className={`flex w-full flex-wrap justify-center gap-2 sm:w-[80%] sm:justify-start lg:w-full transition-opacity duration-300 ${isAi ? "pointer-events-none opacity-0" : "opacity-100"
+          }`}
       >
-        {TABS.map((tab, i) => (
-          <button
-            key={tab.label}
-            onClick={() => setActiveIdx(i)}
-            className={`h-11 rounded-xl px-4 ml-3 text-[0.875rem] font-medium transition-all duration-300 sm:px-8 lg:px-14 lg:text-[1rem] ${
-              activeIdx === i
+        {TABS.map((tab, i) => {
+          const isAgentTab = tab.label === "Agents";
+
+          if (isAgentTab) {
+            return (
+              <div key={tab.label} className="relative ml-3">
+                <button
+                  onClick={() => {
+                    setActiveIdx(i);
+                    setAgentMenuOpen((prev) => !prev);
+                  }}
+                  className={`h-11 rounded-xl px-2 text-[0.875rem] font-medium transition-all duration-300 sm:px-8 lg:px-14 lg:text-[1rem] ${activeIdx === i
+                    ? "bg-[#2B241F] text-white"
+                    : "bg-white text-gray-700 hover:border hover:border-primary"
+                    }`}
+                >
+                  Agents
+                </button>
+
+                {agentMenuOpen && (
+                  <div className="absolute left-0 top-full z-50 mt-2 w-60 overflow-hidden rounded-xl bg-white shadow-lg">
+                    {AGENT_OPTIONS.map((item, index) => (
+                      <div key={item.label}>
+                        <button
+                          onClick={() => {
+                            setQuery(item.label);
+                            setAgentMenuOpen(false);
+
+                            navigate(
+                              `/result?type=${item.resultType}&category=${encodeURIComponent(
+                                item.label
+                              )}`
+                            );
+                          }}
+                          className="block w-full px-4 py-3 text-left text-[0.875rem] transition "
+                        >
+                          {item.label}
+                        </button>
+
+                        {index !== AGENT_OPTIONS.length - 1 && (
+                          <div className="mx-4 h-px bg-gray-200" />
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          }
+
+          return (
+            <button
+              key={tab.label}
+              onClick={() => {
+                setActiveIdx(i);
+                setAgentMenuOpen(false);
+              }}
+              className={`ml-3 h-11 rounded-xl px-2 text-[0.875rem] font-medium transition-all duration-300 sm:px-8 lg:px-14 lg:text-[1rem] ${activeIdx === i
                 ? "bg-[#2B241F] text-white"
-                : "bg-white text-gray-700 hover:bg-gray-100"
-            }`}
-          >
-            {tab.label}
-          </button>
-        ))}
+                : "bg-white text-gray-700 hover:border hover:border-primary"
+                }`}
+            >
+              {tab.label}
+            </button>
+          );
+        })}
       </div>
 
       <div className="mt-2 flex w-[90%] items-center gap-3 py-2 sm:w-[80%] lg:w-full">
         <div
-          className={`overflow-hidden transition-[width,opacity] duration-300 ${
-            isAi ? "w-11 opacity-100 sm:w-12 lg:w-14" : "w-0 opacity-0"
-          }`}
+          className={`overflow-hidden transition-[width,opacity] duration-300 ${isAi ? "w-11 opacity-100 sm:w-12 lg:w-14" : "w-0 opacity-0"
+            }`}
         >
           <button
             onClick={() => setMode("search")}
@@ -124,9 +179,8 @@ const HeroSearchBar = ({ mode, setMode }: Props) => {
         </div>
 
         <div
-          className={`overflow-hidden transition-[width,opacity] duration-300 ${
-            isAi ? "w-0 opacity-0" : "w-11 opacity-100 sm:w-12 lg:w-14"
-          }`}
+          className={`overflow-hidden transition-[width,opacity] duration-300 ${isAi ? "w-0 opacity-0" : "w-11 opacity-100 sm:w-12 lg:w-14"
+            }`}
         >
           <button
             onClick={() => setMode("ai")}
