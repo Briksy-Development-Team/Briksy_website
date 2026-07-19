@@ -3,7 +3,8 @@ import { Search, SlidersHorizontal, Sparkles, AudioLines } from "lucide-react";
 import AiVoiceModal from "../search/AiVoiceModal";
 import { useScrollFade } from "../search/FloatingSearch";
 import Filter from "../filter/Filter";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import type { FilterTab } from "../filter/filterTypes";
 
 const BTN =
   "flex items-center justify-center rounded-xl bg-[#3D2A0B] text-white hover:bg-[#2f2008] transition";
@@ -34,6 +35,15 @@ export const NavSearchPanel = ({ mode, setMode }: Props) => {
   const navigate = useNavigate();
   const wrapRef = useRef<HTMLDivElement>(null);
   const isAi = mode === "ai";
+
+  const [searchParams] = useSearchParams();
+  const currentTabRaw = searchParams.get("tab");
+  const initialTab: FilterTab = 
+    (currentTabRaw && ["Buy", "Sold", "Builders", "Agents", "Trades"].includes(
+      currentTabRaw.charAt(0).toUpperCase() + currentTabRaw.slice(1)
+    )) 
+      ? (currentTabRaw.charAt(0).toUpperCase() + currentTabRaw.slice(1) as FilterTab) 
+      : "Buy";
 
   useEffect(() => {
     const close = (e: MouseEvent) => {
@@ -121,7 +131,7 @@ export const NavSearchPanel = ({ mode, setMode }: Props) => {
         </button>
       </div>
 
-      <Filter isOpen={filterOpen} onClose={() => setFilterOpen(false)} />
+      <Filter isOpen={filterOpen} onClose={() => setFilterOpen(false)} initialTab={initialTab} />
       <AiVoiceModal isOpen={voiceOpen} onClose={() => setVoiceOpen(false)} />
     </div>
   );

@@ -1,446 +1,241 @@
+import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import ModalWrapper from "../wrapper/ModalWrapper";
+import { createPortal } from "react-dom";
+import PropertyFilters from "./panels/PropertyFilters";
+import BuilderFilters from "./panels/BuilderFilters";
+import AgentFilters from "./panels/AgentFilters";
+import TradeFilters from "./panels/TradeFilters";
+import type {
+  FilterTab,
+  BuilderMode,
+  AgentType,
+  BuyFilters,
+  SoldFilters,
+  BuilderProfileFilters,
+  AgentFiltersType,
+  TradeFiltersType,
+} from "./filterTypes";
+import {
+  DEFAULT_BUY_FILTERS,
+  DEFAULT_SOLD_FILTERS,
+  DEFAULT_BUILDER_PROFILE_FILTERS,
+  DEFAULT_AGENT_FILTERS,
+  DEFAULT_TRADE_FILTERS,
+} from "./filterTypes";
 
-type FilterProp = {
+// ─── Types ────────────────────────────────────────────────────────────────────
+
+type FilterProps = {
   isOpen: boolean;
   onClose: () => void;
+  initialTab?: FilterTab;
+  builderMode?: BuilderMode;
+  agentCategory?: string; // "Real Estate Agents" | "Buyers Agents"
 };
 
-type Status = "Buy" | "Rent" | "Sold";
+const TABS: { label: string; value: FilterTab }[] = [
+  { label: "Buy", value: "Buy" },
+  { label: "Sold", value: "Sold" },
+  { label: "Builders", value: "Builders" },
+  { label: "Agents", value: "Agents" },
+  { label: "Trades", value: "Trades" },
+];
 
-type StatusConfig = {
-  propertyTypes: string[];
-  priceLabel: string;
-  priceUnit?: string; // e.g. "/week" for rent
-  priceCheckboxLabel: string;
-};
-
-const STATUS_CONFIG: Record<Status, StatusConfig> = {
-  Buy: {
-    propertyTypes: [
-      "All types",
-      "Retirement Living",
-      "Houses",
-      "Land",
-      "Townhouses",
-      "Acreage",
-      "Apartment & Units",
-      "Rural",
-      "Villa",
-      "Block Of Units",
-      "commercial property",],
-    priceLabel: "Price",
-    priceCheckboxLabel: "Only show properties with price",
-  },
-  Rent: {
-    propertyTypes: [
-      "All types",
-      "Houses",
-      "Townhouses",
-      "Apartment & Units",
-      "Villa",
-      "Studio",
-      "Room",
-      "Block Of Units",
-      "Retirement Living",
-      "Duplex",
-      "commercial property",
-    ],
-    priceLabel: "Rent",
-    priceUnit: "/week",
-    priceCheckboxLabel: "Only show properties with rent price",
-  },
-  Sold: {
-    propertyTypes: [
-      "All types",
-      "Retirement Living",
-      "Houses",
-      "Land",
-      "Townhouses",
-      "Acreage",
-      "Apartment & Units",
-      "Rural",
-      "Villa",
-      "Block Of Units",
-      "commercial property",
-    ],
-    priceLabel: "Sold price",
-    priceCheckboxLabel: "Only show properties with sold price",
-  },
-};
-
-const TABS: Status[] = ["Buy", "Rent", "Sold"];
-
-type FieldValue = string | boolean;
-type FieldValues = Record<string, FieldValue>;
-
-const Filter = ({ isOpen, onClose }: FilterProp) => {
+const Filter = ({
+  isOpen,
+  onClose,
+  initialTab = "Buy",
+  builderMode = "profiles",
+  agentCategory,
+}: FilterProps) => {
   const navigate = useNavigate();
-  const [status, setStatus] = useState<Status>("Buy");
+  const [activeTab, setActiveTab] = useState<FilterTab>(initialTab);
 
-  const [values, setValues] = useState<FieldValues>({});
+  const [buy, setBuy] = useState<BuyFilters>(DEFAULT_BUY_FILTERS);
+  const [sold, setSold] = useState<SoldFilters>(DEFAULT_SOLD_FILTERS);
+  const [builderProfile, setBuilderProfile] = useState<BuilderProfileFilters>(
+    DEFAULT_BUILDER_PROFILE_FILTERS,
+  );
+  const [builderListings, setBuilderListings] =
+    useState<BuyFilters>(DEFAULT_BUY_FILTERS);
+  const [agents, setAgents] = useState<AgentFiltersType>(DEFAULT_AGENT_FILTERS);
+  const [trades, setTrades] = useState<TradeFiltersType>(DEFAULT_TRADE_FILTERS);
 
-  const config = STATUS_CONFIG[status];
-  const key = (id: string) => `${status}:${id}`;
-  const getValue = (id: string): FieldValue | undefined => values[key(id)];
-  const setValue = (id: string, val: FieldValue) =>
-    setValues((prev) => ({ ...prev, [key(id)]: val }));
-  const getText = (id: string, fallback = ""): string => {
-    const v = getValue(id);
-    return typeof v === "string" ? v : fallback;
+  useEffect(() => {
+    if (isOpen) setActiveTab(initialTab);
+  }, [isOpen, initialTab]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const scrollY = window.scrollY;
+    const body = document.body;
+    body.style.position = "fixed";
+    body.style.top = `-${scrollY}px`;
+    body.style.left = "0";
+    body.style.right = "0";
+    body.style.width = "100%";
+    body.style.overflow = "hidden";
+    return () => {
+      body.style.position = "";
+      body.style.top = "";
+      body.style.left = "";
+      body.style.right = "";
+      body.style.width = "";
+      body.style.overflow = "";
+      window.scrollTo(0, scrollY);
+    };
+  }, [isOpen]);
+
+  const agentType: AgentType = agentCategory?.toLowerCase().includes("buyer")
+    ? "buyers"
+    : "real-estate";
+
+  const handleClear = () => {
+    switch (activeTab) {
+      case "Buy":
+        setBuy(DEFAULT_BUY_FILTERS);
+        break;
+      case "Sold":
+        setSold(DEFAULT_SOLD_FILTERS);
+        break;
+      case "Builders":
+        setBuilderProfile(DEFAULT_BUILDER_PROFILE_FILTERS);
+        setBuilderListings(DEFAULT_BUY_FILTERS);
+        break;
+      case "Agents":
+        setAgents(DEFAULT_AGENT_FILTERS);
+        break;
+      case "Trades":
+        setTrades(DEFAULT_TRADE_FILTERS);
+        break;
+    }
   };
-  const getBool = (id: string): boolean => {
-    const v = getValue(id);
-    return typeof v === "boolean" ? v : false;
-  };
 
-  const handleSubmit = () => {
-    navigate("/search");
+  const handleApply = () => {
+    const typeMap: Record<FilterTab, string> = {
+      Buy: "property",
+      Sold: "property",
+      Builders: "builder",
+      Agents: "trader",
+      Trades: "trader",
+    };
+    const params = new URLSearchParams({
+      type: typeMap[activeTab],
+      tab: activeTab.toLowerCase(),
+    });
+    if (activeTab === "Agents" && agentCategory) {
+      params.set("category", agentCategory);
+    }
+    navigate(`/result?${params.toString()}`);
     onClose();
   };
 
-  const handleClear = () => {
-    setValues((prev) => {
-      const next = { ...prev };
-      Object.keys(next)
-        .filter((k) => k.startsWith(`${status}:`))
-        .forEach((k) => delete next[k]);
-      return next;
-    });
-  };
+  const panel = (
+    <>
+      <div
+        className={`fixed inset-0 z-[99998] bg-black/40 backdrop-blur-sm transition-opacity duration-300 ${isOpen
+            ? "pointer-events-auto opacity-100"
+            : "pointer-events-none opacity-0"
+          }`}
+        onClick={onClose}
+      />
 
-  return (
-    <ModalWrapper isOpen={isOpen}>
-      <div className="fixed inset-0 z-[99999] flex items-center justify-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-black/40 backdrop-blur-sm"
-          onClick={onClose}
-        />
-
-        <div className="relative flex flex-col w-full max-w-2xl h-[90vh] max-h-[90vh] mx-4 rounded-[24px] bg-white shadow-2xl overflow-hidden">
-          <div
-            className="flex-1 min-h-0 overflow-y-auto overscroll-contain p-8"
-            style={{ touchAction: "pan-y", WebkitOverflowScrolling: "touch" }}
-            onWheel={(e) => e.stopPropagation()}
-            onTouchMove={(e) => e.stopPropagation()}
+      <div
+        className={`fixed z-[99999] flex flex-col bg-white shadow-2xl transition-all duration-300 ease-out
+    bottom-0 left-0 right-0 h-[92vh] rounded-t-3xl
+    md:bottom-auto md:left-1/2 md:right-auto md:top-1/2 md:h-auto md:max-h-[90vh] md:w-[60vw]
+    md:-translate-x-1/2 md:-translate-y-1/2 md:rounded-3xl
+    ${isOpen
+            ? "translate-y-0 md:opacity-100 md:scale-100"
+            : "translate-y-full md:opacity-0 md:scale-95 md:pointer-events-none"
+          }`}
+      >
+        <div className="flex shrink-0 items-center justify-between  border-gray-100 px-6 py-5">
+          <h2 className="text-lg font-semibold text-gray-900">Filters</h2>
+          <button
+            onClick={onClose}
+            className="rounded-full p-1.5 text-gray-400  transition hover:bg-gray-100 hover:text-gray-700"
           >
+            <X size={20} />
+          </button>
+        </div>
+
+        <div className="flex flex-wrap justify-center  mx-auto shrink-0 overflow-x-auto gap-3  pb-3 border-gray-100 px-2 scrollbar-hide">
+          {TABS.map((tab) => (
             <button
-              onClick={onClose}
-              className="absolute top-6 left-6 text-gray-500 hover:text-black transition-colors"
+              key={tab.value}
+              type="button"
+              onClick={() => setActiveTab(tab.value)}
+              className={`shrink-0 border-2 rounded-xl hover:cursor-pointer px-6 sm:px-8 md:px-8 xl:px-14 py-2 text-sm font-medium transition-all ${activeTab === tab.value
+                  ? "bg-[#3D2C1D] text-white"
+                  : "border-[#DBDAD3]   hover:text-gray-700"
+                }`}
             >
-              <X size={24} strokeWidth={1.5} />
+              {tab.label}
             </button>
+          ))}
+        </div>
 
-            <div className="mt-8">
-              <h2 className="text-2xl font-bold mb-6">Filters</h2>
+        {/* Scrollable body */}
+        <div
+          className="flex-1 overflow-y-auto overscroll-contain px-6 py-6"
+          style={
+            {
+              touchAction: "pan-y",
+              WebkitOverflowScrolling: "touch",
+            } as React.CSSProperties
+          }
+          onWheel={(e) => e.stopPropagation()}
+          onTouchMove={(e) => e.stopPropagation()}
+        >
+          {activeTab === "Buy" && (
+            <PropertyFilters mode="Buy" values={buy} onChange={setBuy} />
+          )}
+          {activeTab === "Sold" && (
+            <PropertyFilters mode="Sold" values={sold} onChange={setSold} />
+          )}
+          {activeTab === "Builders" && (
+            <BuilderFilters
+              mode={builderMode}
+              profileValues={builderProfile}
+              onProfileChange={setBuilderProfile}
+              listingsValues={builderListings}
+              onListingsChange={setBuilderListings}
+            />
+          )}
+          {activeTab === "Agents" && (
+            <AgentFilters
+              agentType={agentType}
+              values={agents}
+              onChange={setAgents}
+            />
+          )}
+          {activeTab === "Trades" && (
+            <TradeFilters values={trades} onChange={setTrades} />
+          )}
+        </div>
 
-              <div className="flex gap-4 mb-8">
-                {TABS.map((tab) => (
-                  <button
-                    key={tab}
-                    onClick={() => setStatus(tab)}
-                    className={`flex-1 py-2 rounded-lg border text-sm font-medium transition-colors ${status === tab
-                      ? "bg-[#3D2C1D] text-white border-[#3D2C1D]"
-                      : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50"
-                      }`}
-                  >
-                    {tab}
-                  </button>
-                ))}
-              </div>
-
-              <div className="space-y-8">
-                <div>
-                  <h3 className="font-semibold mb-4">Property Type</h3>
-                  <div className="grid grid-cols-2 gap-y-3 gap-x-4">
-                    {config.propertyTypes.map((type) => (
-                      <label
-                        key={type}
-                        className="flex items-center gap-3 cursor-pointer"
-                      >
-                        <input
-                          type="checkbox"
-                          checked={getBool(`propertyType:${type}`)}
-                          onChange={(e) =>
-                            setValue(`propertyType:${type}`, e.target.checked)
-                          }
-                          className="w-4 h-4 rounded border-gray-300 text-[#3D2C1D] focus:ring-[#3D2C1D]"
-                        />
-                        <span className="text-sm text-gray-600">{type}</span>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-
-                <hr className="border-gray-100" />
-
-                <div>
-                  <h3 className="font-semibold mb-4">
-                    {config.priceLabel}
-                    {config.priceUnit && (
-                      <span className="text-gray-400 font-normal">
-                        {" "}
-                        ({config.priceUnit})
-                      </span>
-                    )}
-                  </h3>
-                  <div className="flex gap-4 mb-4">
-                    <div className="flex-1">
-                      <label className="block text-xs text-gray-500 mb-1">
-                        Min
-                      </label>
-                      <select
-                        value={getText("priceMin", "Any")}
-                        onChange={(e) => setValue("priceMin", e.target.value)}
-                        className="w-full border border-gray-200 rounded-lg p-3 text-sm text-gray-600 outline-none focus:border-[#3D2C1D]"
-                      >
-                        <option>Any</option>
-                      </select>
-                    </div>
-                    <div className="flex-1">
-                      <label className="block text-xs text-gray-500 mb-1">
-                        Max
-                      </label>
-                      <select
-                        value={getText("priceMax", "Any")}
-                        onChange={(e) => setValue("priceMax", e.target.value)}
-                        className="w-full border border-gray-200 rounded-lg p-3 text-sm text-gray-600 outline-none focus:border-[#3D2C1D]"
-                      >
-                        <option>Any</option>
-                      </select>
-                    </div>
-                  </div>
-                  <label className="flex items-center gap-3 cursor-pointer">
-                    <input
-                      type="checkbox"
-                      checked={getBool("priceOnly")}
-                      onChange={(e) => setValue("priceOnly", e.target.checked)}
-                      className="w-4 h-4 rounded border-gray-300 text-[#3D2C1D] focus:ring-[#3D2C1D]"
-                    />
-                    <span className="text-sm text-gray-600">
-                      {config.priceCheckboxLabel}
-                    </span>
-                  </label>
-                </div>
-
-                <hr className="border-gray-100" />
-
-                <div>
-                  <h3 className="font-semibold mb-4">Bathrooms</h3>
-                  <div className="flex gap-4">
-                    <div className="flex-1">
-                      <label className="block text-xs text-gray-500 mb-1">
-                        Min
-                      </label>
-                      <select
-                        value={getText("bathroomsMin", "Any")}
-                        onChange={(e) =>
-                          setValue("bathroomsMin", e.target.value)
-                        }
-                        className="w-full border border-gray-200 rounded-lg p-3 text-sm text-gray-600 outline-none focus:border-[#3D2C1D]"
-                      >
-                        <option>Any</option>
-                      </select>
-                    </div>
-                    <div className="flex-1">
-                      <label className="block text-xs text-gray-500 mb-1">
-                        Max
-                      </label>
-                      <select
-                        value={getText("bathroomsMax", "Any")}
-                        onChange={(e) =>
-                          setValue("bathroomsMax", e.target.value)
-                        }
-                        className="w-full border border-gray-200 rounded-lg p-3 text-sm text-gray-600 outline-none focus:border-[#3D2C1D]"
-                      >
-                        <option>Any</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-                <hr className="border-gray-100" />
-
-                <div>
-                  <h3 className="font-semibold mb-4">Car spaces</h3>
-                  <div className="flex gap-4">
-                    <div className="flex-1">
-                      <label className="block text-xs text-gray-500 mb-1">
-                        Min
-                      </label>
-                      <select
-                        value={getText("carSpacesMin", "Any")}
-                        onChange={(e) =>
-                          setValue("carSpacesMin", e.target.value)
-                        }
-                        className="w-full border border-gray-200 rounded-lg p-3 text-sm text-gray-600 outline-none focus:border-[#3D2C1D]"
-                      >
-                        <option>Any</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-                {status === "Rent" && (
-                  <>
-                    <hr className="border-gray-100 mb-8" />
-                    <div>
-                      <h3 className="font-semibold mb-4">Bond</h3>
-                      <div className="flex gap-4">
-                        <div className="flex-1">
-                          <label className="block text-xs text-gray-500 mb-1">
-                            Min
-                          </label>
-                          <select
-                            value={getText("bondMin", "Any")}
-                            onChange={(e) =>
-                              setValue("bondMin", e.target.value)
-                            }
-                            className="w-full border border-gray-200 rounded-lg p-3 text-sm text-gray-600 outline-none focus:border-[#3D2C1D]"
-                          >
-                            <option>Any</option>
-                          </select>
-                        </div>
-                        <div className="flex-1">
-                          <label className="block text-xs text-gray-500 mb-1">
-                            Max
-                          </label>
-                          <select
-                            value={getText("bondMax", "Any")}
-                            onChange={(e) =>
-                              setValue("bondMax", e.target.value)
-                            }
-                            className="w-full border border-gray-200 rounded-lg p-3 text-sm text-gray-600 outline-none focus:border-[#3D2C1D]"
-                          >
-                            <option>Any</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                    <hr className="border-gray-100 mb-8" />
-                    <div>
-                      <h3 className="font-semibold mb-4">Available from</h3>
-                      <div className="flex gap-4">
-                        <div className="flex-1">
-                          <label className="block text-xs text-gray-500 mb-1">
-                            From
-                          </label>
-                          <input
-                            type="date"
-                            value={getText("availableFromFrom", "")}
-                            onChange={(e) =>
-                              setValue("availableFromFrom", e.target.value)
-                            }
-                            className="w-full border border-gray-200 rounded-lg p-3 text-sm text-gray-600 outline-none focus:border-[#3D2C1D]"
-                          />
-                        </div>
-                        <div className="flex-1">
-                          <label className="block text-xs text-gray-500 mb-1">
-                            To
-                          </label>
-                          <input
-                            type="date"
-                            value={getText("availableFromTo", "")}
-                            onChange={(e) =>
-                              setValue("availableFromTo", e.target.value)
-                            }
-                            className="w-full border border-gray-200 rounded-lg p-3 text-sm text-gray-600 outline-none focus:border-[#3D2C1D]"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <hr className="border-gray-100 mb-8" />
-                    <label className="flex items-center gap-3 cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={getBool("furnished")}
-                        onChange={(e) =>
-                          setValue("furnished", e.target.checked)
-                        }
-                        className="w-4 h-4 rounded border-gray-300 text-[#3D2C1D] focus:ring-[#3D2C1D]"
-                      />
-                      <span className="text-sm text-gray-600">
-                        Furnished only
-                      </span>
-                    </label>
-                  </>
-                )}
-                {status === "Sold" && (
-                  <>
-                    <hr className="border-gray-100 mb-8" />
-                    <div>
-                      <h3 className="font-semibold mb-4">Sold date</h3>
-                      <div className="flex gap-4">
-                        <div className="flex-1">
-                          <label className="block text-xs text-gray-500 mb-1">
-                            From
-                          </label>
-                          <input
-                            type="date"
-                            value={getText("soldDateFrom", "")}
-                            onChange={(e) =>
-                              setValue("soldDateFrom", e.target.value)
-                            }
-                            className="w-full border border-gray-200 rounded-lg p-3 text-sm text-gray-600 outline-none focus:border-[#3D2C1D]"
-                          />
-                        </div>
-                        <div className="flex-1">
-                          <label className="block text-xs text-gray-500 mb-1">
-                            To
-                          </label>
-                          <input
-                            type="date"
-                            value={getText("soldDateTo", "")}
-                            onChange={(e) =>
-                              setValue("soldDateTo", e.target.value)
-                            }
-                            className="w-full border border-gray-200 rounded-lg p-3 text-sm text-gray-600 outline-none focus:border-[#3D2C1D]"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </>
-                )}
-
-                <hr className="border-gray-100" />
-
-                <div>
-                  <h3 className="font-semibold mb-4">Keywords</h3>
-                  <input
-                    type="text"
-                    placeholder="Air con, pool, solar, etc."
-                    value={getText("keywords", "")}
-                    onChange={(e) => setValue("keywords", e.target.value)}
-                    className="w-full border border-gray-200 rounded-lg p-3 text-sm text-gray-600 outline-none focus:border-[#3D2C1D] mb-2"
-                  />
-                  <p className="text-xs text-gray-400">
-                    Add specific property features to your search
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-10 flex justify-end gap-4">
-              <button
-                onClick={handleClear}
-                className="px-6 py-2.5 rounded-lg border border-gray-200 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
-              >
-                Clear filter
-              </button>
-              <button
-                onClick={handleSubmit}
-                className="px-6 py-2.5 rounded-lg bg-[#3D2C1D] text-sm font-medium text-white hover:bg-[#2c1f14] transition-colors"
-              >
-                Submit Query
-              </button>
-            </div>
-          </div>
+        {/* Footer */}
+        <div className="flex shrink-0 items-center justify-between border-t border-gray-100 px-6 py-4">
+          <button
+            onClick={handleClear}
+            className="text-sm font-medium text-gray-500 hover:cursor-pointer underline underline-offset-2 hover:text-gray-800 transition-colors"
+          >
+            Clear filters
+          </button>
+          <button
+            onClick={handleApply}
+            className="rounded-xl bg-[#3D2C1D] px-8 py-3 text-sm font-medium hover:cursor-pointer text-white transition-colors hover:bg-[#2c1f14]"
+          >
+            Show results
+          </button>
         </div>
       </div>
-    </ModalWrapper>
+    </>
   );
+
+  return createPortal(panel, document.body);
 };
 
 export default Filter;

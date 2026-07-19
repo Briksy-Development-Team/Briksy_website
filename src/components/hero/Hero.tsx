@@ -91,7 +91,7 @@ const SideCollage = ({
   );
 };
 
-const Hero = ({ startAnimation }: HeroProps) => {
+const Hero = () => {
   const { mode, setMode } = useOutletContext<{
     mode: "collapsed" | "search" | "ai";
     setMode: (m: "collapsed" | "search" | "ai") => void;
