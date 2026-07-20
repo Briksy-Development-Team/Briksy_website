@@ -27,11 +27,7 @@ const PLACEHOLDERS: Record<string, string> = {
   Trades: "Search a service, e.g. 'electrician'...",
 };
 
-const PROMPTS = [
-  "3-bedroom house in Richmond under $800k",
-  "Mortgage broker for first home buyer in Melbourne",
-  "Landscaper for backyard renovation in Brisbane",
-];
+
 
 const BTN = "flex items-center justify-center rounded-xl bg-[#3D2A0B] text-white hover:bg-[#2f2008] transition";
 const tabClass = (active: boolean) =>
@@ -169,22 +165,7 @@ const HeroSearchBar = ({ mode, setMode }: Props) => {
         </div>
       </div>
 
-      {/* Prompts */}
-      <div className="mt-8 flex items-center gap-2 text-black">
-        <span className="text-[0.875rem]">Try an example prompt</span>
-        <RefreshCw size={16} />
-      </div>
-      <div className="mt-3 flex w-full flex-wrap lg:flex-nowrap justify-center gap-4 px-10">
-        {PROMPTS.map((prompt) => (
-          <button
-            key={prompt}
-            onClick={() => setQuery(prompt)}
-            className="flex-none whitespace-nowrap rounded-md border border-[#98928E] px-2 py-2 text-center text-[0.7rem] text-[#4A3A2B] transition-all duration-300 hover:-translate-y-1 lg:text-[0.875rem]"
-          >
-            {prompt}
-          </button>
-        ))}
-      </div>
+   
 
       <Filter
         isOpen={filterOpen}

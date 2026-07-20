@@ -1,38 +1,45 @@
-import { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const FRAME_COUNT = 132;
+const FRAME_COUNT = 180;
+
 const getFrame = (i: number) =>
     `/frames-webp/frame_${String(i).padStart(5, "0")}.webp`;
 
 const sections = [
     {
-        title: "For Organisations",
-        description:
-            "Manage your business, showcase your expertise, and connect with qualified property buyers through a verified business profile.",
-    },
-    {
         title: "For Builders",
         description:
             "List your projects, get discovered by serious buyers, and build trust through verified credentials and real reviews.",
+        frameStart: 0,
+        frameEnd: 41,
     },
     {
         title: "For Property Professionals",
         description:
             "Grow your client base, manage enquiries, and stand out in a verified marketplace built for Australian professionals.",
+        frameStart: 42,
+        frameEnd: 61,
+    },
+    {
+        title: "For Buyers/Sellers",
+        description:
+            "Manage your business, showcase your expertise, and connect with qualified property buyers through a verified business profile.",
+        frameStart: 62,
+        frameEnd: 179,
     },
 ];
 
 const Community = () => {
     const sectionRef = useRef<HTMLDivElement>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
-    const [active, setActive] = useState(0);
-    const navigate = useNavigate();
+    const titleRefs = useRef<(HTMLHeadingElement | null)[]>([]);
+    const descRefs = useRef<(HTMLParagraphElement | null)[]>([]);
+    const activeRef = useRef(0);
 
     useGSAP(() => {
         const canvas = canvasRef.current;
@@ -58,15 +65,75 @@ const Community = () => {
         images[0].onload = resize;
         window.addEventListener("resize", resize);
 
+        titleRefs.current.forEach((el, i) => {
+            if (!el) return;
+            gsap.set(el, { opacity: i === 0 ? 1 : 0, y: i === 0 ? 0 : "-50vh" });
+        });
+        descRefs.current.forEach((el, i) => {
+            if (!el) return;
+            gsap.set(el, { opacity: i === 0 ? 1 : 0, y: i === 0 ? 0 : "50vh" });
+        });
+
+        const swapText = (fromIndex: number, toIndex: number) => {
+            const outTitle = titleRefs.current[fromIndex];
+            const inTitle = titleRefs.current[toIndex];
+            const outDesc = descRefs.current[fromIndex];
+            const inDesc = descRefs.current[toIndex];
+            if (!outTitle || !inTitle || !outDesc || !inDesc) return;
+
+            const isForward = toIndex > fromIndex;
+
+            const titleOutY = isForward ? "50vh" : "-50vh";
+            const titleInY = isForward ? "-50vh" : "50vh";
+            
+            const descOutY = isForward ? "-50vh" : "50vh";
+            const descInY = isForward ? "50vh" : "-50vh";
+
+            gsap.to(outTitle, {
+                opacity: 0,
+                y: titleOutY,
+                duration: 0.6,
+                ease: "power2.inOut",
+                overwrite: true,
+            });
+            gsap.fromTo(
+                inTitle,
+                { opacity: 0, y: titleInY },
+                { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", overwrite: true }
+            );
+
+            gsap.to(outDesc, {
+                opacity: 0,
+                y: descOutY,
+                duration: 0.6,
+                ease: "power2.inOut",
+                overwrite: true,
+            });
+            gsap.fromTo(
+                inDesc,
+                { opacity: 0, y: descInY },
+                { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", overwrite: true }
+            );
+        };
+
         const trigger = ScrollTrigger.create({
             trigger: sectionRef.current,
-            start: "top 20%",
-            end: "+=2200",
+            start: "top top",
+            end: "+=5000",
             pin: true,
-            scrub: 0.5,
+            scrub: 1,
             onUpdate: (self) => {
-                draw(Math.round(self.progress * (FRAME_COUNT - 1)));
-                setActive(Math.min(2, Math.floor(self.progress * 3)));
+                const frame = Math.round(self.progress * (FRAME_COUNT - 1));
+                draw(frame);
+
+                const newActive = sections.findIndex(
+                    (s) => frame >= s.frameStart && frame <= s.frameEnd
+                );
+
+                if (newActive !== -1 && newActive !== activeRef.current) {
+                    swapText(activeRef.current, newActive);
+                    activeRef.current = newActive;
+                }
             },
         });
 
@@ -80,37 +147,38 @@ const Community = () => {
         <>
             <div
                 ref={sectionRef}
-                className=" w-full  lg:h-[80vh] flex flex-col lg:flex-row items-center justify-between px-8 lg:px-24"
+                className="w-full h-screen flex flex-col  lg:flex-row items-center justify-center px-8 lg:px-16 gap-8"
             >
-                <div className="w-full lg:w-1/2   h-auto flex flex-col gap-8">
+                <div className="relative w-full lg:w-1/4 h-full  flex items-center  justify-center overflow-hidden shrink-0">
                     {sections.map((item, i) => (
-                        <div key={item.title}>
-                            <h2
-                                className={`transition-all text-[1.875rem]  font-medium lg:text-[2.25rem] duration-500  ${active === i ? " text-[#342511]" : " text-gray-400"
-                                    }`}
-                            >
-                                {item.title}
-                            </h2>
-
-                            <div
-                                className={`overflow-hidden transition-all duration-500 ${active === i ? " opacity-100 mt-3" : "max-h-0 opacity-0"
-                                    }`}
-                            >
-                                <p className="text-[#8B6F54]  lg:text-[1rem] leading-relaxed  w-[80%]">
-                                    {item.description}
-                                </p>
-                                <button onClick={() => navigate("/coming-soon")} className="mt-5 px-5 py-2 rounded-lg bg-[#342511] text-white">
-                                    Start Searching
-                                </button>
-                            </div>
-
-                            <div className="border-b border-gray-200 mt-6" />
-                        </div>
+                        <h2
+                            key={item.title}
+                            ref={(el) => {
+                                titleRefs.current[i] = el;
+                            }}
+                            className="absolute w-full text-center text-[1.875rem] font-medium  lg:text-[2.25rem] text-[#342511]"
+                        >
+                            {item.title}
+                        </h2>
                     ))}
                 </div>
 
-                <div className="w-full lg:w-1/2  h-full hidden lg:flex items-center justify-center">
+                <div className="w-full lg:w-1/2 h-[70vh] flex items-center justify-center shrink-0">
                     <canvas ref={canvasRef} className="w-full h-full" />
+                </div>
+
+                <div className="relative w-full lg:w-1/4 h-full  flex items-center overflow-hidden shrink-0">
+                    {sections.map((item, i) => (
+                        <p
+                            key={item.title}
+                            ref={(el) => {
+                                descRefs.current[i] = el;
+                            }}
+                            className="absolute w-full text-[#8B6F54] lg:text-[1rem] leading-relaxed"
+                        >
+                            {item.description}
+                        </p>
+                    ))}
                 </div>
             </div>
 
