@@ -5,13 +5,16 @@ import Process from "./process/Process";
 import Contact from "../../components/contact/Contact";
 import Blogs from "./blogs/Blogs";
 import Review from "./reviews/Review";
+import ImageAnimation from "./imageanimation/ImageAnimation";
 
 const Home = () => {
   return (
     <div className="bg-[#F7F3EE] min-h-screen">
       <Hero />
-      <About />
+      <ImageAnimation />
+
       <Community />
+      <About />
       <Review />
       <Process />
       <Blogs />
