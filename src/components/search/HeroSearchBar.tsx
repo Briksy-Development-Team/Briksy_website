@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Search, SlidersHorizontal, Sparkles, RefreshCw, AudioLines } from "lucide-react";
+import { Search, SlidersHorizontal, Sparkles, AudioLines } from "lucide-react";
 import AiVoiceModal from "./AiVoiceModal";
 import Filter from "../filter/Filter";
 import { useScrollFade } from "./FloatingSearch";
