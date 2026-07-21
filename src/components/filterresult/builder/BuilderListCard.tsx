@@ -1,6 +1,7 @@
-import { Heart, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import type { Builder } from "../../../types/builder";
 import Approves from "../../../assets/logo/apprrove.svg";
+import Mappin from "../../../assets/icons/location.svg"
 
 type Props = {
   item: Builder;
@@ -24,8 +25,10 @@ const BuilderListCard = ({ item }: Props) => (
 
     <div className="min-w-0 flex-1">
       <h3 className="text-[1rem] font-semibold ">{item.name}</h3>
-      <p className="mt-0.5 text-[0.875rem] ">{item.location}</p>
-
+      <div className=" flex items-center gap-1 text-[0.875rem] lg:text-[1rem]">
+        <img src={Mappin} alt="" />
+        <span className="text-[#342511]">{item.location}</span>
+      </div>
       <div className="mt-1.5 flex flex-wrap gap-1">
         {item.tags.map((tag, i) => (
           <span
@@ -39,7 +42,7 @@ const BuilderListCard = ({ item }: Props) => (
 
       <div className="mt-2 flex items-center justify-between text-[0.75rem] text-[#6C6C6C]">
         <div className="flex items-center gap-1">
-          <Star size={11} fill="currentColor" className="text-[#E2CBB3]" />
+          <Star size={11} fill="currentColor" className="text-[#FF8200]" />
           <span className="font-bold text-[1rem]">{item.rating}</span>
           <span className="text-[1rem]">({item.reviews.toLocaleString()} reviews)</span>
         </div>
@@ -53,11 +56,7 @@ const BuilderListCard = ({ item }: Props) => (
         item.isFavourite ? "Remove from favourites" : "Add to favourites"
       }
     >
-      <Heart
-        size={22}
-        fill={item.isFavourite ? "currentColor" : "none"}
-        className="text-[#666]"
-      />
+
     </button>
   </div>
 );

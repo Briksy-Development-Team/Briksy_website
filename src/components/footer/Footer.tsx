@@ -87,7 +87,7 @@ const Footer = () => {
 
             </div>
             <div className=" items-center flex sm:hidden bg-[#EAEAEA] gap-8 py-3 text-[0.75rem] ">
-                <span>© 2025 Briksy. All Rights Reserved.</span>
+                <span>© 2026 Briksy. All Rights Reserved.</span>
 
                 <Link to="/terms">Terms of Use</Link>
 

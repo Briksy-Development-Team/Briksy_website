@@ -1,6 +1,7 @@
 import { Star } from "lucide-react";
 import type { Trader } from "../../../types/trader";
 import Approves from "../../../assets/logo/apprrove.svg";
+import Mappin from "../../../assets/icons/location.svg";
 
 type Props = {
   item: Trader;
@@ -24,17 +25,22 @@ const TraderGridCard = ({ item }: Props) => (
     </div>
 
     <div className="mt-6">
-      <h3 className="text-[1rem] font-bold ">
-        {item.name}
-      </h3>
+      <h3 className="text-[1rem] font-bold ">{item.name}</h3>
       <p className="mt-1 text-[0.75rem] lg:text-[1rem] ">{item.tagLine}</p>
-      <p className="mt-0.5 text-[0.75rem] lg:text-[1rem]">{item.location}</p>
+      <div className=" flex items-center justify-center gap-1 text-[0.875rem] lg:text-[1rem]">
+        <img src={Mappin} alt="" />
+        <span className="text-[#342511]">{item.location}</span>
+      </div>{" "}
     </div>
 
     <div className="mt-3 flex items-center justify-center gap-1 text-[0.75rem] text-[#6C6C6C]">
       <Star size={12} fill="currentColor" className="" />
-      <span className="font-bold text-[1rem] text-[#342511]">{item.rating}</span>
-      <span className="text-[1rem] text-[#342511]">({item.reviews.toLocaleString()} reviews)</span>
+      <span className="font-bold text-[1rem] text-[#342511]">
+        {item.rating}
+      </span>
+      <span className="text-[1rem] text-[#342511]">
+        ({item.reviews.toLocaleString()} reviews)
+      </span>
     </div>
 
     {/* Tags */}
@@ -51,10 +57,7 @@ const TraderGridCard = ({ item }: Props) => (
 
     {/* CTA */}
     <div className="mt-5">
-      <a
-        href="#"
-        className="text-[0.75rem] font-medium text-[#342511] "
-      >
+      <a href="#" className="text-[0.75rem] font-medium text-[#342511] ">
         View Details →
       </a>
     </div>
