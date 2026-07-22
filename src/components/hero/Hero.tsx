@@ -1,95 +1,37 @@
 import { useOutletContext } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import HeroSearchBar from "../search/HeroSearchBar";
+import Imageone from "../../assets/hero/imageone.svg"
+import Imagetwo from "../../assets/hero/imagetwo.svg"
+import Imagethree from "../../assets/hero/imagethree.svg"
+import Imagefour from "../../assets/hero/imagefour.svg"
 
-type CollageImage = {
+
+interface CollageImage {
   src: string;
-  width: number;
-  height: number;
-  left: number;
-  top: number;
-};
+  className: string;
+}
 
-const LEFT_IMAGES: CollageImage[] = [
+const COLLAGE_IMAGES: CollageImage[] = [
   {
-    src: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=400",
-    width: 180,
-    height: 140,
-    left: -20,
-    top: 0,
+    src: Imageone,
+    className: "left-[15%] top-[10%] w-[110px] h-[85px] lg:w-[7.125rem] lg:h-[5.4375rem]",
   },
   {
-    src: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=400",
-    width: 140,
-    height: 110,
-    left: 170,
-    top: 30,
+    src: Imagetwo,
+    className: "-left-[3%] top-[52%] w-[130px] h-[100px] lg:w-[10.2689rem] lg:h-[7.8438rem]",
   },
   {
-    src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400",
-    width: 110,
-    height: 90,
-    left: 320,
-    top: 50,
+    src: Imagethree,
+    className: "right-[10%] top-[28%] w-[130px] h-[100px] lg:w-[10.2689rem] lg:h-[7.8438rem]",
   },
   {
-    src: "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=400",
-    width: 180,
-    height: 120,
-    left: -70,
-    top: 155,
-  },
-  {
-    src: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=400",
-    width: 140,
-    height: 100,
-    left: 120,
-    top: 155,
-  },
-  {
-    src: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400",
-    width: 110,
-    height: 85,
-    left: 270,
-    top: 155,
+    src: Imagefour,
+    className: "-right-[2%] top-[58%] w-[100px] h-[80px] lg:w-[7.125rem] lg:h-[5.4375rem]",
   },
 ];
-const COLLAGE_WIDTH = 450;
-
-const RIGHT_IMAGES: CollageImage[] = LEFT_IMAGES.map((img) => ({
-  ...img,
-  left: COLLAGE_WIDTH - img.left - img.width,
-}));
-
-let hasPlayedHeroIntro = false;
-
-const SideCollage = ({
-  images,
-  innerRef,
-}: {
-  images: CollageImage[];
-  innerRef: React.RefObject<HTMLDivElement | null>;
-}) => {
-  return (
-    <div ref={innerRef} className="relative w-[430px] h-[280px]">
-      {images.map((img, i) => (
-        <img
-          key={i}
-          src={img.src}
-          alt=""
-          className="side-collage-img absolute rounded-sm object-cover shadow-lg"
-          style={{
-            width: img.width,
-            height: img.height,
-            left: img.left,
-            top: img.top,
-          }}
-        />
-      ))}
-    </div>
-  );
-};
 
 const Hero = () => {
   const { mode, setMode } = useOutletContext<{
@@ -97,52 +39,53 @@ const Hero = () => {
     setMode: (m: "collapsed" | "search" | "ai") => void;
   }>();
 
-  const leftCollageRef = useRef<HTMLDivElement>(null);
-  const rightCollageRef = useRef<HTMLDivElement>(null);
-  const hasRunLocally = useRef(false);
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const imageRefs = useRef<(HTMLImageElement | null)[]>([]);
 
-  useEffect(() => {
-    if (hasRunLocally.current) return;
-    hasRunLocally.current = true;
+  useGSAP(
+    () => {
+      const els = imageRefs.current.filter(Boolean);
 
-    const leftImgs =
-      leftCollageRef.current?.querySelectorAll(".side-collage-img");
-    const rightImgs =
-      rightCollageRef.current?.querySelectorAll(".side-collage-img");
-
-    if (hasPlayedHeroIntro) {
-      gsap.set([...(leftImgs ?? []), ...(rightImgs ?? [])], {
-        x: 0,
-        opacity: 1,
-      });
-      return;
-    }
-
-    hasPlayedHeroIntro = true;
-
-    const offScreenX = window.innerWidth;
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-
-    tl.from(
-      leftImgs ?? [],
-      { x: -offScreenX, opacity: 0, duration: 2, stagger: 0.08 },
-      0,
-    ).from(
-      rightImgs ?? [],
-      { x: offScreenX, opacity: 0, duration: 2, stagger: 0.08 },
-      0,
-    );
-  }, []);
+      gsap.fromTo(
+        els,
+        {
+          y: 40,
+          opacity: 0,
+          scale: 0.94,
+          filter: "blur(6px)",
+        },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          filter: "blur(0px)",
+          duration: 1.4,
+          ease: "expo.out",
+          stagger: {
+            each: 0.15,
+            from: "start",
+          },
+          delay: 0.5,
+        }
+      );
+    },
+    { scope: sectionRef } // auto cleanup + scoped selectors within this ref
+  );
 
   return (
-    <section className="relative min-h-screen w-full mx-auto mt-0 lg:mt-10 overflow-hidden font-helvetica">
-      <div className="absolute left-0 top-[35%] -translate-y-1/2 hidden lg:block">
-        <SideCollage innerRef={leftCollageRef} images={LEFT_IMAGES} />
-      </div>
-
-      <div className="absolute right-0 top-[35%] -translate-y-1/2 hidden lg:block">
-        <SideCollage innerRef={rightCollageRef} images={RIGHT_IMAGES} />
-      </div>
+    <section
+      ref={sectionRef}
+      className="relative min-h-screen w-full mx-auto mt-0 lg:mt-10 overflow-hidden font-helvetica"
+    >
+      {COLLAGE_IMAGES.map((img, i) => (
+        <img
+          key={i}
+          ref={(el) => (imageRefs.current[i] = el)}
+          src={img.src}
+          alt=""
+          className={`hidden md:block absolute rounded-sm object-cover shadow-lg will-change-transform ${img.className}`}
+        />
+      ))}
 
       <div className="relative z-10 flex min-h-screen flex-col items-center justify-center lg:px-6 pt-28 pb-32">
         <div className="mb-6 inline-flex items-center gap-2 rounded-2xl bg-[#F1F1EF] px-3 py-2 backdrop-blur-md sm:gap-3 sm:px-4 sm:py-2.5 md:gap-4 md:px-5 lg:px-6">

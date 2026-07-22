@@ -91,7 +91,7 @@ const ImageAnimation = () => {
                 <img
                     src={WholeBg}
                     alt=""
-                    className="h-full w-full"
+                    className="h-[46.4128rem] w-[82.5625rem] m-auto"
                     draggable={false}
                 />
 
