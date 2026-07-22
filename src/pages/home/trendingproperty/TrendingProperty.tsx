@@ -9,7 +9,7 @@ const TrendingProperty = () => {
     const navigate = useNavigate();
     return (
         <section className="py-20 font-helvetica">
-            <div className="w-[95%] mx-auto">
+            <div className="w-full ml-10">
                 <div className="flex justify-between lg:items-center items-end">
                     <div className="relative mb-10 flex flex-col text-[#342511] items-start justify-center">
                         <h2 className="lg:text-[2.75rem] text-[1.875rem] font-medium tracking-tight">
@@ -40,7 +40,7 @@ const TrendingProperty = () => {
                             slidesPerView: 3.2,
                         },
                         1440: {
-                            slidesPerView: 4.3,
+                            slidesPerView: 4,
                         },
                     }}
                     className="[overscroll-behavior-x:contain] touch-pan-y"

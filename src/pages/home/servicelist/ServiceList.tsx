@@ -28,7 +28,7 @@ const ServiceList = () => {
 
   return (
     <section className="py-20 font-helvetica">
-      <div className="w-[95%] mx-auto">
+      <div className="w-full ml-10">
         <div className="flex items-end justify-between lg:items-center">
           <div className="mb-10 flex flex-col items-start justify-center text-[#342511]">
             <h2 className="text-[1.875rem] font-medium tracking-tight lg:text-[2.75rem]">
@@ -67,7 +67,7 @@ const ServiceList = () => {
               640: { slidesPerView: 1.5 },
               768: { slidesPerView: 2.1 },
               1024: { slidesPerView: 3.2 },
-              1440: { slidesPerView: 4.3 },
+              1440: { slidesPerView: 4 },
             }}
             className="[overscroll-behavior-x:contain] touch-pan-y"
 
