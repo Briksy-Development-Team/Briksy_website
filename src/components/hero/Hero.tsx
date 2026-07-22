@@ -69,7 +69,7 @@ const Hero = () => {
         }
       );
     },
-    { scope: sectionRef } // auto cleanup + scoped selectors within this ref
+    { scope: sectionRef }
   );
 
   return (
@@ -80,7 +80,9 @@ const Hero = () => {
       {COLLAGE_IMAGES.map((img, i) => (
         <img
           key={i}
-          ref={(el) => (imageRefs.current[i] = el)}
+          ref={(el) => {
+            imageRefs.current[i] = el;
+          }}
           src={img.src}
           alt=""
           className={`hidden md:block absolute rounded-sm object-cover shadow-lg will-change-transform ${img.className}`}
