@@ -8,6 +8,7 @@ import Imageone from "../../assets/hero/imageone.svg"
 import Imagetwo from "../../assets/hero/imagetwo.svg"
 import Imagethree from "../../assets/hero/imagethree.svg"
 import Imagefour from "../../assets/hero/imagefour.svg"
+import imagefive from "../../assets/hero/imagefive.svg"
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,13 +34,20 @@ const COLLAGE_IMAGES: CollageImage[] = [
   },
   {
     src: Imagethree,
-    className: "right-[10%] top-[28%] w-[130px] h-[100px] lg:w-[11.2064rem] lg:h-[8.5599rem]",
+    className: "right-[10%] top-[35%] w-[130px] h-[100px] lg:w-[11.2064rem] lg:h-[8.5599rem]",
     scrollDepth: -0.6,
     mouseDepth: 0.8,
   },
   {
     src: Imagefour,
-    className: "-right-[2%] top-[58%] w-[100px] h-[80px] lg:w-[9.0905rem] lg:h-[6.9375rem]",
+    className: "-right-[2%] top-[65%] w-[100px] h-[80px] lg:w-[9.0905rem] lg:h-[6.9375rem]",
+    scrollDepth: 0.4,
+    mouseDepth: 1.2,
+
+  },
+  {
+    src: imagefive,
+    className: "right-[15%] top-[10%] w-[100px] h-[80px] lg:w-[9.0905rem] lg:h-[6.9375rem]",
     scrollDepth: 0.4,
     mouseDepth: 1.2,
   },

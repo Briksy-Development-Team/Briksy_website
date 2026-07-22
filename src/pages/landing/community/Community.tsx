@@ -178,7 +178,7 @@ const Community = () => {
                             ref={(el) => {
                                 descRefs.current[i] = el;
                             }}
-                            className="absolute w-full text-[#8B6F54] lg:text-[1rem] leading-relaxed"
+                            className="absolute w-full text-primary lg:text-[1rem] leading-relaxed"
                         >
                             {item.description}
                         </p>

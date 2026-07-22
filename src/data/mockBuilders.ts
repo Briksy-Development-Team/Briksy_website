@@ -2,6 +2,7 @@ import type { Builder } from "../types/builder";
 import Bussinessholder from "../assets/place holder/bussinessholder.svg";
 import Bg from "../assets/place holder/builderbg.svg";
 
+
 export const mockBuilders: Builder[] = [
   {
     id: 1,
@@ -74,7 +75,7 @@ export const mockBuilders: Builder[] = [
     id: 6,
     name: "Green Earth Constructions",
     location: "Bangalore",
-    avatar: "https://i.pravatar.cc/96?img=15",
+    avatar: Bussinessholder,
     bannerImage: Bg,
 
     rating: 4.3,

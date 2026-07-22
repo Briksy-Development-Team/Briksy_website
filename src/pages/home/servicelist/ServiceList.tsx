@@ -28,8 +28,8 @@ const ServiceList = () => {
 
   return (
     <section className="py-20 font-helvetica">
-      <div className="w-full ml-10">
-        <div className="flex items-end justify-between lg:items-center">
+      <div className="w-full ml-10 ">
+        <div className="flex items-end  mr-14 justify-between lg:items-center">
           <div className="mb-10 flex flex-col items-start justify-center text-[#342511]">
             <h2 className="text-[1.875rem] font-medium tracking-tight lg:text-[2.75rem]">
               Top Professionals
@@ -39,13 +39,13 @@ const ServiceList = () => {
             </p>
           </div>
 
-          <button onClick={() => navigate("/coming-soon")} className="flex items-center gap-2 font-medium text-[#562F00]">
+          <button onClick={() => navigate("/coming-soon")} className="flex  items-center gap-2 font-medium text-[#562F00]">
             View All
             <ArrowUpRight size={24} />
           </button>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-4 pb-6 text-[1rem] sm:justify-start">
+        <div className="flex flex-wrap justify-center  gap-4 pb-6 text-[1rem] sm:justify-start">
           {TABS.map((tab, i) => (
             <button
               key={tab}

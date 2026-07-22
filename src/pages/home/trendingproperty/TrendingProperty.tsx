@@ -9,8 +9,8 @@ const TrendingProperty = () => {
     const navigate = useNavigate();
     return (
         <section className="py-20 font-helvetica">
-            <div className="w-full ml-10">
-                <div className="flex justify-between lg:items-center items-end">
+            <div className="w-full ml-10 ">
+                <div className="flex justify-between m4-14  lg:items-center items-end">
                     <div className="relative mb-10 flex flex-col text-[#342511] items-start justify-center">
                         <h2 className="lg:text-[2.75rem] text-[1.875rem] font-medium tracking-tight">
                             Featured Properties
@@ -18,7 +18,7 @@ const TrendingProperty = () => {
                         <p className="text-[0.875rem] lg:text-[1rem]">Verified solo traders and specialists</p>
                     </div>
 
-                    <button onClick={() => navigate("/coming-soon")} className="flex items-center   gap-3 text-[#562F00] font-medium">
+                    <button onClick={() => navigate("/coming-soon")} className="flex items-center mr-12   gap-3 text-[#562F00] font-medium">
                         View All
                         <ArrowUpRight size={24} />
                     </button>
