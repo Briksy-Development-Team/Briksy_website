@@ -54,9 +54,12 @@ const Hero = () => {
   const sectionRef = useRef<HTMLElement | null>(null);
   const wrapperRefs = useRef<(HTMLDivElement | null)[]>([]);
   const imageRefs = useRef<(HTMLImageElement | null)[]>([]);
-  const quickToRefs = useRef
-  { x: gsap.QuickToFunc; y: gsap.QuickToFunc } []
-    > ([]);
+  const quickToRefs = useRef<
+    {
+      x: ReturnType<typeof gsap.quickTo>;
+      y: ReturnType<typeof gsap.quickTo>;
+    }[]
+  >([]);
 
   useGSAP(
     () => {
