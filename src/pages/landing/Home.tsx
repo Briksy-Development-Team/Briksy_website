@@ -1,11 +1,14 @@
 import Hero from "../../components/hero/Hero";
 import About from "./about/About";
 import Community from "./community/Community";
-import Process from "./process/Process";
+// import Process from "./process/Process";
 import Contact from "../../components/contact/Contact";
 import Blogs from "./blogs/Blogs";
-import Review from "./reviews/Review";
+// import Review from "./reviews/Review";
 import ImageAnimation from "./imageanimation/ImageAnimation";
+import BuilderList from "../home/builderlist/BuilderList";
+import TrendingProperty from "../home/trendingproperty/TrendingProperty";
+import ServiceList from "../home/servicelist/ServiceList";
 
 const Home = () => {
   return (
@@ -15,8 +18,11 @@ const Home = () => {
 
       <Community />
       <About />
-      <Review />
-      <Process />
+      <BuilderList />
+      <TrendingProperty />
+      <ServiceList />
+      {/* <Review /> */}
+      {/* <Process /> */}
       <Blogs />
       <Contact />
     </div>

@@ -1,13 +1,14 @@
 import type { Builder } from "../types/builder";
+import Bussinessholder from "../assets/place holder/bussinessholder.svg";
+import Bg from "../assets/place holder/builderbg.svg";
 
 export const mockBuilders: Builder[] = [
   {
     id: 1,
     name: "Sunrise Property Group",
     location: "Location",
-    avatar: "https://i.pravatar.cc/96?img=10",
-    bannerImage:
-      "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800",
+    avatar: Bussinessholder,
+    bannerImage: Bg,
     rating: 4.5,
     reviews: 123,
     tags: ["Tag Line 1", "Tag Line 1", "Tag Line 1"],
@@ -18,9 +19,10 @@ export const mockBuilders: Builder[] = [
     id: 2,
     name: "Horizon Builders Ltd.",
     location: "New Delhi",
-    avatar: "https://i.pravatar.cc/96?img=11",
-    bannerImage:
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800",
+    avatar: Bussinessholder,
+
+    bannerImage: Bg,
+
     rating: 4.8,
     reviews: 210,
     tags: ["Luxury", "Commercial", "Residential"],
@@ -31,9 +33,10 @@ export const mockBuilders: Builder[] = [
     id: 3,
     name: "Green Earth Constructions",
     location: "Bangalore",
-    avatar: "https://i.pravatar.cc/96?img=12",
-    bannerImage:
-      "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800",
+    avatar: Bussinessholder,
+
+    bannerImage: Bg,
+
     rating: 4.3,
     reviews: 87,
     tags: ["Eco-Friendly", "Budget", "Villas"],
@@ -44,9 +47,9 @@ export const mockBuilders: Builder[] = [
     id: 4,
     name: "Green Earth Constructions",
     location: "Bangalore",
-    avatar: "https://i.pravatar.cc/96?img=13",
-    bannerImage:
-      "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800",
+    avatar: Bussinessholder,
+    bannerImage: Bg,
+
     rating: 4.3,
     reviews: 87,
     tags: ["Eco-Friendly", "Budget", "Villas"],
@@ -57,9 +60,10 @@ export const mockBuilders: Builder[] = [
     id: 5,
     name: "Green Earth Constructions",
     location: "Bangalore",
-    avatar: "https://i.pravatar.cc/96?img=14",
-    bannerImage:
-      "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800",
+    avatar: Bussinessholder,
+
+    bannerImage: Bg,
+
     rating: 4.3,
     reviews: 87,
     tags: ["Eco-Friendly", "Budget", "Villas"],
@@ -71,8 +75,8 @@ export const mockBuilders: Builder[] = [
     name: "Green Earth Constructions",
     location: "Bangalore",
     avatar: "https://i.pravatar.cc/96?img=15",
-    bannerImage:
-      "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800",
+    bannerImage: Bg,
+
     rating: 4.3,
     reviews: 87,
     tags: ["Eco-Friendly", "Budget", "Villas"],
@@ -83,9 +87,9 @@ export const mockBuilders: Builder[] = [
     id: 7,
     name: "Green Earth Constructions",
     location: "Bangalore",
-    avatar: "https://i.pravatar.cc/96?img=16",
-    bannerImage:
-      "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800",
+    avatar: Bussinessholder,
+    bannerImage: Bg,
+
     rating: 4.3,
     reviews: 87,
     tags: ["Eco-Friendly", "Budget", "Villas"],
@@ -96,14 +100,13 @@ export const mockBuilders: Builder[] = [
     id: 8,
     name: "Green Earth Constructions",
     location: "Bangalore",
-    avatar: "https://i.pravatar.cc/96?img=17",
-    bannerImage:
-      "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800",
+    avatar: Bussinessholder,
+    bannerImage: Bg,
+
     rating: 4.3,
     reviews: 87,
     tags: ["Eco-Friendly", "Budget", "Villas"],
     establishedYear: 2012,
     isFavourite: false,
   },
-
 ];

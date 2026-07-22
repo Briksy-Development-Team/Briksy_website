@@ -19,6 +19,14 @@ const AGENT_OPTIONS = [
   { label: "Buyers Agents", short: "Buyers Agent" },
 ];
 
+const TRADE_OPTIONS = [
+  { label: "Electrical", short: "Electrical" },
+  { label: "Plumbing", short: "Plumbing" },
+  { label: "Fencing", short: "Fencing" },
+  { label: "Landscapers", short: "Landscapers" },
+  { label: "Conveyancers", short: "Conveyancers" },
+];
+
 const PLACEHOLDERS: Record<string, string> = {
   Buy: "Search Your Desired Location...",
   Sold: "Search suburb or address for sold prices...",
@@ -31,10 +39,9 @@ const BTN =
   "flex items-center justify-center rounded-xl bg-[#3D2A0B] text-white hover:bg-[#2f2008] transition";
 
 const tabClass = (active: boolean) =>
-  `h-11 w-full rounded-xl px-2 text-[0.875rem] font-normal transition-all duration-300 sm:px-6 lg:px-10 lg:text-[1rem] truncate ${
-    active
-      ? "bg-[#2B241F] text-white"
-      : "bg-white text-gray-700 hover:border hover:border-primary"
+  `h-11 w-full rounded-xl px-2 text-[0.875rem] font-normal transition-all duration-300 sm:px-6 lg:px-10 lg:text-[1rem] truncate ${active
+    ? "bg-[#2B241F] text-white"
+    : "bg-white text-gray-700 hover:border hover:border-primary"
   }`;
 
 type Mode = "collapsed" | "search" | "ai";
@@ -45,9 +52,15 @@ const HeroSearchBar = ({ mode, setMode }: Props) => {
   const [query, setQuery] = useState("");
   const [voiceOpen, setVoiceOpen] = useState(false);
   const [filterOpen, setFilterOpen] = useState(false);
+
   const [agentMenuOpen, setAgentMenuOpen] = useState(false);
   const [agentCategory, setAgentCategory] = useState(AGENT_OPTIONS[0].label);
-  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const agentCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const [tradeMenuOpen, setTradeMenuOpen] = useState(false);
+  const [tradeCategory, setTradeCategory] = useState(TRADE_OPTIONS[0].label);
+  const tradeCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const rootRef = useRef<HTMLDivElement>(null);
   useScrollFade(rootRef, "out");
   const navigate = useNavigate();
@@ -56,86 +69,144 @@ const HeroSearchBar = ({ mode, setMode }: Props) => {
   const activeTab = TABS[activeIdx];
   const agentShort =
     AGENT_OPTIONS.find((o) => o.label === agentCategory)?.short ?? "Agents";
+  const tradeShort =
+    TRADE_OPTIONS.find((o) => o.label === tradeCategory)?.short ?? "Trades";
 
   const placeholder = isAi
     ? "Ask what you are looking for..."
     : activeTab.label === "Agents"
       ? `Search ${agentCategory.toLowerCase()} by name or suburb...`
-      : PLACEHOLDERS[activeTab.label];
+      : activeTab.label === "Trades"
+        ? `Search ${tradeCategory.toLowerCase()} by name or suburb...`
+        : PLACEHOLDERS[activeTab.label];
 
   const goToResults = () => {
     const params = new URLSearchParams({ type: activeTab.resultType });
     if (activeTab.label === "Agents") params.set("category", agentCategory);
+    if (activeTab.label === "Trades") params.set("category", tradeCategory);
     navigate(`/result?${params.toString()}`);
   };
 
   const openAgentMenu = () => {
-    if (closeTimer.current) {
-      clearTimeout(closeTimer.current);
-      closeTimer.current = null;
+    if (agentCloseTimer.current) {
+      clearTimeout(agentCloseTimer.current);
+      agentCloseTimer.current = null;
     }
     setAgentMenuOpen(true);
   };
 
   const closeAgentMenu = () => {
-    closeTimer.current = setTimeout(() => setAgentMenuOpen(false), 150);
+    agentCloseTimer.current = setTimeout(() => setAgentMenuOpen(false), 150);
+  };
+
+  const openTradeMenu = () => {
+    if (tradeCloseTimer.current) {
+      clearTimeout(tradeCloseTimer.current);
+      tradeCloseTimer.current = null;
+    }
+    setTradeMenuOpen(true);
+  };
+
+  const closeTradeMenu = () => {
+    tradeCloseTimer.current = setTimeout(() => setTradeMenuOpen(false), 150);
   };
 
   return (
     <div ref={rootRef} className="flex mx-auto flex-col items-center">
       <div className="grid w-[90%] grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 sm:w-[80%] lg:w-full gap-3 px-2">
         {TABS.map((tab, i) => {
-          if (tab.label !== "Agents") {
+          if (tab.label === "Agents") {
             return (
-              <button
+              <div
                 key={tab.label}
-                onClick={() => {
-                  setActiveIdx(i);
-                  setAgentMenuOpen(false);
-                }}
-                className={tabClass(activeIdx === i)}
+                className="relative"
+                onMouseEnter={openAgentMenu}
+                onMouseLeave={closeAgentMenu}
               >
-                {tab.label}
-              </button>
+                <button
+                  onClick={() => setActiveIdx(i)}
+                  className={tabClass(activeIdx === i)}
+                >
+                  {activeIdx === i ? agentShort : "Agents"}
+                </button>
+
+                {agentMenuOpen && (
+                  <div className="absolute left-0 top-full z-50 mt-0 w-48 overflow-hidden rounded-xl bg-white shadow-lg">
+                    {AGENT_OPTIONS.map((opt, idx) => (
+                      <div key={opt.label}>
+                        <button
+                          onClick={() => {
+                            setActiveIdx(i);
+                            setAgentCategory(opt.label);
+                            setAgentMenuOpen(false);
+                          }}
+                          className="block w-full px-4 py-3 text-left text-[0.875rem] transition hover:bg-gray-50"
+                        >
+                          {opt.label}
+                        </button>
+                        {idx !== AGENT_OPTIONS.length - 1 && (
+                          <div className="mx-4 h-px bg-gray-200" />
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          }
+
+          if (tab.label === "Trades") {
+            return (
+              <div
+                key={tab.label}
+                className="relative"
+                onMouseEnter={openTradeMenu}
+                onMouseLeave={closeTradeMenu}
+              >
+                <button
+                  onClick={() => setActiveIdx(i)}
+                  className={tabClass(activeIdx === i)}
+                >
+                  {activeIdx === i ? tradeShort : "Trades"}
+                </button>
+
+                {tradeMenuOpen && (
+                  <div className="absolute left-0 top-full  z-50 mt-0 w-48 overflow-hidden rounded-xl bg-white shadow-lg">
+                    {TRADE_OPTIONS.map((opt, idx) => (
+                      <div key={opt.label}>
+                        <button
+                          onClick={() => {
+                            setActiveIdx(i);
+                            setTradeCategory(opt.label);
+                            setTradeMenuOpen(false);
+                          }}
+                          className="block w-full px-4 py-3 text-left text-[0.875rem] transition hover:bg-gray-50"
+                        >
+                          {opt.label}
+                        </button>
+                        {idx !== TRADE_OPTIONS.length - 1 && (
+                          <div className="mx-4 h-px bg-gray-200" />
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
             );
           }
 
           return (
-            <div
+            <button
               key={tab.label}
-              className="relative"
-              onMouseEnter={openAgentMenu}
-              onMouseLeave={closeAgentMenu}
+              onClick={() => {
+                setActiveIdx(i);
+                setAgentMenuOpen(false);
+                setTradeMenuOpen(false);
+              }}
+              className={tabClass(activeIdx === i)}
             >
-              <button
-                onClick={() => setActiveIdx(i)}
-                className={tabClass(activeIdx === i)}
-              >
-                {activeIdx === i ? agentShort : "Agents"}
-              </button>
-
-              {agentMenuOpen && (
-                <div className="absolute left-0 top-full z-50 mt-2 w-48 overflow-hidden rounded-xl bg-white shadow-lg">
-                  {AGENT_OPTIONS.map((opt, idx) => (
-                    <div key={opt.label}>
-                      <button
-                        onClick={() => {
-                          setActiveIdx(i);
-                          setAgentCategory(opt.label);
-                          setAgentMenuOpen(false);
-                        }}
-                        className="block w-full px-4 py-3 text-left text-[0.875rem] transition hover:bg-gray-50"
-                      >
-                        {opt.label}
-                      </button>
-                      {idx !== AGENT_OPTIONS.length - 1 && (
-                        <div className="mx-4 h-px bg-gray-200" />
-                      )}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
+              {tab.label}
+            </button>
           );
         })}
       </div>
@@ -146,7 +217,7 @@ const HeroSearchBar = ({ mode, setMode }: Props) => {
         >
           <button
             onClick={() => setMode("search")}
-            className={`${BTN} h-11 w-11 shrink-0 sm:h-12 sm:w-12 lg:h-14 lg:w-14`}
+            className="flex items-center justify-center rounded-xl bg-white text-[#3D2A0B] hover:border hover:border-primary shadow-md mb-1 transitionh-11 w-11 shrink-0 sm:h-12 sm:w-12 lg:h-14 lg:w-14 "
           >
             <Search size={18} />
           </button>
@@ -196,7 +267,7 @@ const HeroSearchBar = ({ mode, setMode }: Props) => {
         >
           <button
             onClick={() => setMode("ai")}
-            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white shadow-md transition hover:bg-gray-100 sm:h-12 sm:w-12 lg:h-14 mb-1 lg:w-14"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white shadow-md transition hover:border hover:border-primary sm:h-12 sm:w-12 lg:h-14 mb-1 lg:w-14"
           >
             <Sparkles size={20} />
           </button>
@@ -207,7 +278,7 @@ const HeroSearchBar = ({ mode, setMode }: Props) => {
         isOpen={filterOpen}
         onClose={() => setFilterOpen(false)}
         initialTab={activeTab.label as any}
-        agentCategory={agentCategory}
+        agentCategory={activeTab.label === "Trades" ? tradeCategory : agentCategory}
       />
       <AiVoiceModal isOpen={voiceOpen} onClose={() => setVoiceOpen(false)} />
     </div>

@@ -1,4 +1,5 @@
 import type { Trader } from "../types/trader";
+import Ava from '../assets/place holder/serviceholder.svg'
 
 export const mockTraders: Trader[] = [
   {
@@ -7,7 +8,7 @@ export const mockTraders: Trader[] = [
     tagLine: "there Tag",
     role: "Interior Designer",
     location: "Location",
-    avatar: "https://i.pravatar.cc/96?img=20",
+    avatar: Ava,
     rating: 4.5,
     reviews: 123,
     tags: ["Tag Line 1", "Tag Line 2", "Tag line 3"],
@@ -18,7 +19,7 @@ export const mockTraders: Trader[] = [
     tagLine: "Premium Services",
     role: "Architect",
     location: "Chennai, Tamil Nadu",
-    avatar: "https://i.pravatar.cc/96?img=21",
+    avatar: Ava,
     rating: 4.7,
     reviews: 89,
     tags: ["Renovation", "Modern Design", "3D Modelling"],
@@ -29,7 +30,7 @@ export const mockTraders: Trader[] = [
     tagLine: "Trusted Professional",
     role: "Plumber",
     location: "Surat, Gujarat",
-    avatar: "https://i.pravatar.cc/96?img=22",
+    avatar: Ava,
     rating: 4.2,
     reviews: 45,
     tags: ["Plumbing", "Emergency", "Maintenance"],
@@ -40,7 +41,7 @@ export const mockTraders: Trader[] = [
     tagLine: "Premium Services",
     role: "Architect",
     location: "Chennai, Tamil Nadu",
-    avatar: "https://i.pravatar.cc/96?img=23",
+    avatar: Ava,
     rating: 4.7,
     reviews: 89,
     tags: ["Renovation", "Modern Design", "3D Modelling"],
@@ -50,7 +51,7 @@ export const mockTraders: Trader[] = [
     tagLine: "Premium Services",
     role: "Architect",
     location: "Chennai, Tamil Nadu",
-    avatar: "https://i.pravatar.cc/96?img=24",
+    avatar: Ava,
     rating: 4.7,
     reviews: 89,
     tags: ["Renovation", "Modern Design", "3D Modelling"],
@@ -61,7 +62,7 @@ export const mockTraders: Trader[] = [
     tagLine: "Premium Services",
     role: "Architect",
     location: "Chennai, Tamil Nadu",
-    avatar: "https://i.pravatar.cc/96?img=25",
+    avatar: Ava,
     rating: 4.7,
     reviews: 89,
     tags: ["Renovation", "Modern Design", "3D Modelling"],
@@ -71,7 +72,7 @@ export const mockTraders: Trader[] = [
     tagLine: "Premium Services",
     role: "Architect",
     location: "Chennai, Tamil Nadu",
-    avatar: "https://i.pravatar.cc/96?img=26",
+    avatar: Ava,
     rating: 4.7,
     reviews: 89,
     tags: ["Renovation", "Modern Design", "3D Modelling"],

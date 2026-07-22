@@ -1,5 +1,11 @@
 import { Link } from "react-router-dom";
 import Logo from "../../assets/logo/briksyB.svg";
+import Insta from "../../assets/icons/instas.svg"
+import Face from "../../assets/icons/face.svg"
+import Whats from "../../assets/icons/whats.svg"
+import Linkd from "../../assets/icons/Linkedin.svg"
+import Xs from "../../assets/icons/x.svg"
+
 
 const footerLinks = [
     {
@@ -20,14 +26,16 @@ const footerLinks = [
             "Contact",
         ],
     },
-    {
-        title: "Connect",
-        links: [
-            "LinkedIn",
-            "Instagram",
-            "Facebook",
-        ],
-    },
+];
+
+const socialLinks = [
+    { name: "Instagram", icon: Insta, href: "https://instagram.com" },
+    { name: "Facebook", icon: Face, href: "https://facebook.com" },
+    { name: "Whatsapp", icon: Whats, href: "https://web.whatsapp.com/" },
+    { name: "X", icon: Xs, href: "https://x.com/" },
+    { name: "LinkedIn", icon: Linkd, href: "https://linkedin.com" },
+
+
 ];
 
 const Footer = () => {
@@ -56,6 +64,31 @@ const Footer = () => {
                                 </ul>
                             </div>
                         ))}
+
+                        <div>
+                            <h4 className="font-medium text-[#8B6F54] lg:text-[1.125rem] text-[0.875rem] mb-2">
+                                Connect
+                            </h4>
+
+                            <div className="flex items-center gap-3">
+                                {socialLinks.map((social) => (
+                                    <a
+                                        key={social.name}
+                                        href={social.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        aria-label={social.name}
+                                        className="opacity-80 hover:opacity-100 transition-opacity"
+                                    >
+                                        <img
+                                            src={social.icon}
+                                            alt={social.name}
+                                            className="w-5 h-5 lg:w-6 lg:h-6"
+                                        />
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
                     </div>
 
                     <div className=" items-center hidden sm:flex gap-8 lg:text-[1rem] sm:text-[0.625rem] ">
@@ -82,6 +115,7 @@ const Footer = () => {
                         </div>
                     </div>
                     <span className="hidden sm:flex "> © 2025 Briksy. All Rights Reserved.</span>
+
 
                 </div>
 

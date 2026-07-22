@@ -12,7 +12,6 @@ const TABS = [
   "Fencing",
   "Landscapers",
   "Conveyancers",
-  "Brokers",
 ];
 
 

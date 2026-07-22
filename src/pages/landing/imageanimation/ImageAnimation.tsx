@@ -11,7 +11,7 @@ const badges = [
         title: "Trusted Connections",
         text: "Connect directly with builders, agents, and trades — no unnecessary intermediaries.",
         className: "left-[19%] top-[45%]",
-        dotClassName: "-top-4 -right-4", // relative to this badge's own corner now
+        dotClassName: "-top-4 -right-4",
     },
     {
         id: "verified",
@@ -25,7 +25,7 @@ const badges = [
         title: "Smart Discovery",
         text: "Search properties and professionals using powerful filters and location-based results.",
         className: "right-[10%] top-[76%]",
-        dotClassName: "-top-10 left-20 -translate-x-1/2", // top-center, matches screenshot 3
+        dotClassName: "-top-10 left-20 -translate-x-1/2",
     },
 ];
 
@@ -50,7 +50,7 @@ const ImageAnimation = () => {
                 scrollTrigger: {
                     trigger: sectionRef.current,
                     start: "top top",
-                    end: "+=100%",
+                    end: "+=50%",
                     scrub: 1,
                     pin: true,
                 },
@@ -58,8 +58,8 @@ const ImageAnimation = () => {
 
             tl.fromTo(
                 imgWrapRef.current,
-                { scale: 0.4, borderRadius: "24px" },
-                { scale: 1, borderRadius: "0px", ease: "power2.out", duration: 1 },
+                { scale: 0.8, },
+                { scale: 1, ease: "power2.out", duration: 1 },
             );
 
             tl.fromTo(
@@ -82,16 +82,16 @@ const ImageAnimation = () => {
     return (
         <div
             ref={sectionRef}
-            className="relative h-screen font-helvetica w-screen overflow-hidden"
+            className="relative h-screen w-screen overflow-hidden  font-helvetica"
         >
             <div
                 ref={imgWrapRef}
-                className="absolute inset-0 h-full w-full origin-center will-change-transform"
+                className="absolute inset-0 h-full w-full origin-center overflow-hidden will-change-transform"
             >
                 <img
                     src={WholeBg}
                     alt=""
-                    className="h-[46.4128rem] w-[82.5625rem] m-auto"
+                    className="h-full w-full object-cover"
                     draggable={false}
                 />
 

@@ -15,7 +15,9 @@ const HomeA = () => {
       <BuilderList />
       <TrendingProperty />
       <ServiceList />
+
       <Contact />
+      
     </div>
   );
 };
