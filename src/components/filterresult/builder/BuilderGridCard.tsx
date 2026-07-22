@@ -8,8 +8,8 @@ type Props = {
 
 const BuilderGridCard = ({ item }: Props) => {
   return (
-    <div className="overflow-hidden rounded-[2rem] w-[300px] mx-auto md:w-auto text-[#342511] bg-white ">
-      <div className="relative h-[160px]">
+    <div className="overflow-hidden rounded-[2rem] w-[300px] h-[30rem] mx-auto md:w-auto text-[#342511] bg-white ">
+      <div className="relative ">
         <img
           src={item.bannerImage}
           alt={item.name}
@@ -43,7 +43,7 @@ const BuilderGridCard = ({ item }: Props) => {
           />
         </div>
 
-        <div className="mt-6">
+        <div className="mt-6 ">
           <h3 className="text-[1rem] font-bold leading-tight text-[#342511]">
             {item.name}
           </h3>
@@ -54,7 +54,7 @@ const BuilderGridCard = ({ item }: Props) => {
             {item.tags.map((tag, index) => (
               <span
                 key={index}
-                className="rounded-full border-[#E6E6E6] bg-[#342511]  text-[#E7E7E4] px-4 py-1 text-[0.75rem] "
+                className="rounded-full border-[#E6E6E6] bg-[#342511]  text-[#E7E7E4] px-2 py-1 text-[0.70rem] "
               >
                 {tag}
               </span>
@@ -63,7 +63,7 @@ const BuilderGridCard = ({ item }: Props) => {
 
           <div className="my-6 h-px bg-[#ECE7E2]" />
 
-          <div className="flex items-center justify-between text-[1rem]">
+          <div className="flex items-center  justify-between text-[1rem]">
             <div className="flex items-center gap-2">
               <Star size={18} className="fill-[#E2CBB3] text-[#E2CBB3]" />
 

@@ -7,7 +7,7 @@ type Props = {
 };
 
 const PropertyGridCard = ({ item }: Props) => (
-  <div className="rounded-3xl border border-[#E6E6E6] h-auto text-[#342511] mx-auto md:w-auto bg-white text-left overflow-hidden">
+  <div className="rounded-3xl border border-[#E6E6E6] h-[30rem] text-[#342511] mx-auto md:w-auto bg-white text-left overflow-hidden">
     <div className="relative aspect-4/3 overflow-hidden">
       <img
         src={item.image}
