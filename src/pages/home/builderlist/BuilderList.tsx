@@ -1,10 +1,9 @@
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Mousewheel } from "swiper/modules";
 import { useNavigate } from "react-router-dom";
 import { mockBuilders } from "../../../data/mockBuilders";
 import "swiper/css";
 import BuilderGridCard from "../../../components/filterresult/builder/BuilderGridCard";
-
-
 
 const BuilderList = () => {
     const navigate = useNavigate();
@@ -17,31 +16,34 @@ const BuilderList = () => {
                     </h2>
                     <p className="text-[0.875rem] lg:text-[1rem]">Trusted agencies and builders</p>
 
-                    <button onClick={() => navigate("/coming-soon")} className="absolute right-0 flex items-center gap-2 text-lg font-medium text-[#562F00] transition-all hover:gap-3">
+                    <button
+                        onClick={() => navigate("/coming-soon")}
+                        className="absolute right-0 flex items-center gap-3 text-lg font-medium text-[#562F00] transition-all hover:gap-3"
+                    >
                         View All
                         <span>↗</span>
                     </button>
                 </div>
+
                 <Swiper
+                    modules={[Mousewheel]}
                     spaceBetween={24}
                     slidesPerView={1}
-                    breakpoints={{
-                        480: {
-                            slidesPerView: 1.2,
-                        },
-                        640: {
-                            slidesPerView: 1.5,
-                        },
-                        768: {
-                            slidesPerView: 2,
-                        },
-                        1024: {
-                            slidesPerView: 3,
-                        },
-                        1440: {
-                            slidesPerView: 4,
-                        },
+                    watchOverflow={false}
+                    grabCursor={true}
+                    mousewheel={{
+                        forceToAxis: true,
+                        sensitivity: 1,
+                        releaseOnEdges: true,
                     }}
+                    breakpoints={{
+                        480: { slidesPerView: 1.2 },
+                        640: { slidesPerView: 1.5 },
+                        768: { slidesPerView: 2.1 },
+                        1024: { slidesPerView: 3.2 },
+                        1440: { slidesPerView: 4.3 },
+                    }}
+                    className="[overscroll-behavior-x:contain] touch-pan-y"
                 >
                     {mockBuilders.map((item) => (
                         <SwiperSlide key={item.id}>

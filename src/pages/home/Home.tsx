@@ -12,9 +12,9 @@ const HomeA = () => {
       <Hero />
       <OverLook />
       <Process />
-      <ServiceList />
-      <TrendingProperty />
       <BuilderList />
+      <TrendingProperty />
+      <ServiceList />
       <Contact />
     </div>
   );

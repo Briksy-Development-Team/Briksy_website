@@ -18,7 +18,7 @@ const TrendingProperty = () => {
                         <p className="text-[0.875rem] lg:text-[1rem]">Verified solo traders and specialists</p>
                     </div>
 
-                    <button onClick={() => navigate("/coming-soon")} className="flex items-center   gap-2 text-[#562F00] font-medium">
+                    <button onClick={() => navigate("/coming-soon")} className="flex items-center   gap-3 text-[#562F00] font-medium">
                         View All
                         <ArrowUpRight size={24} />
                     </button>
@@ -34,15 +34,17 @@ const TrendingProperty = () => {
                             slidesPerView: 1.5,
                         },
                         768: {
-                            slidesPerView: 2,
+                            slidesPerView: 2.1,
                         },
                         1024: {
-                            slidesPerView: 3,
+                            slidesPerView: 3.2,
                         },
                         1440: {
-                            slidesPerView: 4,
+                            slidesPerView: 4.3,
                         },
                     }}
+                    className="[overscroll-behavior-x:contain] touch-pan-y"
+
                 >
                     {mockProperties.map((item) => (
                         <SwiperSlide key={item.id}>

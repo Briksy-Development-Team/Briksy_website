@@ -59,17 +59,19 @@ const ServiceList = () => {
           ))}
         </div>
 
-        <div key={activeIdx} className="animate-fade-in">
+        <div key={activeIdx} className="animate-fade-in gap-3">
           <Swiper
             spaceBetween={24}
             slidesPerView={1}
             breakpoints={{
               480: { slidesPerView: 1 },
               640: { slidesPerView: 1.5 },
-              768: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
-              1440: { slidesPerView: 4 },
+              768: { slidesPerView: 2.1 },
+              1024: { slidesPerView: 3.2 },
+              1440: { slidesPerView: 4.3 },
             }}
+            className="[overscroll-behavior-x:contain] touch-pan-y"
+
           >
             {items.map((item) => (
               <SwiperSlide key={item.id}>

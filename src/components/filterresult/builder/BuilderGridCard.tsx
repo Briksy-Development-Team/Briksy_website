@@ -28,7 +28,7 @@ const BuilderGridCard = ({ item }: Props) => {
         </button>
       </div>
 
-      <div className="relative px-6 pb-6">
+      <div className="relative px-4 pb-6">
         <div className="-mt-10 relative w-fit">
           <img
             src={item.avatar}
@@ -50,7 +50,7 @@ const BuilderGridCard = ({ item }: Props) => {
 
           <p className="mt-2 text-[0.875rem] ">{item.location}</p>
 
-          <div className="mt-5 flex flex-wrap gap-2">
+          <div className="mt-5 flex flex-wrap bg-amber-100 gap-2">
             {item.tags.map((tag, index) => (
               <span
                 key={index}
