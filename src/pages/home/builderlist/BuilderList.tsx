@@ -9,7 +9,7 @@ const BuilderList = () => {
     const navigate = useNavigate();
     return (
         <section className="py-20 font-helvetica">
-            <div className="lg:w-full px-[5%] lg:ml-10">
+            <div className="lg:w-full px-[5%] lg:px-0 lg:ml-10">
                 <div className="relative mb-10 lg:mr-14  flex flex-col text-[#342511] items-stat justify-end lg:justify-center">
                     <h2 className="text-[30px] font-medium  lg:text-[44px]">
                         Featured Businesses
