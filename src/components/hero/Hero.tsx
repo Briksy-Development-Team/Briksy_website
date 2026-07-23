@@ -179,7 +179,7 @@ const Hero = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen w-full mx-auto mt-0 lg:mt-10 overflow-hidden bg-red-300 font-helvetica"
+      className="relative min-h-screen w-full px-[3%]   lg:mt-10 overflow-hidden font-helvetica"
     >
       {COLLAGE_IMAGES.map((img, i) => (
         <div
@@ -208,7 +208,7 @@ const Hero = () => {
         </div>
       ))}
 
-      <div className="relative z-10 flex min-h-screen flex-col items-center justify-center lg:px-6 pt-28 pb-32">
+      <div className="relative z-10 flex min-h-screen mt-10 flex-col items-center justify-center lg:px-6 pt-28 pb-32">
         <div className="mb-6 inline-flex items-center gap-2 rounded-2xl bg-white/60 px-3 py-2 backdrop-blur-md sm:gap-3 sm:px-4 sm:py-2.5 md:gap-4 md:px-5 lg:px-6">
           <div className="flex -space-x-2">
             <img

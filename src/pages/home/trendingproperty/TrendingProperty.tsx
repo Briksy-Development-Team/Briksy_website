@@ -3,24 +3,24 @@ import { useNavigate } from "react-router-dom";
 import { mockProperties } from "../../../data/mockProperties";
 import PropertyGridCard from "../../../components/filterresult/property/PropertyGridCard";
 import "swiper/css";
-import { ArrowUpRight } from "lucide-react";
 
 const TrendingProperty = () => {
     const navigate = useNavigate();
     return (
         <section className="py-20 font-helvetica">
-            <div className="w-full ml-10 ">
-                <div className="flex justify-between m4-14  lg:items-center items-end">
-                    <div className="relative mb-10 flex flex-col text-[#342511] items-start justify-center">
-                        <h2 className="lg:text-[2.75rem] text-[1.875rem] font-medium tracking-tight">
-                            Featured Properties
-                        </h2>
-                        <p className="text-[0.875rem] lg:text-[1rem]">Verified solo traders and specialists</p>
-                    </div>
+            <div className="lg:w-full px-[5%] lg:ml-10">
+                <div className="relative mb-10 lg:mr-14  flex flex-col text-[#342511] items-stat justify-end lg:justify-center">
+                    <h2 className="text-[30px] font-medium  lg:text-[44px]">
+                        Featured Properties
+                    </h2>
+                    <p className="text-[0.875rem] lg:text-[1rem]">Trusted agencies and builders</p>
 
-                    <button onClick={() => navigate("/coming-soon")} className="flex items-center mr-12   gap-3 text-[#562F00] font-medium">
+                    <button
+                        onClick={() => navigate("/coming-soon")}
+                        className="absolute right-0 flex items-center gap-3 text-lg font-medium text-[#562F00] transition-all hover:gap-3"
+                    >
                         View All
-                        <ArrowUpRight size={24} />
+                        <span>↗</span>
                     </button>
                 </div>
                 <Swiper

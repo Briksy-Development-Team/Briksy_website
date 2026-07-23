@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { ArrowUpRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { mockTraders } from "../../../data/mockTraders";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -14,7 +13,6 @@ const TABS = [
   "Conveyancers",
 ];
 
-
 const rotate = <T,>(arr: T[], n: number): T[] => [
   ...arr.slice(n % arr.length),
   ...arr.slice(0, n % arr.length),
@@ -28,20 +26,19 @@ const ServiceList = () => {
 
   return (
     <section className="py-20 font-helvetica">
-      <div className="w-full ml-10 ">
-        <div className="flex items-end  mr-14 justify-between lg:items-center">
-          <div className="mb-10 flex flex-col items-start justify-center text-[#342511]">
-            <h2 className="text-[1.875rem] font-medium tracking-tight lg:text-[2.75rem]">
-              Top Professionals
-            </h2>
-            <p className="text-[0.875rem] lg:text-[1rem]">
-              Verified solo traders and specialists
-            </p>
-          </div>
+      <div className="lg:w-full  px-[5%] lg:ml-10">
+        <div className="relative mb-10 lg:mr-14  flex flex-col text-[#342511] items-stat justify-end lg:justify-center">
+          <h2 className="text-[30px] font-medium  lg:text-[44px]">
+            Top Professionals
+          </h2>
+          <p className="text-[0.875rem] lg:text-[1rem]">Trusted agencies and builders</p>
 
-          <button onClick={() => navigate("/coming-soon")} className="flex  items-center gap-2 font-medium text-[#562F00]">
+          <button
+            onClick={() => navigate("/coming-soon")}
+            className="absolute right-0 flex items-center gap-3 text-lg font-medium text-[#562F00] transition-all hover:gap-3"
+          >
             View All
-            <ArrowUpRight size={24} />
+            <span>↗</span>
           </button>
         </div>
 
@@ -63,14 +60,23 @@ const ServiceList = () => {
             spaceBetween={24}
             slidesPerView={1}
             breakpoints={{
-              480: { slidesPerView: 1 },
-              640: { slidesPerView: 1.5 },
-              768: { slidesPerView: 2.1 },
-              1024: { slidesPerView: 3.2 },
-              1440: { slidesPerView: 4 },
+              480: {
+                slidesPerView: 1.2,
+              },
+              640: {
+                slidesPerView: 1.5,
+              },
+              768: {
+                slidesPerView: 2.1,
+              },
+              1024: {
+                slidesPerView: 3.2,
+              },
+              1440: {
+                slidesPerView: 4,
+              },
             }}
             className="[overscroll-behavior-x:contain] touch-pan-y"
-
           >
             {items.map((item) => (
               <SwiperSlide key={item.id}>

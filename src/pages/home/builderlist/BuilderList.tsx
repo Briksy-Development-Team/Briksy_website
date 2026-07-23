@@ -9,8 +9,8 @@ const BuilderList = () => {
     const navigate = useNavigate();
     return (
         <section className="py-20 font-helvetica">
-            <div className="w-full ml-10">
-                <div className="relative mb-10 mr-14  flex flex-col text-[#342511] items-start justify-center">
+            <div className="lg:w-full px-[5%] lg:ml-10">
+                <div className="relative mb-10 lg:mr-14  flex flex-col text-[#342511] items-stat justify-end lg:justify-center">
                     <h2 className="text-[30px] font-medium  lg:text-[44px]">
                         Featured Businesses
                     </h2>
@@ -37,11 +37,21 @@ const BuilderList = () => {
                         releaseOnEdges: true,
                     }}
                     breakpoints={{
-                        480: { slidesPerView: 1.2 },
-                        640: { slidesPerView: 1.5 },
-                        768: { slidesPerView: 2.1 },
-                        1024: { slidesPerView: 3.2 },
-                        1440: { slidesPerView: 4 },
+                        480: {
+                            slidesPerView: 1.2,
+                        },
+                        640: {
+                            slidesPerView: 1.5,
+                        },
+                        768: {
+                            slidesPerView: 2.1,
+                        },
+                        1024: {
+                            slidesPerView: 3.2,
+                        },
+                        1440: {
+                            slidesPerView: 4,
+                        },
                     }}
                     className="[overscroll-behavior-x:contain] touch-pan-y"
                 >

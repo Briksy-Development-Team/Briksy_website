@@ -7,7 +7,7 @@ type Props = {
 };
 
 const PropertyGridCard = ({ item }: Props) => (
-  <div className="flex h-[30rem] w-full  flex-col border border-transparent transition-colors duration-200 overflow-hidden rounded-3xl bg-white text-left text-[#342511] mx-auto 
+  <div className="flex h-[30rem] w-full  flex-col border border-transparent  transition-colors duration-200 overflow-hidden rounded-3xl bg-white text-left text-[#342511] mx-auto 
    hover:border-primary">
     <div className="relative h-[60%] shrink-0 overflow-hidden">
       <img

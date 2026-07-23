@@ -113,7 +113,7 @@ const HeroSearchBar = ({ mode, setMode }: Props) => {
 
   return (
     <div ref={rootRef} className="flex mx-auto flex-col items-center">
-      <div className="grid w-[90%] grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 sm:w-[80%] lg:w-full gap-3 px-2">
+      <div className="grid w-[95%] grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 sm:w-[80%] lg:w-full gap-3 px-2">
         {TABS.map((tab, i) => {
           if (tab.label === "Agents") {
             return (
@@ -211,7 +211,7 @@ const HeroSearchBar = ({ mode, setMode }: Props) => {
         })}
       </div>
 
-      <div className="flex w-[90%] items-center gap-3  py-2 sm:w-[80%] lg:w-full">
+      <div className="flex w-[95%] items-center gap-3  py-2 sm:w-[80%] lg:w-full">
         <div
           className={`overflow-hidden transition-[width,opacity] duration-300 ${isAi ? "w-11 opacity-100 sm:w-12 lg:w-14" : "w-0 opacity-0"}`}
         >
