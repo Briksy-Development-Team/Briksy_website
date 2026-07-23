@@ -39,7 +39,7 @@ export const mockProperties: Property[] = [
   },
   {
     id: 3,
-    title: "Spacious Family Home in South Brisbane",
+    title: "Spacious  Home in South Brisbane",
     address: "South Brisbane, QLD 4101",
     location: "South Brisbane, QLD",
     badge: "New Listing",

@@ -8,7 +8,7 @@ type Props = {
 
 const BuilderGridCard = ({ item }: Props) => {
   return (
-    <div className="overflow-hidden rounded-[2rem] w-[300px] h-[30rem] mx-auto md:w-auto text-[#342511] bg-white hover:border border-primary ">
+    <div className=" rounded-[2rem] w-[300px] h-[30rem] border border-transparent transition-colors duration-200 overflow-hidden mx-auto md:w-auto text-[#342511] bg-white  hover:border-primary ">
       <div className="relative h-[50%] ">
         <img
           src={item.bannerImage}

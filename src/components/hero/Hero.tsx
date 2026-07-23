@@ -4,11 +4,11 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import HeroSearchBar from "../search/HeroSearchBar";
-import Imageone from "../../assets/hero/imageone.svg"
-import Imagetwo from "../../assets/hero/imagetwo.svg"
-import Imagethree from "../../assets/hero/imagethree.svg"
-import Imagefour from "../../assets/hero/imagefour.svg"
-import imagefive from "../../assets/hero/imagefive.svg"
+import Imageone from "../../assets/hero/imageone.svg";
+import Imagetwo from "../../assets/hero/imagetwo.svg";
+import Imagethree from "../../assets/hero/imagethree.svg";
+import Imagefour from "../../assets/hero/imagefour.svg";
+import imagefive from "../../assets/hero/imagefive.svg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,34 +22,52 @@ interface CollageImage {
 const COLLAGE_IMAGES: CollageImage[] = [
   {
     src: Imageone,
-    className: "left-[15%] top-[10%] w-[110px] h-[85px] lg:w-[9.9375rem] lg:h-[7.5839rem]",
+    className:
+      "left-[15%] top-[20%] w-[110px] h-[85px] lg:w-[9.9375rem] lg:h-[7.5839rem]",
     scrollDepth: -0.4,
     mouseDepth: 0.6,
   },
   {
     src: Imagetwo,
-    className: "-left-[3%] top-[52%] w-[130px] h-[100px] lg:w-[12.2735rem] lg:h-[9.375rem]",
+    className:
+      "-left-[3%] top-[52%] w-[130px] h-[100px] lg:w-[12.2735rem] lg:h-[9.375rem]",
     scrollDepth: 0.6,
     mouseDepth: 1,
   },
   {
     src: Imagethree,
-    className: "right-[10%] top-[35%] w-[130px] h-[100px] lg:w-[11.2064rem] lg:h-[8.5599rem]",
+    className:
+      "right-[10%] top-[35%] w-[130px] h-[100px] lg:w-[11.2064rem] lg:h-[8.5599rem]",
     scrollDepth: -0.6,
     mouseDepth: 0.8,
   },
   {
     src: Imagefour,
-    className: "-right-[2%] top-[65%] w-[100px] h-[80px] lg:w-[9.0905rem] lg:h-[6.9375rem]",
-    scrollDepth: 0.4,
+    className:
+      "-right-[2%] top-[65%] w-[100px] h-[80px] lg:w-[9.0905rem] lg:h-[6.9375rem]",
+    scrollDepth: 0.8, // Varied depth for distinct parallax
     mouseDepth: 1.2,
-
   },
   {
     src: imagefive,
-    className: "right-[15%] top-[10%] w-[100px] h-[80px] lg:w-[9.0905rem] lg:h-[6.9375rem]",
-    scrollDepth: 0.4,
-    mouseDepth: 1.2,
+    className:
+      "right-[15%] top-[10%] w-[100px] h-[80px] lg:w-[9.0905rem] lg:h-[6.9375rem]",
+    scrollDepth: 0.3, // Varied depth for distinct parallax
+    mouseDepth: 1.1,
+  },
+  {
+    src: Imageone,
+    className:
+      "-left-[3%] top-[15%] w-[100px] h-[80px] lg:w-[9.0905rem] lg:h-[6.9375rem]",
+    scrollDepth: -0.3, // Varied depth for distinct parallax
+    mouseDepth: 0.9,
+  },
+  {
+    src: Imagethree,
+    className:
+      "-right-[3%] top-[15%] w-[100px] h-[80px] lg:w-[9.0905rem] lg:h-[5rem]",
+    scrollDepth: 0.5, // Varied depth for distinct parallax
+    mouseDepth: 1.3,
   },
 ];
 
@@ -60,6 +78,7 @@ const Hero = () => {
   }>();
 
   const sectionRef = useRef<HTMLElement | null>(null);
+  const parallaxRefs = useRef<(HTMLDivElement | null)[]>([]); // New ref for scroll trigger
   const wrapperRefs = useRef<(HTMLDivElement | null)[]>([]);
   const imageRefs = useRef<(HTMLImageElement | null)[]>([]);
   const quickToRefs = useRef<
@@ -71,32 +90,38 @@ const Hero = () => {
 
   useGSAP(
     () => {
-      const wrapperEls = wrapperRefs.current.filter(Boolean) as HTMLDivElement[];
-      const imageEls = imageRefs.current.filter(Boolean) as HTMLImageElement[];
+      // 1. Entry Animation (Targets wrapperRefs)
+      COLLAGE_IMAGES.forEach((_, i) => {
+        const wrapper = wrapperRefs.current[i];
+        if (!wrapper) return;
 
-      gsap.fromTo(
-        wrapperEls,
-        {
-          y: 40,
-          opacity: 0,
-          scale: 0.94,
-          filter: "blur(6px)",
-        },
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          filter: "blur(0px)",
-          duration: 1.4,
-          ease: "expo.out",
-          stagger: { each: 0.15, from: "start" },
-          delay: 0.5,
-        }
-      );
+        gsap.fromTo(
+          wrapper,
+          {
+            y: 40,
+            opacity: 0,
+            scale: 0.94,
+            filter: "blur(6px)",
+          },
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            filter: "blur(0px)",
+            duration: 1.4,
+            ease: "expo.out",
+            delay: 0.5 + i * 0.15,
+          }
+        );
+      });
 
-      wrapperEls.forEach((wrapperEl, i) => {
-        gsap.to(wrapperEl, {
-          y: () => COLLAGE_IMAGES[i].scrollDepth * 200,
+      // 2. Scroll Parallax (Targets new parallaxRefs to avoid y-property conflicts)
+      COLLAGE_IMAGES.forEach((img, i) => {
+        const parallaxWrapper = parallaxRefs.current[i];
+        if (!parallaxWrapper) return;
+
+        gsap.to(parallaxWrapper, {
+          y: img.scrollDepth * 200,
           ease: "none",
           scrollTrigger: {
             trigger: sectionRef.current,
@@ -107,32 +132,45 @@ const Hero = () => {
         });
       });
 
-      quickToRefs.current = imageEls.map((el) => ({
-        x: gsap.quickTo(el, "x", { duration: 0.8, ease: "power3.out" }),
-        y: gsap.quickTo(el, "y", { duration: 0.8, ease: "power3.out" }),
-      }));
+      // 3. Mouse Parallax Setup
+      quickToRefs.current = [];
+      COLLAGE_IMAGES.forEach((_, i) => {
+        const image = imageRefs.current[i];
+        if (!image) return;
+
+        quickToRefs.current[i] = {
+          x: gsap.quickTo(image, "x", {
+            duration: 0.8,
+            ease: "power3.out",
+          }),
+          y: gsap.quickTo(image, "y", {
+            duration: 0.8,
+            ease: "power3.out",
+          }),
+        };
+      });
 
       const handleMouseMove = (e: MouseEvent) => {
-        const section = sectionRef.current;
-        if (!section) return;
+        if (!sectionRef.current) return;
 
-        const rect = section.getBoundingClientRect();
+        const rect = sectionRef.current.getBoundingClientRect();
         const relX = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
         const relY = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
 
         COLLAGE_IMAGES.forEach((img, i) => {
           const tween = quickToRefs.current[i];
           if (!tween) return;
+
           tween.x(relX * 20 * img.mouseDepth);
           tween.y(relY * 20 * img.mouseDepth);
         });
       };
 
-      const section = sectionRef.current;
-      section?.addEventListener("mousemove", handleMouseMove);
+      sectionRef.current?.addEventListener("mousemove", handleMouseMove);
 
       return () => {
-        section?.removeEventListener("mousemove", handleMouseMove);
+        sectionRef.current?.removeEventListener("mousemove", handleMouseMove);
+        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       };
     },
     { scope: sectionRef }
@@ -141,24 +179,32 @@ const Hero = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen w-full mx-auto mt-0 lg:mt-10 overflow-hidden font-helvetica"
+      className="relative min-h-screen w-full mx-auto mt-0 lg:mt-10 overflow-hidden bg-red-300 font-helvetica"
     >
       {COLLAGE_IMAGES.map((img, i) => (
         <div
           key={i}
           ref={(el) => {
-            wrapperRefs.current[i] = el;
+            parallaxRefs.current[i] = el;
           }}
           className={`hidden md:block absolute will-change-transform ${img.className}`}
         >
-          <img
+          {/* Inner wrapper separates the entry fade/slide from the scroll parallax */}
+          <div
             ref={(el) => {
-              imageRefs.current[i] = el;
+              wrapperRefs.current[i] = el;
             }}
-            src={img.src}
-            alt=""
-            className="w-full h-full rounded-sm object-cover shadow-lg will-change-transform"
-          />
+            className="w-full h-full will-change-transform"
+          >
+            <img
+              ref={(el) => {
+                imageRefs.current[i] = el;
+              }}
+              src={img.src}
+              alt=""
+              className="w-full h-full rounded-sm object-cover shadow-lg will-change-transform"
+            />
+          </div>
         </div>
       ))}
 
@@ -168,27 +214,27 @@ const Hero = () => {
             <img
               src="https://i.pravatar.cc/40?img=1"
               alt=""
-              className="lg:h-6 lg:w-6  w-4 h-4 rounded-full border-2 border-black "
+              className="lg:h-6 lg:w-6 w-4 h-4 rounded-full border-2 border-black"
             />
             <img
               src="https://i.pravatar.cc/40?img=2"
               alt=""
-              className="lg:h-6 lg:w-6 w-4 h-4  rounded-full border-2 border-black "
+              className="lg:h-6 lg:w-6 w-4 h-4 rounded-full border-2 border-black"
             />
             <img
               src="https://i.pravatar.cc/40?img=3"
               alt=""
-              className="lg:h-6 lg:w-6 w-4 h-4 rounded-full border-2 border-black "
+              className="lg:h-6 lg:w-6 w-4 h-4 rounded-full border-2 border-black"
             />
             <img
               src="https://i.pravatar.cc/40?img=4"
               alt=""
-              className="lg:h-6 lg:w-6 w-4 h-4 rounded-full border-2 border-black "
+              className="lg:h-6 lg:w-6 w-4 h-4 rounded-full border-2 border-black"
             />
           </div>
 
-          <p className="leading-tight  ">
-            <span className="font-semibold text-[0.8rem]  lg:text-[1.2rem] text-[#342511]">
+          <p className="leading-tight">
+            <span className="font-semibold text-[0.8rem] lg:text-[1.2rem] text-[#342511]">
               340+
             </span>{" "}
             <span className="italic font-medium lg:text-[1rem] text-[0.685rem] text-black">

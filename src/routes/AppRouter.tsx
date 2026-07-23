@@ -12,6 +12,7 @@ import Pricing from "../pages/landing/subscription/Pricing";
 import SearchPage from "../pages/searchresult/SearchPage";
 import Error from "../components/error/Error";
 import Coming from "../components/coming/Coming";
+import HomeA from "../pages/home/Home";
 
 const AppRouter = () => {
     // const AppRouter = ({ dark, setDark }: AppRouterProps) => {
@@ -45,7 +46,7 @@ const AppRouter = () => {
                 </Route>
 
                 <Route path="/" element={<Home />} />
-                {/* <Route path="/home" element={<HomeA />} /> */}
+                <Route path="/v2" element={<HomeA />} />
                 <Route path="/result" element={<SearchPage />} />
             </Route>
             <Route path="/error" element={<Error />} />
