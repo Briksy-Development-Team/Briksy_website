@@ -7,7 +7,7 @@ type Props = {
 };
 
 const PropertyListCard = ({ item }: Props) => (
-  <div className="flex items-center font-helvetica gap-3 px-2 py-2 lg:gap-4 bg-white border border-[#E7E7E4] rounded-[1.25rem]">
+  <div className="flex items-center font-helvetica gap-3 hover:border hover:border-primary px-2 py-2 lg:gap-4 bg-white border border-[#E7E7E4] rounded-[1.25rem]">
     <div className="relative w-[108px] aspect-4/5 shrink-0 overflow-hidden rounded-2xl">
       <img
         src={item.image}

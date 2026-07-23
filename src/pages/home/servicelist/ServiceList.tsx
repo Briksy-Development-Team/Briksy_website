@@ -50,7 +50,7 @@ const ServiceList = () => {
             <button
               key={tab}
               onClick={() => setActiveIdx(i)}
-              className={`min-w-[140px] rounded-xl border border-[#DBDAD3] py-2 transition ${activeIdx === i ? "bg-[#242424] text-white" : "bg-white"
+              className={`min-w-[140px] rounded-xl border  hover:border hover:border-primary border-[#DBDAD3] py-2 transition ${activeIdx === i ? "bg-[#242424] text-white" : "bg-white"
                 }`}
             >
               {tab}

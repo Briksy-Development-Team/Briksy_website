@@ -1,4 +1,4 @@
-import { Heart, Star } from "lucide-react";
+import { Heart, Star, ArrowRight } from "lucide-react";
 import type { Builder } from "../../../types/builder";
 import Approves from "../../../assets/logo/apprrove.svg";
 
@@ -8,8 +8,8 @@ type Props = {
 
 const BuilderGridCard = ({ item }: Props) => {
   return (
-    <div className="overflow-hidden rounded-[2rem] w-[300px] h-[30rem] mx-auto md:w-auto text-[#342511] bg-white ">
-      <div className="relative ">
+    <div className="overflow-hidden rounded-[2rem] w-[300px] h-[30rem] mx-auto md:w-auto text-[#342511] bg-white hover:border border-primary ">
+      <div className="relative h-[50%] ">
         <img
           src={item.bannerImage}
           alt={item.name}
@@ -54,14 +54,14 @@ const BuilderGridCard = ({ item }: Props) => {
             {item.tags.map((tag, index) => (
               <span
                 key={index}
-                className="rounded-full border-[#E6E6E6] bg-[#342511]  text-[#E7E7E4] px-2 py-1 text-[0.70rem] "
+                className="rounded-full border-[#E6E6E6] bg-[#342511]  text-[#E7E7E4] px-2 py-1 text-[0.70rem] lg:text-[0.75rem] "
               >
                 {tag}
               </span>
             ))}
           </div>
 
-          <div className="my-6 h-px bg-[#ECE7E2]" />
+          <div className="mt-4 mb-6 h-px bg-[#ECE7E2]" />
 
           <div className="flex items-center  justify-between text-[1rem]">
             <div className="flex items-center gap-2">
@@ -76,9 +76,11 @@ const BuilderGridCard = ({ item }: Props) => {
               </span>
             </div>
 
-            <div className="flex items-center gap-4">
-
-              <span className="text-[0.875rem]">Est.{item.establishedYear}</span>
+            <div className="flex items-center gap-2">
+              <span className="text-[0.875rem]">
+                Est.{item.establishedYear}
+              </span>
+              <ArrowRight size={18} className="text-[#BF9F7D]" />
             </div>
           </div>
         </div>

@@ -8,7 +8,7 @@ type Props = {
 };
 
 const BuilderListCard = ({ item }: Props) => (
-  <div className="flex items-center gap-3 relative px-4 py-4 lg:gap-4 border3 text-[#342511] bg-white border border-[#E7E7E4] rounded-[1.25rem]">
+  <div className="flex items-center gap-3 relative px-4 py-4 lg:gap-4  hover:border hover:border-primary border3 text-[#342511] bg-white border border-[#E7E7E4] rounded-[1.25rem]">
     <div className="relative shrink-0">
       <img
         src={item.avatar}
