@@ -6,7 +6,7 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
 const FRAME_COUNT = 170;
-const TRANSITION_FRAMES = 14;
+const TRANSITION_FRAMES = 26;
 
 const getFrame = (i: number) =>
     `/frames-webp/frame_${String(i).padStart(5, "0")}.webp`;
@@ -101,24 +101,24 @@ const Community = () => {
 
             tl.to(
                 prevTitle,
-                { opacity: 0, y: "-100", duration: dur, ease: "none" },
+                { opacity: 0, y: "-200", duration: dur, ease: "power2.out" },
                 start,
             )
                 .to(
                     prevDesc,
-                    { opacity: 0, y: "100", duration: dur, ease: "none" },
+                    { opacity: 0, y: "200", duration: dur, ease: "power2.out" },
                     start,
                 )
                 .fromTo(
                     nextTitle,
-                    { opacity: 0, y: "100" },
-                    { opacity: 1, y: 0, duration: dur, ease: "none" },
+                    { opacity: 0, y: "200" },
+                    { opacity: 1, y: 0, duration: dur, ease: "power2.out" },
                     start,
                 )
                 .fromTo(
                     nextDesc,
-                    { opacity: 0, y: "-100" },
-                    { opacity: 1, y: 0, duration: dur, ease: "none" },
+                    { opacity: 0, y: "-200" },
+                    { opacity: 1, y: 0, duration: dur, ease: "power2.out" },
                     start,
                 );
         }
@@ -126,11 +126,11 @@ const Community = () => {
         const trigger = ScrollTrigger.create({
             trigger: sectionRef.current,
             start: "top top",
-            end: "+=5000",
+            end: "+=8000",
             pin: true,
-            scrub: 5,
+            scrub: 1.2,
             onUpdate: (self) => {
-                tl.time(self.progress); // was: tl.progress(self.progress)
+                tl.time(self.progress);
 
                 const frame = Math.round(self.progress * (FRAME_COUNT - 1));
                 if (frame !== currentFrameRef.current) {
@@ -148,46 +148,46 @@ const Community = () => {
     }, []);
 
     return (
-        <>
-            <div
-                ref={sectionRef}
-                className="w-full h-screen flex flex-col lg:flex-row items-center justify-center px-8 lg:px-16 gap-8"
-            >
-                <div className="relative w-full lg:w-1/4 h-[50%] my-auto  flex items-center justify-center overflow-hidden shrink-0">
-                    {sections.map((item, i) => (
-                        <h2
-                            key={item.title}
-                            ref={(el) => {
-                                titleRefs.current[i] = el;
-                            }}
-                            className="absolute w-full text-center text-[1.875rem] font-medium lg:text-[2.25rem] text-[#342511]"
-                        >
-                            {item.title}
-                        </h2>
-                    ))}
-                </div>
-
-                <div className="w-full lg:w-[37.5rem] h-[21.0625rem] aspect-73/41 flex items-center justify-center shrink-0">
-                    <canvas ref={canvasRef} className="w-full h-full" />
-                </div>
-
-                <div className="relative w-full lg:w-1/4 h-[50%] my-auto  flex items-center overflow-hidden shrink-0">
-                    {sections.map((item, i) => (
-                        <p
-                            key={item.title}
-                            ref={(el) => {
-                                descRefs.current[i] = el;
-                            }}
-                            className="absolute w-full text-primary lg:text-[1rem] leading-relaxed"
-                        >
-                            {item.description}
-                        </p>
-                    ))}
-                </div>
+        <div
+            ref={sectionRef}
+            className="w-full h-screen flex flex-col lg:flex-row items-center justify-center px-6 lg:px-16 gap-4 lg:gap-8"
+        >
+            {/* Title — above video on mobile, left of video on desktop */}
+            <div className="order-1 lg:order-1 relative w-full lg:w-1/4 h-16 lg:h-[70%] flex items-center lg:items-start justify-center overflow-hidden shrink-0">
+                {sections.map((item, i) => (
+                    <h2
+                        key={item.title}
+                        ref={(el) => {
+                            titleRefs.current[i] = el;
+                        }}
+                        className="absolute w-full text-center text-[1.5rem] sm:text-[1.875rem] font-medium lg:text-[2.25rem] text-[#342511]"
+                    >
+                        {item.title}
+                    </h2>
+                ))}
             </div>
 
-        </>
+            {/* Video — centered on all breakpoints */}
+            <div className="order-2 lg:order-2 w-full max-w-[37.5rem] lg:w-[37.5rem] aspect-73/41 h-auto lg:h-[21.0625rem] flex items-center justify-center shrink-0 mx-auto">
+                <canvas ref={canvasRef} className="w-full h-full" />
+            </div>
+
+            {/* Description — below video on mobile, right of video on desktop */}
+            <div className="order-3 lg:order-3 relative w-full lg:w-1/4 h-24 lg:h-[70%] flex items-center lg:items-end justify-center overflow-hidden shrink-0">
+                {sections.map((item, i) => (
+                    <p
+                        key={item.title}
+                        ref={(el) => {
+                            descRefs.current[i] = el;
+                        }}
+                        className="absolute w-full text-center lg:text-left text-primary text-sm sm:text-base leading-relaxed"
+                    >
+                        {item.description}
+                    </p>
+                ))}
+            </div>
+        </div>
     );
 };
 
-export default Community;
+export default Community;   

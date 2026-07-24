@@ -5,11 +5,13 @@
 // import Process from "./Process/Process";
 // import BuilderList from "./builderlist/BuilderList";
 import DynamicCollageGSAP from "../../components/ai/Ai";
+import Community from "./communityv2/Community";
 
 const HomeA = () => {
   return (
     <div className=" min-h-screen">
       <DynamicCollageGSAP />
+      <Community />
       {/* <OverLook />
       <Process />
       <BuilderList />
