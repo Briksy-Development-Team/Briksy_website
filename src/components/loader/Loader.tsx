@@ -37,7 +37,7 @@ const Loader = ({ appReady, onComplete }: Props) => {
   }, [appReady, canExit, onComplete]);
 
   return (
-    <div className="fixed inset-0 z-[9999] flex flex-col items-center space-y-3 justify-center bg-[#F7F3EE]">
+    <div className="fixed inset-0 z-[9999] flex flex-col items-center space-y-3 justify-center bg-[#f4f8ee]">
       <img src={Logos} alt="Briksy" className="w-[180px] md:w-[300px]" />
 
       <video

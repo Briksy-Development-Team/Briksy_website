@@ -12,7 +12,7 @@ import ServiceList from "../home/servicelist/ServiceList";
 
 const Home = () => {
   return (
-    <div className="bg-[#F7F3EE] min-h-screen">
+    <div className=" min-h-screen">
       <Hero />
       <ImageAnimation />
 

@@ -46,7 +46,7 @@ const Navbar = ({ mode, setMode, hasHero = true }: NavbarProps) => {
   return (
     <>
       <nav
-        className={`fixed left-0 right-0 top-0 z-50 bg-[#F8F4EE] border-b border-[#d8d8d8] transition-[height] duration-300 ease-out ${
+        className={`fixed left-0 right-0 top-0 z-50 bg-[#F4F8EE] border-b border-[#d8d8d8] transition-[height] duration-300 ease-out ${
           isExpanded ? "h-[200px]" : "h-20"
         }`}
       >

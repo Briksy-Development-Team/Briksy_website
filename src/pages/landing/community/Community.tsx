@@ -167,7 +167,7 @@ const Community = () => {
                     ))}
                 </div>
 
-                <div className="w-full lg:w-[37.5rem] h-[21.0625rem] aspect-73/41 flex items-center justify-center shrink-0">
+                <div className="w-full lg:w-[40rem] h-[25rem] aspect-73/41 flex items-center justify-center shrink-0">
                     <canvas ref={canvasRef} className="w-full h-full" />
                 </div>
 
