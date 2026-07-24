@@ -13,23 +13,23 @@ const getFrame = (i: number) =>
 
 const sections = [
     {
-        title: "For Builders & Developers",
+        title: "For Builders",
         description:
-            "Showcase your completed and ongoing projects, get discovered by serious buyers actively searching for quality builds, and build lasting trust through verified credentials, licenses, and genuine customer reviews.",
+            "List your projects, get discovered by serious buyers, and build trust through verified credentials and real reviews.",
         frameStart: 0,
         frameEnd: 37,
     },
     {
-        title: "For Trades & Professionals",
+        title: "For Traders Professionals",
         description:
-            "Expand your client base with qualified leads, manage enquiries efficiently in one place, and stand out from the competition in a fully verified marketplace built specifically for Australian trade professionals.",
+            "Grow your client base, manage enquiries, and stand out in a verified marketplace built for Australian professionals.",
         frameStart: 38,
         frameEnd: 60,
     },
     {
-        title: "For Buyers & Sellers",
+        title: "For Buyers/Sellers",
         description:
-            "Take control of your property business, showcase your expertise and past transactions, and connect directly with qualified, serious buyers through a verified, trustworthy business profile.",
+            "Manage your business, showcase your expertise, and connect with qualified property buyers through a verified business profile.",
         frameStart: 61,
         frameEnd: 169,
     },
@@ -160,8 +160,8 @@ const Community = () => {
                         ref={(el) => {
                             titleRefs.current[i] = el;
                         }}
-                        className="absolute w-full text-center text-[1.5rem] sm:text-[1.875rem] font-medium lg:text-[2.25rem] text-[#342511]"
-                    >
+                        // Title — increase from text-[1.875rem] lg:text-[2.25rem]
+                        className="absolute w-full text-center text-[2.25rem] font-medium lg:text-[2.75rem] text-[#342511]"                    >
                         {item.title}
                     </h2>
                 ))}
@@ -180,8 +180,8 @@ const Community = () => {
                         ref={(el) => {
                             descRefs.current[i] = el;
                         }}
-                        className="absolute w-full text-center lg:text-left text-primary text-sm sm:text-base leading-relaxed"
-                    >
+                        // Description — increase from lg:text-[1rem]
+                        className="absolute w-full text-primary text-base lg:text-[1.25rem] leading-relaxed"                    >
                         {item.description}
                     </p>
                 ))}

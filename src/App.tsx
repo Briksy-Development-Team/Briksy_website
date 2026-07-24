@@ -18,7 +18,6 @@ export const lenisInstance: { current: Lenis | null } = {
   current: null,
 };
 
-// Small wrapper so we can use useNavigate inside BrowserRouter
 const V2Button = () => {
   const navigate = useNavigate();
 
