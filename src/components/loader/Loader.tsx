@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Logos from "../../assets/loader/Logos.svg";
-import Load from "../../assets/loader/loader.mp4";
+import LoaderA from "../../assets/loader/LoaderA.svg"; // Your animated SVG
 
 type Props = {
   appReady: boolean;
@@ -8,9 +8,9 @@ type Props = {
 };
 
 const Loader = ({ appReady, onComplete }: Props) => {
-  const videoRef = useRef<HTMLVideoElement>(null);
   const [canExit, setCanExit] = useState(false);
 
+  // Lock scrolling when loader mounts
   useEffect(() => {
     document.body.style.overflow = "hidden";
 
@@ -19,16 +19,16 @@ const Loader = ({ appReady, onComplete }: Props) => {
     };
   }, []);
 
+  // Enforce a minimum display time for the SVG animation
   useEffect(() => {
-    if (appReady && videoRef.current) {
-      videoRef.current.loop = false;
+    const minDisplayTimer = setTimeout(() => {
+      setCanExit(true);
+    }, 2000); // Adjust this delay (in ms) to match your SVG's animation duration
 
-      if (videoRef.current.ended) {
-        setCanExit(true);
-      }
-    }
-  }, [appReady]);
+    return () => clearTimeout(minDisplayTimer);
+  }, []);
 
+  // Trigger completion only when the app is ready AND the minimum animation time has passed
   useEffect(() => {
     if (appReady && canExit) {
       document.body.style.overflow = "";
@@ -40,17 +40,10 @@ const Loader = ({ appReady, onComplete }: Props) => {
     <div className="fixed inset-0 z-[9999] flex flex-col items-center space-y-3 justify-center bg-[#f4f8ee]">
       <img src={Logos} alt="Briksy" className="w-[180px] md:w-[300px]" />
 
-      <video
-        ref={videoRef}
-        src={Load}
-        autoPlay
-        muted
-        loop
-        playsInline
-        className=" w-[220px] md:w-[350px]"
-        onEnded={() => {
-          setCanExit(true);
-        }}
+      <img
+        src={LoaderA}
+        alt="Loading..."
+        className="w-[220px] md:w-[350px]"
       />
     </div>
   );
