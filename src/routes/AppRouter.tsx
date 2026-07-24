@@ -13,6 +13,8 @@ import SearchPage from "../pages/searchresult/SearchPage";
 import Error from "../components/error/Error";
 import Coming from "../components/coming/Coming";
 import HomeA from "../pages/home/Home";
+import HomeB from "../Homethree";
+
 
 const AppRouter = () => {
     // const AppRouter = ({ dark, setDark }: AppRouterProps) => {
@@ -47,6 +49,8 @@ const AppRouter = () => {
 
                 <Route path="/" element={<Home />} />
                 <Route path="/v2" element={<HomeA />} />
+                <Route path="/v3" element={<HomeB />} />
+
                 <Route path="/result" element={<SearchPage />} />
             </Route>
             <Route path="/error" element={<Error />} />

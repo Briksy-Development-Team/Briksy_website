@@ -121,7 +121,7 @@ const Review = () => {
 
             <div className="flex items-center justify-between mt-8 lg:mt-16">
               <div className="flex items-center gap-4">
-                <img
+                <img loading="lazy"
                   src={reviews[activeIndex].image}
                   alt=""
                   className="w-16 h-16 rounded-full object-cover"

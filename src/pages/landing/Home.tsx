@@ -9,6 +9,7 @@ import ImageAnimation from "./imageanimation/ImageAnimation";
 import BuilderList from "../home/builderlist/BuilderList";
 import TrendingProperty from "../home/trendingproperty/TrendingProperty";
 import ServiceList from "../home/servicelist/ServiceList";
+import AppPreview from "../../components/appreview/AppPreview";
 
 const Home = () => {
   return (
@@ -21,10 +22,11 @@ const Home = () => {
       <BuilderList />
       <TrendingProperty />
       <ServiceList />
-      {/* <Review /> */}
-      {/* <Process /> */}
+     
       <Blogs />
       <Contact />
+                  <AppPreview />
+
     </div>
   );
 };

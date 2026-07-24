@@ -11,7 +11,7 @@ const TABS: { label: string; resultType: ResultType }[] = [
   { label: "Sold", resultType: "property" },
   { label: "Builders", resultType: "builder" },
   { label: "Agents", resultType: "trader" },
-  { label: "Trades", resultType: "trader" },
+  { label: "Traders", resultType: "trader" },
 ];
 
 const AGENT_OPTIONS = [

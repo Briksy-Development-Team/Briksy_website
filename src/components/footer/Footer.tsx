@@ -80,7 +80,7 @@ const Footer = () => {
                                         aria-label={social.name}
                                         className="opacity-80 hover:opacity-100 transition-opacity"
                                     >
-                                        <img
+                                        <img loading="lazy"
                                             src={social.icon}
                                             alt={social.name}
                                             className="w-5 h-5 lg:w-6 lg:h-6"
@@ -102,7 +102,7 @@ const Footer = () => {
 
                 <div className=" mt-10 lg:mt-28 flex justify-between items-end">
                     <div className="flex flex-col-reverse sm:flex-row  sm:items-end gap-4 lg:gap-8 ">
-                        <img
+                        <img loading="lazy"
                             src={Logo}
                             alt="Briksy"
                             className=" w-full sm:w-[19.9363rem] sm:h-[6.2138rem] lg:w-[37.3125rem] lg:h-[11.6297rem]"

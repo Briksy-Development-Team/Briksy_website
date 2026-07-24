@@ -10,12 +10,12 @@ type Props = {
 const TraderListCard = ({ item }: Props) => (
   <div className="flex items-center gap-3 px-4 py-4 lg:gap-4 border text-[#342511] bg-white border-[#E7E7E4]   hover:border hover:border-primary rounded-[1.25rem]">
     <div className="relative shrink-0">
-      <img
+      <img loading="lazy"
         src={item.avatar}
         alt={item.name}
         className="  h-16 w-16 lg:h-24 lg:w-24 rounded-full object-cover"
       />
-      <img
+      <img loading="lazy"
         src={Approves}
         alt="Verified"
         className="absolute -bottom-6 left-1/2 h-16 w-16 -translate-x-1/2"
@@ -28,7 +28,7 @@ const TraderListCard = ({ item }: Props) => (
         {item.tagLine} {item.role}
       </p>
       <div className=" flex items-center gap-1 text-[0.875rem] lg:text-[1rem]">
-        <img src={Mappin} alt="" />
+        <img loading="lazy" src={Mappin} alt="" />
         <span className="text-[#342511]">{item.location}</span>
       </div>
       <div className="mt-1 flex items-center gap-1 text-[1rem] ">

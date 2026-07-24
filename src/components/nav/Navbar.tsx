@@ -53,7 +53,7 @@ const Navbar = ({ mode, setMode, hasHero = true }: NavbarProps) => {
         {/* Top bar */}
         <div className="flex h-20 items-center justify-between px-2 sm:px-4 lg:px-10">
           <Link to="/" className="shrink-0">
-            <img src={LogoB} alt="Briksy" className="h-10 w-auto" />
+            <img loading="eager" src={LogoB} alt="Briksy" className="h-10 w-auto" />
           </Link>
 
           <div className="flex-1" />

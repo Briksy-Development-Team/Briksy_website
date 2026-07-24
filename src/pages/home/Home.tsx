@@ -6,6 +6,12 @@ import Process from "./Process/Process";
 // import BuilderList from "./builderlist/BuilderList";
 import DynamicCollageGSAP from "../../components/ai/Ai";
 import Community from "./communityv2/Community";
+import BuilderList from "./builderlist/BuilderList";
+import TrendingProperty from "./trendingproperty/TrendingProperty";
+import ServiceList from "./servicelist/ServiceList";
+import Blogs from "../landing/blogs/Blogs";
+import AppPreview from "../../components/appreview/AppPreview";
+import { Contact } from "lucide-react";
 
 const HomeA = () => {
   return (
@@ -19,6 +25,14 @@ const HomeA = () => {
       <ServiceList />
 
       <Contact /> */}
+      <BuilderList />
+      <TrendingProperty />
+      <ServiceList />
+
+      <Blogs />
+      <Contact />
+
+      <AppPreview />
 
     </div>
   );

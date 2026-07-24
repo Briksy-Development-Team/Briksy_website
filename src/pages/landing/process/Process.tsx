@@ -26,7 +26,7 @@ const features = [
 const Process = () => {
   const navigate = useNavigate();
   return (
-    <section className="bg-[#F7F3EA] font-helvetica py-24 px-6">
+    <section className=" font-helvetica py-24 px-6">
       <div className="mx-auto text-center">
         <h2 className=" text- lg:text-[2.25rem] md:text-5xl text-[#342511]">
           Everything You Need in One Platform
@@ -40,7 +40,7 @@ const Process = () => {
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
           {features.map(({ icon, title, description }) => (
             <div key={title} className="flex flex-col items-center sm:items-start lg:items-center text-center sm:text-start lg:text-center">
-              <img src={icon} alt={title} className="w-40  mb-6" />
+              <img loading="lazy" src={icon} alt={title} className="w-40  mb-6" />
               <h3 className="lg:text-[1.25rem] font-semibold text-center sm:text-start lg:text-center text-[#342511] mb-3">
                 {title}
               </h3>

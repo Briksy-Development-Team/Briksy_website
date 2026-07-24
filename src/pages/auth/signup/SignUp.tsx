@@ -85,9 +85,9 @@ const SignUp = () => {
     >
       <div className='w-full p-6'>
         <div className='flex justify-between items-center w-full'>
-          <img src={briksy} alt='Briksy' />
+          <img loading="lazy" src={briksy} alt='Briksy' />
           <Link to='/contact'>
-            <img src={headphone} alt='Support' />
+            <img loading="lazy" src={headphone} alt='Support' />
           </Link>
         </div>
       </div>
@@ -187,11 +187,11 @@ const SignUp = () => {
           </div>
           <div className='bg-[#EEECE099] flex gap-3 p-4 m-2 rounded-3xl'>
             <div className='flex-1 bg-white rounded-xl flex items-center justify-center py-4 cursor-pointer hover:shadow-md transition'>
-              <img src={google} alt='Google' className='w-8 h-8' />
+              <img loading="lazy" src={google} alt='Google' className='w-8 h-8' />
             </div>
 
             <div className='flex-1 bg-white rounded-xl flex items-center justify-center py-4 cursor-pointer hover:shadow-md transition'>
-              <img src={apple} alt='Apple' className='w-8 h-8' />
+              <img loading="lazy" src={apple} alt='Apple' className='w-8 h-8' />
             </div>
           </div>
         </div>

@@ -71,7 +71,7 @@ const Process = () => {
 
             <div className="mt-12 md:mt-16 lg:mt-24 flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-32">
                 <div className="relative w-full max-w-[420px] lg:w-[420px]">
-                    <img
+                    <img loading="lazy"
                         src={People}
                         alt="Professionals"
                         className="h-[380px] sm:h-[460px] lg:h-[520px] w-full object-cover rounded-2xl"
@@ -107,7 +107,7 @@ const Process = () => {
                 <div className="grid w-full max-w-[560px] grid-cols-1 sm:grid-cols-2 gap-x-16 gap-y-8 sm:gap-y-10 px-4 lg:px-0">
                     {features.map(({ icon, title, description }) => (
                         <div key={title}>
-                            <img src={icon} alt={title} className="mb-2 h-14 w-14 sm:h-20 sm:w-20" />
+                            <img loading="lazy" src={icon} alt={title} className="mb-2 h-14 w-14 sm:h-20 sm:w-20" />
 
                             <h3 className="text-lg sm:text-[1.5rem] font-medium text-[#342511]">
                                 {title}

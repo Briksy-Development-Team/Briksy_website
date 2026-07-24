@@ -131,7 +131,7 @@
 //                 <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center gap-6 p-8">
 //                     <div className="relative flex-shrink-0">
 //                         <div className={`p-1 rounded-full ${dark ? "bg-white" : "bg-black"}`}>
-//                             <img
+//                             <img loading="lazy"
 //                                 src={seeker.avatar}
 //                                 alt={profileSeeker.name}
 //                                 className="w-24 h-24 rounded-full object-cover block"

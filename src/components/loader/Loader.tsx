@@ -38,9 +38,9 @@ const Loader = ({ appReady, onComplete }: Props) => {
 
   return (
     <div className="fixed inset-0 z-[9999] flex flex-col items-center space-y-3 justify-center bg-[#f4f8ee]">
-      <img src={Logos} alt="Briksy" className="w-[180px] md:w-[300px]" />
+      <img loading="eager" src={Logos} alt="Briksy" className="w-[180px] md:w-[300px]" />
 
-      <img
+      <img loading="lazy"
         src={LoaderA}
         alt="Loading..."
         className="w-[220px] md:w-[350px]"

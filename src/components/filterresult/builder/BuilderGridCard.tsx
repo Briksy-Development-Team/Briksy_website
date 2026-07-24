@@ -10,7 +10,7 @@ const BuilderGridCard = ({ item }: Props) => {
   return (
     <div className=" rounded-[2rem] w-full  h-[30rem] border border-transparent transition-colors duration-200 overflow-hidden mx-auto md:w-auto text-[#342511] bg-white  hover:border-primary ">
       <div className="relative h-[50%] ">
-        <img
+        <img loading="lazy"
           src={item.bannerImage}
           alt={item.name}
           className="h-full w-full object-cover"
@@ -30,13 +30,13 @@ const BuilderGridCard = ({ item }: Props) => {
 
       <div className="relative px-4 pb-6">
         <div className="-mt-10 relative w-fit">
-          <img
+          <img loading="lazy"
             src={item.avatar}
             alt={item.name}
             className="h-20 w-20 rounded-full border-4 border-white object-cover"
           />
 
-          <img
+          <img loading="lazy"
             src={Approves}
             alt="Verified"
             className="absolute -bottom-6 left-1/2 h-16 w-16 -translate-x-1/2"

@@ -10,13 +10,13 @@ type Props = {
 const BuilderListCard = ({ item }: Props) => (
   <div className="flex items-center gap-3 relative px-4 py-4 lg:gap-4  hover:border hover:border-primary border3 text-[#342511] bg-white border border-[#E7E7E4] rounded-[1.25rem]">
     <div className="relative shrink-0">
-      <img
+      <img loading="lazy"
         src={item.avatar}
         alt={item.name}
         className=" h-16 w-16 lg:h-24 lg:w-24 rounded-full border-4 border-white object-cover"
       />
 
-      <img
+      <img loading="lazy"
         src={Approves}
         alt="Verified"
         className="absolute -bottom-6 left-1/2 h-16 w-16 -translate-x-1/2"
@@ -26,7 +26,7 @@ const BuilderListCard = ({ item }: Props) => (
     <div className="min-w-0 flex-1">
       <h3 className="text-[1rem] font-semibold ">{item.name}</h3>
       <div className=" flex items-center gap-1 text-[0.875rem] lg:text-[1rem]">
-        <img src={Mappin} alt="" />
+        <img loading="lazy" src={Mappin} alt="" />
         <span className="text-[#342511]">{item.location}</span>
       </div>
       <div className="mt-1.5 flex flex-wrap gap-1">

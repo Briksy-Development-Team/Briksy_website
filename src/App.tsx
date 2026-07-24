@@ -1,6 +1,6 @@
 import "./App.css";
 import { useEffect, useState } from "react";
-import { BrowserRouter, useNavigate } from "react-router-dom";
+import { BrowserRouter, useNavigate, useLocation } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
@@ -20,21 +20,74 @@ export const lenisInstance: { current: Lenis | null } = {
 
 const V2Button = () => {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  const versions = [
+    { label: "V1", path: "/" },
+    { label: "V2", path: "/v2" },
+    { label: "V3", path: "/v3" },
+  ];
 
   return (
-    <button
-      onClick={() => navigate("/v2")}
-      className="fixed bottom-6 right-6 z-50 px-5 py-2.5 rounded-full bg-[#342511] text-white text-sm font-medium shadow-lg hover:opacity-90 transition-opacity"
-    >
-      Go to V2
-    </button>
+    <div className="fixed bottom-6 right-6 z-[9999]">
+      <div className="flex items-center rounded-full border border-white/20 bg-black/60 p-1.5 backdrop-blur-xl shadow-2xl">
+        {versions.map((version) => {
+          const active = pathname === version.path;
+
+          return (
+            <button
+              key={version.path}
+              onClick={() => navigate(version.path)}
+              className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${active
+                ? "bg-white text-black shadow-md"
+                : "text-white hover:bg-white/10"
+                }`}
+            >
+              {version.label}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+// Lives INSIDE BrowserRouter so it can read the current route
+// and re-trigger the loader every time the pathname changes.
+const AppContent = () => {
+  const { pathname } = useLocation();
+  const [appReady, setAppReady] = useState(false);
+  const [showLoader, setShowLoader] = useState(true);
+
+  useEffect(() => {
+    // reset the loader every time the route changes
+    setShowLoader(true);
+    setAppReady(false);
+
+    const timer = setTimeout(() => {
+      setAppReady(true);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [pathname]);
+
+  return (
+    <>
+      {showLoader && (
+        <Loader
+          appReady={appReady}
+          onComplete={() => setShowLoader(false)}
+        />
+      )}
+
+      <ScrollToTop />
+      <V2Button />
+      <AppRouter />
+    </>
   );
 };
 
 function App() {
-  const [appReady, setAppReady] = useState(false);
-  const [showLoader, setShowLoader] = useState(true);
-
   useEffect(() => {
     testConnection();
   }, []);
@@ -59,10 +112,6 @@ function App() {
 
     ScrollTrigger.refresh();
 
-    setTimeout(() => {
-      setAppReady(true);
-    }, 3000);
-
     return () => {
       gsap.ticker.remove(raf);
       lenis.destroy();
@@ -71,22 +120,11 @@ function App() {
   }, []);
 
   return (
-    <>
-      {showLoader && (
-        <Loader
-          appReady={appReady}
-          onComplete={() => setShowLoader(false)}
-        />
-      )}
-
-      <AuthProvider>
-        <BrowserRouter>
-          <ScrollToTop />
-          <V2Button />
-          <AppRouter />
-        </BrowserRouter>
-      </AuthProvider>
-    </>
+    <AuthProvider>
+      <BrowserRouter>
+        <AppContent />
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

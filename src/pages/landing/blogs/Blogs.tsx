@@ -55,7 +55,7 @@ const ReviewCard = ({
   company,
 }: ReviewCardProps) => {
   const imageElement = (
-    <img
+    <img loading="lazy"
       src={image}
       alt={name}
       className="h-64 w-full object-cover"

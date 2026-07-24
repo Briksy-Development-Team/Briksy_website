@@ -6,7 +6,7 @@ const Coming = () => {
         <section className="min-h-screen font-helvetica bg-[#FCFAF7] flex items-center justify-center px-6 py-16">
             <div className="w-full max-w-4xl text-center">
                 {/* Illustration */}
-                <img
+                <img loading="lazy"
                     src={ComingI}
                     alt="Coming Soon"
                     className="mx-auto w-full max-w-[260px] sm:max-w-[340px] "

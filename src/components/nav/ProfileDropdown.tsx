@@ -42,7 +42,7 @@ const ProfileDropdown = () => {
                     border-gray-300 text-gray-800"
             >
                 <Menu size={20} />
-                <img src={Place} alt="profile" />
+                <img loading="lazy" src={Place} alt="profile" />
             </button>
 
             {dropdownOpen && (

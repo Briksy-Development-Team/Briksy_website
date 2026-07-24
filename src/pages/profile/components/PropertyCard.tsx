@@ -13,7 +13,7 @@
 //     ${dark ? "bg-zinc-900 border-zinc-800 hover:border-zinc-600" : "bg-white border-zinc-200 hover:border-zinc-400"}
 //   `}>
 //         <div className="relative h-44 overflow-hidden">
-//             <img
+//             <img loading="lazy"
 //                 src={property.image}
 //                 alt={property.title}
 //                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"

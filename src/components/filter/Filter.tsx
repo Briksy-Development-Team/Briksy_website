@@ -39,7 +39,7 @@ const TABS: { label: string; value: FilterTab }[] = [
   { label: "Sold", value: "Sold" },
   { label: "Builders", value: "Builders" },
   { label: "Agents", value: "Agents" },
-  { label: "Trades", value: "Trades" },
+  { label: "Traders", value: "Traders" },
 ];
 
 const Filter = ({
@@ -106,7 +106,7 @@ const Filter = ({
       case "Agents":
         setAgents(DEFAULT_AGENT_FILTERS);
         break;
-      case "Trades":
+      case "Traders":
         setTrades(DEFAULT_TRADE_FILTERS);
         break;
     }
@@ -118,7 +118,7 @@ const Filter = ({
       Sold: "property",
       Builders: "builder",
       Agents: "trader",
-      Trades: "trader",
+      Traders: "trader",
     };
     const params = new URLSearchParams({
       type: typeMap[activeTab],
@@ -211,7 +211,7 @@ const Filter = ({
               onChange={setAgents}
             />
           )}
-          {activeTab === "Trades" && (
+          {activeTab === "Traders" && (
             <TradeFilters values={trades} onChange={setTrades} />
           )}
         </div>

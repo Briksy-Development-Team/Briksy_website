@@ -6,7 +6,7 @@ const Error = () => {
         <section className="h-screen flex items-center font-helvetica justify-center ">
             <div className="w-full max-w-6xl bg-[#F8F4EE] rounded-md flex flex-col items-center justify-center px-6 py-12 sm:px-10 sm:py-16 lg:px-20 lg:py-24">
                 {/* Error Image */}
-                <img
+                <img loading="lazy"
                     src={ErrorI}
                     alt="404 Error"
                     className="w-full  max-w-[260px] sm:max-w-[340px]-contain"

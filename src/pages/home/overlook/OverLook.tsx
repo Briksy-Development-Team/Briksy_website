@@ -170,7 +170,7 @@ const OverLook = () => {
             key={item.title}
             className="flex flex-col items-center text-center"
           >
-            <img
+            <img loading="lazy"
               src={item.image}
               alt={item.title}
               className="w-52 h-52 object-contain"

@@ -13,12 +13,12 @@ const TraderGridCard = ({ item }: Props) => (
    text-[#342511] bg-white px-6 py-6 text-center">
     <div className="flex justify-center ">
       <div className="relative">
-        <img
+        <img loading="lazy"
           src={item.avatar}
           alt={item.name}
           className=" h-16 w-16 lg:h-34 lg:w-34  rounded-full object-cover"
         />
-        <img
+        <img loading="lazy"
           src={Approves}
           alt="Verified"
           className="absolute -bottom-4 left-1/2 h-10 w-16 -translate-x-1/2"
@@ -30,7 +30,7 @@ const TraderGridCard = ({ item }: Props) => (
       <h3 className="text-[1rem] font-bold ">{item.name}</h3>
       <p className="mt-1 text-[0.75rem] lg:text-[1rem] ">{item.tagLine}</p>
       <div className=" flex items-center justify-center gap-1 text-[0.875rem] lg:text-[1rem]">
-        <img src={Mappin} alt="" />
+        <img loading="lazy" src={Mappin} alt="" />
         <span className="text-[#342511]">{item.location}</span>
       </div>{" "}
     </div>

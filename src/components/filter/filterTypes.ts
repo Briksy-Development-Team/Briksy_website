@@ -187,5 +187,5 @@ export const DEFAULT_TRADE_FILTERS: TradeFiltersType = {
 };
 
 // ─── Shared ───────────────────────────────────────────────────────────────────
-export type FilterTab = "Buy" | "Sold" | "Builders" | "Agents" | "Trades";
+export type FilterTab = "Buy" | "Sold" | "Builders" | "Agents" | "Traders";
 export type BuilderMode = "profiles" | "listings";

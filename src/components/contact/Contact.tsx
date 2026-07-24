@@ -47,7 +47,7 @@ const Contact = () => {
         </div>
 
         <div className="lg:w-[40%] bg-gray-400  hidden lg:flex   justify-center">
-          <video
+          <video preload="none"
             src={Contacts}
             autoPlay
             loop

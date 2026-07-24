@@ -9,7 +9,7 @@ type Props = {
 const PropertyListCard = ({ item }: Props) => (
   <div className="flex items-center font-helvetica gap-3 hover:border hover:border-primary px-2 py-2 lg:gap-4 bg-white border border-[#E7E7E4] rounded-[1.25rem]">
     <div className="relative w-[108px] aspect-4/5 shrink-0 overflow-hidden rounded-2xl">
-      <img
+      <img loading="lazy"
         src={item.image}
         alt={item.title}
         className="h-full w-full object-cover"
@@ -25,7 +25,7 @@ const PropertyListCard = ({ item }: Props) => (
       </h3>
 
       <div className=" flex items-center gap-1 text-[0.875rem] lg:text-[1rem]">
-        <img src={Mappin} alt="" />
+        <img loading="lazy" src={Mappin} alt="" />
         <span className="text-[#342511]">{item.address}</span>
       </div>
 
@@ -41,7 +41,7 @@ const PropertyListCard = ({ item }: Props) => (
 
       <div className=" flex w-full items-center justify-between">
         <div className="flex items-center gap-2">
-          <img
+          <img loading="lazy"
             src={item.posterAvatar}
             alt={item.posterName}
             className="h-7 w-7 rounded-full object-cover"

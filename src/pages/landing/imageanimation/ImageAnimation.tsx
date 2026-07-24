@@ -133,7 +133,7 @@ const ImageAnimation = () => {
                 ref={imgWrapRef}
                 className="absolute inset-0 h-full w-full  origin-center overflow-hidden will-change-transform"
             >
-                <img
+                <img loading="lazy"
                     src={WholeBg}
                     alt=""
                     className="h-full w-full object-cover"
@@ -152,7 +152,7 @@ const ImageAnimation = () => {
                             <div
                                 className={`pointer-events-none absolute flex w-[30rem] items-center gap-4 rounded-xl bg-[#F8F3EC] px-5 py-4 opacity-0 shadow-lg scale-95 transition-all duration-300 ease-out group-hover:pointer-events-auto group-hover:opacity-100 group-hover:scale-100 ${b.panelClassName}`}
                             >
-                                <img
+                                <img loading="lazy"
                                     src={b.image}
                                     alt={b.title}
                                     className="h-20 w-20 shrink-0"
