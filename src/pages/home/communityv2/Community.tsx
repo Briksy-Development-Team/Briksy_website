@@ -161,7 +161,7 @@ const Community = () => {
                             titleRefs.current[i] = el;
                         }}
                         // Title — increase from text-[1.875rem] lg:text-[2.25rem]
-                        className="absolute w-full text-center text-[2.25rem] font-medium lg:text-[2.75rem] text-[#342511]"                    >
+                        className="absolute w-full text-start text-[2.25rem] font-medium lg:text-[2.75rem] text-[#342511]"                    >
                         {item.title}
                     </h2>
                 ))}
