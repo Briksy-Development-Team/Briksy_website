@@ -14,7 +14,7 @@ type Tab = {
   resultType: ResultType;
   dropdown?: DropdownOption[];
 };
-
+type Mode = "collapsed" | "search" | "ai";
 const TABS: Tab[] = [
   { label: "Buy", resultType: "property" },
   { label: "Sold", resultType: "property" },

@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import type { ResultType } from "../../../types/search";
 
 type DropdownOption = { label: string; short: string };
+type Mode = "collapsed" | "search" | "ai";
 
 type Tab = {
   label: string;
@@ -51,10 +52,9 @@ const PLACEHOLDERS: Record<string, string> = {
 
 // Exact spacing pulled from Figma (node 2295:1322) via MCP dev-mode inspection.
 const tabClass = (active: boolean) =>
-  `h-11 w-full rounded-xl px-6 py-2 text-[0.875rem] font-normal truncate transition-all  lg:text-[1rem] ${
-    active
-      ? "border border-[#DBDAD3]  text-white bg-[#342511] hover:border hover:border-primary"
-      : "border border-[#DBDAD3] bg-white text-black"
+  `h-11 w-full rounded-xl px-6 py-2 text-[0.875rem] font-normal truncate transition-all  lg:text-[1rem] ${active
+    ? "border border-[#DBDAD3]  text-white bg-[#342511] hover:border hover:border-primary"
+    : "border border-[#DBDAD3] bg-white text-black"
   }`;
 
 const FadeButton = ({
