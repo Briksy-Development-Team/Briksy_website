@@ -28,7 +28,7 @@ export const Nav = ({ setMode, hasHero = true }: Props) => {
   );
 };
 
-export const NavSearchPanel = ({ mode, setMode }: Props) => {
+export const NavSearch = ({ mode, setMode }: Props) => {
   const [query, setQuery] = useState("");
   const [voiceOpen, setVoiceOpen] = useState(false);
   const [filterOpen, setFilterOpen] = useState(false);

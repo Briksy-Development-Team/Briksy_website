@@ -1,4 +1,3 @@
-import Hero from "../../components/hero/Hero";
 import About from "./about/About";
 import Community from "./community/Community";
 // import Process from "./process/Process";

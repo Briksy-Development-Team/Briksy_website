@@ -3,7 +3,6 @@ import { Globe } from "lucide-react";
 import { Link } from "react-router-dom";
 import { NavSearchButton, NavSearchPanel } from "./NavSearchBar";
 import { SCROLL_THRESHOLD } from "../search/FloatingSearch";
-import LogoB from "../../assets/logo/briksyB.svg";
 import LanguageModal from "./LanguageModal.tsx";
 import ProfileDropdown from "./ProfileDropdown.tsx";
 import Briskybrown from "../../assets/logo/briskybrown.svg"

@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Globe } from "lucide-react";
 import { Link } from "react-router-dom";
-import { NavSearchButton, NavSearchPanel } from "../newnav/Nav.tsx";
+import {  NavSearch } from "../newnav/Nav.tsx";
 import { SCROLL_THRESHOLD } from "../../search/FloatingSearch.tsx";
 // import LogoB from "../assets/logo/briksyB.svg";
 import LanguageModal from "../../nav/LanguageModal.tsx";
@@ -92,7 +92,7 @@ const NewNav = ({ mode, setMode, hasHero = true }: NavbarProps) => {
           }`}
         >
           <div className="mt-6">
-            <NavSearchPanel mode={navbarMode} setMode={setMode} />
+            <NavSearch mode={navbarMode} setMode={setMode} />
           </div>
         </div>
       </nav>
