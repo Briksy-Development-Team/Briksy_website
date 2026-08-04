@@ -1,12 +1,13 @@
 import { useState, useRef, useEffect } from "react";
 import { Globe } from "lucide-react";
 import { Link } from "react-router-dom";
-import { NavSearchButton, NavSearchPanel } from "./NavSearchBar";
-import { SCROLL_THRESHOLD } from "../search/FloatingSearch";
-import LogoB from "../../assets/logo/briksyB.svg";
-import LanguageModal from "./LanguageModal.tsx";
-import ProfileDropdown from "./ProfileDropdown.tsx";
-import Briskybrown from "../../assets/logo/briskybrown.svg"
+import { NavSearchButton, NavSearchPanel } from "../newnav/Nav.tsx";
+import { SCROLL_THRESHOLD } from "../../search/FloatingSearch.tsx";
+// import LogoB from "../assets/logo/briksyB.svg";
+import LanguageModal from "../../nav/LanguageModal.tsx";
+import ProfileDropdown from "../../nav/ProfileDropdown.tsx";
+import Briskybrown from "../../../assets/logo/briksyB.svg";
+import { Nav } from "./Nav.tsx";
 
 type NavbarProps = {
   mode: "collapsed" | "search" | "ai";
@@ -16,7 +17,7 @@ type NavbarProps = {
 
 type Lang = { label: string; region: string };
 
-const Navbar = ({ mode, setMode, hasHero = true }: NavbarProps) => {
+const NewNav = ({ mode, setMode, hasHero = true }: NavbarProps) => {
   const [langModalOpen, setLangModalOpen] = useState(false);
   const [selectedLang, setSelectedLang] = useState<Lang>({
     label: "English",
@@ -47,20 +48,24 @@ const Navbar = ({ mode, setMode, hasHero = true }: NavbarProps) => {
   return (
     <>
       <nav
-        className={`fixed left-0 right-0 top-0 z-50 bg-primary-brown border-b text-white border-[#d8d8d8] transition-[height]
-            duration-300 ease-out ${isExpanded ? "h-[200px]" : "h-16"
-          }`}
+        className={`fixed left-0 right-0 top-0 z-50 mt-10 w-[90%] bg-white mx-auto rounded-[4.625rem] border-b text-white border-[#d8d8d8] transition-[height]
+            duration-300 ease-out ${isExpanded ? "h-[200px]" : "h-20"}`}
       >
-        <div className="flex h-16 items-center justify-between px-2 sm:px-4 lg:px-10">
+        <div className="flex h-20 items-center justify-between px-2 sm:px-4 lg:px-10">
           <Link to="/" className="shrink-0">
-            <img loading="eager" src={Briskybrown} alt="Briksy" className="h-10 w-auto" />
+            <img
+              loading="eager"
+              src={Briskybrown}
+              alt="Briksy"
+              className="h-10 w-auto"
+            />
           </Link>
 
           <div className="flex-1" />
 
           <div className="flex shrink-0 items-center gap-6">
             {pastHero && navbarMode === "collapsed" && (
-              <NavSearchButton
+              <Nav
                 mode={navbarMode}
                 setMode={setMode}
                 hasHero={hasHero}
@@ -69,21 +74,22 @@ const Navbar = ({ mode, setMode, hasHero = true }: NavbarProps) => {
 
             <button
               onClick={() => setLangModalOpen(true)}
-              className="text-gray-800 transition hover:opacity-70"
+              className="text-gray-800 transition h-11 w-11 rounded-xl flex items-center justify-center bg-[#F8F4EE] hover:opacity-70"
               aria-label="Language and region"
             >
-              <Globe size={18} color="white" />
+              <Globe size={18} />
             </button>
 
-            <ProfileDropdown  />
+            <ProfileDropdown />
           </div>
         </div>
 
         <div
-          className={`px-2 pb-8 sm:px-4 lg:px-10 transition-[opacity,transform] duration-300 ${isExpanded
+          className={`px-2 pb-8 sm:px-4 lg:px-10 transition-[opacity,transform] duration-300 ${
+            isExpanded
               ? "pointer-events-auto translate-y-0 opacity-100"
               : "pointer-events-none -translate-y-2 opacity-0"
-            }`}
+          }`}
         >
           <div className="mt-6">
             <NavSearchPanel mode={navbarMode} setMode={setMode} />
@@ -101,4 +107,4 @@ const Navbar = ({ mode, setMode, hasHero = true }: NavbarProps) => {
   );
 };
 
-export default Navbar;
+export default NewNav;

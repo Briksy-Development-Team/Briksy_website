@@ -10,11 +10,21 @@ import BuilderList from "../home/builderlist/BuilderList";
 import TrendingProperty from "../home/trendingproperty/TrendingProperty";
 import ServiceList from "../home/servicelist/ServiceList";
 import AppPreview from "../../components/appreview/AppPreview";
+import Heroone from "../../components/newhero/Heroone";
+import { useLocation } from "react-router-dom";
+import Navbar from "../../components/nav/Navbar";
+import { useState } from "react";
 
 const Home = () => {
+  const [mode, setMode] = useState<"collapsed" | "search" | "ai">("collapsed");
+
+  const location = useLocation();
+  const hasHero = location.pathname === '/' || location.pathname === '/home';
   return (
     <div className=" min-h-screen">
-      <Hero />
+      <Navbar mode={mode} setMode={setMode} hasHero={hasHero} />
+
+      <Heroone />
       <ImageAnimation />
 
       <Community />
@@ -22,10 +32,10 @@ const Home = () => {
       <BuilderList />
       <TrendingProperty />
       <ServiceList />
-     
+
       <Blogs />
       <Contact />
-                  <AppPreview />
+      <AppPreview />
 
     </div>
   );

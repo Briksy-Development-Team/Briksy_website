@@ -1,18 +1,18 @@
 import { useState, useRef, useEffect } from "react";
 import { Search, SlidersHorizontal, Sparkles, AudioLines } from "lucide-react";
-import AiVoiceModal from "../search/AiVoiceModal";
-import { useScrollFade } from "../search/FloatingSearch";
-import Filter from "../filter/Filter";
+import AiVoiceModal from "../../search/AiVoiceModal";
+import { useScrollFade } from "../../search/FloatingSearch";
+import Filter from "../../filter/Filter";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import type { FilterTab } from "../filter/filterTypes";
+import type { FilterTab } from "../../filter/filterTypes";
 
 const BTN =
-  "flex items-center justify-center rounded-xl bg-white text-primary-brown ";
+  "flex items-center justify-center rounded-xl  text-black  transition";
 
 type Mode = "collapsed" | "search" | "ai";
 type Props = { mode: Mode; setMode: (m: Mode) => void; hasHero?: boolean };
 
-export const NavSearchButton = ({ setMode, hasHero = true }: Props) => {
+export const Nav = ({ setMode, hasHero = true }: Props) => {
   const btnRef = useRef<HTMLButtonElement>(null);
   useScrollFade(btnRef, "in", hasHero);
 
@@ -20,7 +20,7 @@ export const NavSearchButton = ({ setMode, hasHero = true }: Props) => {
     <button
       ref={btnRef}
       onClick={() => setMode("search")}
-      className={`${BTN} h-11 w-11 rounded-full bg-[#F8F4EE]`}
+      className={`${BTN} bg-[#F8F4EE] h-11 w-11 rounded-full`}
       aria-label="Open search"
     >
       <Search size={18} />
@@ -66,7 +66,7 @@ export const NavSearchPanel = ({ mode, setMode }: Props) => {
       >
         <button
           onClick={() => setMode("search")}
-          className={`${BTN} h-11 w-11 shrink-0 sm:h-12 sm:w-12 lg:h-14 lg:w-14`}
+          className={`${BTN} bg-primary text-white h-11 w-11 shrink-0 sm:h-12 sm:w-12 lg:h-11 lg:w-11`}
         >
           <Search size={18} />
         </button>
@@ -90,11 +90,11 @@ export const NavSearchPanel = ({ mode, setMode }: Props) => {
           <>
             <button
               onClick={() => setVoiceOpen(true)}
-              className="flex items-center justify-center px-3 text-primary-brown"
+              className="flex items-center justify-center px-3 text-gray-500 transition hover:text-gray-700"
             >
               <AudioLines size={20} />
             </button>
-            <button className={`${BTN} h-8 w-8 sm:h-10 sm:w-10`}>
+            <button className={`${BTN} bg-primary text-white h-8 w-8 sm:h-10 sm:w-10`}>
               <Sparkles size={18} />
             </button>
           </>
@@ -102,13 +102,13 @@ export const NavSearchPanel = ({ mode, setMode }: Props) => {
           <>
             <button
               onClick={() => setFilterOpen(true)}
-              className="flex items-center justify-center px-3 text-primary-brown"
+              className="flex items-center justify-center px-3 text-gray-500 transition hover:text-gray-700"
             >
               <SlidersHorizontal size={20} />
             </button>
             <button
               onClick={() => navigate("/result")}
-              className={`${BTN} h-8 w-8 sm:h-10 sm:w-10`}
+              className={`${BTN} bg-primary text-white h-8 w-8 sm:h-10 sm:w-10`}
             >
               <Search size={18} />
             </button>
@@ -116,13 +116,14 @@ export const NavSearchPanel = ({ mode, setMode }: Props) => {
         )}
       </div>
 
+      {/* Right slot — sparkle toggle, slides out for AI mode */}
       <div
         className={`overflow-hidden transition-[width,opacity] duration-300 ${isAi ? "w-0 opacity-0" : "w-11 opacity-100 sm:w-12 lg:w-14"
           }`}
       >
         <button
           onClick={() => setMode("ai")}
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white shadow-xl text-primary-brown sm:h-12 sm:w-12 lg:h-14 lg:w-14"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary text-white shadow-xl transitio sm:h-12 sm:w-12 lg:h-11 lg:w-11"
         >
           <Sparkles size={20} />
         </button>

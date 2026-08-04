@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { Search, SlidersHorizontal, Sparkles, AudioLines } from "lucide-react";
-import AiVoiceModal from "./AiVoiceModal";
-import Filter from "../filter/Filter";
-import { useScrollFade } from "./FloatingSearch";
+import AiVoiceModal from "../../search/AiVoiceModal";
+import Filter from "../../filter/Filter";
+import { useScrollFade } from "../../search/FloatingSearch";
 import { useNavigate } from "react-router-dom";
-import type { ResultType } from "../../types/search";
-import Searchbg from "../../assets/hero/searchbg.svg";
+import type { ResultType } from "../../../types/search";
 
 type DropdownOption = { label: string; short: string };
 
@@ -52,9 +51,10 @@ const PLACEHOLDERS: Record<string, string> = {
 
 // Exact spacing pulled from Figma (node 2295:1322) via MCP dev-mode inspection.
 const tabClass = (active: boolean) =>
-  `h-11 w-full rounded-xl px-6 py-2 text-[0.875rem] font-normal truncate transition-all  lg:text-[1rem] ${active
-    ? "border border-[#DBDAD3] bg-[#F8F4EE] text-[#342511] hover:border hover:border-primary"
-    : "border border-[#8B6F54] text-white"
+  `h-11 w-full rounded-xl px-6 py-2 text-[0.875rem] font-normal truncate transition-all  lg:text-[1rem] ${
+    active
+      ? "border border-[#DBDAD3]  text-white bg-[#342511] hover:border hover:border-primary"
+      : "border border-[#DBDAD3] bg-white text-black"
   }`;
 
 const FadeButton = ({
@@ -82,7 +82,6 @@ const FadeButton = ({
 };
 type Props = { mode: Mode; setMode: (m: Mode) => void };
 
-/** One reusable dropdown-tab (used for both Agents and Traders — no more duplication) */
 function DropdownTab({
   tab,
   isActive,
@@ -141,7 +140,6 @@ function DropdownTab({
   );
 }
 
-/** The filter icon / divider / action button trio inside the search bar */
 function SearchBarActions({
   isAi,
   onFilterClick,
@@ -166,7 +164,7 @@ function SearchBarActions({
 
       <button
         onClick={isAi ? undefined : onSubmit}
-        className="flex h-12 w-12 items-center justify-center rounded-[15px] bg-[#562F00] text-white transition hover:bg-[#2f2008]"
+        className="flex h-12 w-12 items-center justify-center rounded-[15px] bg-[#562F00] text-white transition "
       >
         {isAi ? <Sparkles size={18} /> : <Search size={18} />}
       </button>
@@ -174,13 +172,12 @@ function SearchBarActions({
   );
 }
 
-const HeroSearchBar = ({ mode, setMode }: Props) => {
+const Searchnew = ({ mode, setMode }: Props) => {
   const [activeIdx, setActiveIdx] = useState(0);
   const [query, setQuery] = useState("");
   const [voiceOpen, setVoiceOpen] = useState(false);
   const [filterOpen, setFilterOpen] = useState(false);
 
-  // one map instead of separate agentCategory / tradeCategory state
   const [categories, setCategories] = useState<Record<string, string>>({
     Agents: "Real Estate Agents",
     Traders: "Electrical",
@@ -209,13 +206,7 @@ const HeroSearchBar = ({ mode, setMode }: Props) => {
   return (
     <div
       ref={rootRef}
-      className="mx-auto flex flex-col items-center gap-y-3 rounded-3xl p-3 shadow-xl"
-      style={{
-        backgroundImage: `url(${Searchbg})`,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "100% 100%",
-        backgroundPosition: "center",
-      }}
+      className="mx-auto flex flex-col items-center gap-y-3 rounded-3xl p-3 "
     >
       <div className="grid w-[95%] grid-cols-2 gap-1.5 sm:w-[80%] sm:grid-cols-3 lg:w-full lg:grid-cols-5">
         {TABS.map((tab, i) =>
@@ -289,4 +280,4 @@ const HeroSearchBar = ({ mode, setMode }: Props) => {
   );
 };
 
-export default HeroSearchBar;
+export default Searchnew;

@@ -37,11 +37,11 @@ const ProfileDropdown = () => {
         <div className="relative" ref={dropdownRef}>
             <button
                 onClick={() => setDropdownOpen((v) => !v)}
-                className="p-2 rounded-3xl space-x-2 border flex items-center justify-center transition-colors 
+                className="p-2 rounded-3xl space-x-2 border bg-white flex items-center justify-center transition-colors 
                    
                     border-gray-300 text-gray-800"
             >
-                <Menu size={20} />
+                <Menu size={20} cl />
                 <img loading="lazy" src={Place} alt="profile" />
             </button>
 
