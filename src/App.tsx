@@ -76,7 +76,10 @@ const AppContent = () => {
       {showLoader && (
         <Loader
           appReady={appReady}
-          onComplete={() => setShowLoader(false)}
+          onComplete={() => {
+            setShowLoader(false);
+            window.dispatchEvent(new Event("hero-loader-complete"));
+          }}
         />
       )}
 

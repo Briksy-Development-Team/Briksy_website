@@ -127,7 +127,7 @@ const ImageAnimation = () => {
     return (
         <div
             ref={sectionRef}
-            className="relative h-screen w-screen overflow-hidden  font-helvetica"
+            className="relative h-screen w-screen overflow-hidden bg-[#C2B4AA]  font-helvetica"
         >
             <div
                 ref={imgWrapRef}

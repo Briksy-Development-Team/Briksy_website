@@ -46,11 +46,9 @@ const PLACEHOLDERS: Record<string, string> = {
   Builders: "Search builder name or suburb...",
   Agents: "Search agent name or suburb...",
   // NOTE: original code had this keyed as "Trades", but the tab label is
-  // "Traders" — that placeholder was silently never used. Fixed here.
   Traders: "Search a service, e.g. 'electrician'...",
 };
 
-// Exact spacing pulled from Figma (node 2295:1322) via MCP dev-mode inspection.
 const tabClass = (active: boolean) =>
   `h-11 w-full rounded-xl px-6 py-2 text-[0.875rem] font-normal truncate transition-all  lg:text-[1rem] ${active
     ? "border border-[#DBDAD3] bg-[#F8F4EE] text-[#342511] hover:border hover:border-primary"
@@ -162,7 +160,6 @@ function SearchBarActions({
         {isAi ? <AudioLines size={20} /> : <SlidersHorizontal size={20} />}
       </button>
 
-      <div className="h-8 w-px rotate-90 bg-[#D9D9D9]" />
 
       <button
         onClick={isAi ? undefined : onSubmit}

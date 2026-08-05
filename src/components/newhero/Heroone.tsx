@@ -1,12 +1,9 @@
 import { useOutletContext } from "react-router-dom";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
+// import { useGSAP } from "@gsap/react";
 import HeroSearchBar from "../search/HeroSearchBar";
 import House from "../../assets/hero/heroone.png";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Heroone = () => {
     const { mode, setMode } = useOutletContext<{
@@ -16,24 +13,27 @@ const Heroone = () => {
     const sectionRef = useRef<HTMLElement | null>(null);
     const houseRef = useRef<HTMLImageElement | null>(null);
 
-    useGSAP(() => {
-        gsap.fromTo(
-            houseRef.current,
-            {
-                yPercent: 100,
-                scale: 1.05,
-                filter: "blur(6px)",
-            },
-            {
-                yPercent: 0,
-                scale: 1,
-                filter: "blur(0px)",
-                duration: 1.6,
-                ease: "power3.out",
-                delay: 0.3,
-            }
-        );
+    useEffect(() => {
+        const playHero = () => {
+            gsap.fromTo(
+                houseRef.current,
+                { yPercent: 100, scale: 1.05, opacity: 0, filter: "blur(6px)" },
+                {
+                    yPercent: 0,
+                    scale: 1,
+                    opacity: 1,
+                    filter: "blur(0px)",
+                    duration: 1.6,
+                    ease: "power3.out",
+                }
+            );
+        };
+
+        window.addEventListener("hero-loader-complete", playHero);
+        return () => window.removeEventListener("hero-loader-complete", playHero);
     }, []);
+
+
     return (
         <section
             ref={sectionRef}
