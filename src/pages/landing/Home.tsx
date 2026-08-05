@@ -13,8 +13,8 @@ import Heroone from "../../components/newhero/Heroone";
 import { useLocation } from "react-router-dom";
 import Navbar from "../../components/nav/Navbar";
 import { useState } from "react";
-import AboutPage from "./PageBackground";
-import ColorTransitionPage from "./PageBackground";
+// import AboutPage from "./PageBackground";
+// import ColorTransitionPage from "./PageBackground";
 
 const Home = () => {
   const [mode, setMode] = useState<"collapsed" | "search" | "ai">("collapsed");
