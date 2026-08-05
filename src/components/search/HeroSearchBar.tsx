@@ -117,7 +117,7 @@ function DropdownTab({
       </button>
 
       {open && (
-        <div className="absolute left-0 top-full z-50 mt-0 w-48 overflow-hidden rounded-xl bg-white shadow-lg">
+        <div className="absolute left-0 top-full z-[200] mt-0 w-48  rounded-xl bg-white shadow-lg">
           {tab.dropdown!.map((opt, idx) => (
             <div key={opt.label}>
               <button

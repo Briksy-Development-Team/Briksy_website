@@ -4,7 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import HeroSearchBar from "../search/HeroSearchBar";
-import House from "../../assets/hero/house.svg";
+import House from "../../assets/hero/heroone.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,15 +13,31 @@ const Heroone = () => {
         mode: "collapsed" | "search" | "ai";
         setMode: (m: "collapsed" | "search" | "ai") => void;
     }>();
-
     const sectionRef = useRef<HTMLElement | null>(null);
+    const houseRef = useRef<HTMLImageElement | null>(null);
 
-    useGSAP(() => { }, { scope: sectionRef });
-
+    useGSAP(() => {
+        gsap.fromTo(
+            houseRef.current,
+            {
+                yPercent: 100,
+                scale: 1.05,
+                filter: "blur(6px)",
+            },
+            {
+                yPercent: 0,
+                scale: 1,
+                filter: "blur(0px)",
+                duration: 1.6,
+                ease: "power3.out",
+                delay: 0.3,
+            }
+        );
+    }, []);
     return (
         <section
             ref={sectionRef}
-            className="relative h-screen font-helvetica overflow-hidden bg-[#e2cbb3]"
+            className="relative h-screen bg-[#C2B4AA] font-helvetica"
         >
             <div className="relative z-20 flex flex-col items-center pt-20">
                 <h1 className="max-w-4xl text-center text-[3rem] sm:text-[4rem] lg:text-[3.625rem] font-medium leading-[1.05] text-primary-brown">
@@ -30,20 +46,22 @@ const Heroone = () => {
                     you and yours
                 </h1>
 
-                <p className="mt-6 max-w-2xl text-center font-medium  text-[1rem]  text-primary-brown">
+                <p className="mt-6 max-w-2xl text-center text-[1rem] font-medium text-primary-brown">
                     Search properties, connect with verified professionals, and manage
                     your entire property journey all in one place.
                 </p>
             </div>
 
-            <div className="absolute inset-x-0 bottom-0 flex justify-center z-10">
+            <div className="absolute inset-x-0 bottom-0 z-10 overflow-hidden pointer-events-none">
                 <img
+                    ref={houseRef}
                     src={House}
                     alt="House"
-                    className="w-[50%] max-w-none pointer-events-none select-none"
+                    className="w-full h-[60vh] xl:h-[70vh] pointer-events-none select-none"
                 />
             </div>
 
+            {/* Search Bar */}
             <div className="absolute left-1/2 bottom-8 z-30 w-full max-w-6xl -translate-x-1/2 px-6">
                 <HeroSearchBar mode={mode} setMode={setMode} />
             </div>

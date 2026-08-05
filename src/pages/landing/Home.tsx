@@ -13,12 +13,14 @@ import Heroone from "../../components/newhero/Heroone";
 import { useLocation } from "react-router-dom";
 import Navbar from "../../components/nav/Navbar";
 import { useState } from "react";
+import AboutPage from "./PageBackground";
+import ColorTransitionPage from "./PageBackground";
 
 const Home = () => {
   const [mode, setMode] = useState<"collapsed" | "search" | "ai">("collapsed");
 
   const location = useLocation();
-  const hasHero = location.pathname === '/' || location.pathname === '/home';
+  const hasHero = location.pathname === "/" || location.pathname === "/home";
   return (
     <div className=" min-h-screen">
       <Navbar mode={mode} setMode={setMode} hasHero={hasHero} />
@@ -27,6 +29,7 @@ const Home = () => {
       <ImageAnimation />
 
       <Community />
+      {/* <ColorTransitionPage /> */}
       <About />
       <BuilderList />
       <TrendingProperty />
@@ -35,7 +38,6 @@ const Home = () => {
       <Blogs />
       <Contact />
       <AppPreview />
-
     </div>
   );
 };
