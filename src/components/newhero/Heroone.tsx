@@ -57,7 +57,7 @@ const Heroone = () => {
                     ref={houseRef}
                     src={House}
                     alt="House"
-                    className="w-full h-[60vh] xl:h-[70vh] pointer-events-none select-none"
+                    className="w-full h-[55vh] xl:h-[60vh] pointer-events-none select-none"
                 />
             </div>
 
