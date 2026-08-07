@@ -17,8 +17,11 @@
   height: 2.75rem;
 }
 
-body {
-  background-color: #f4f8ee;
+html, body {
+  margin: 0;
+  padding: 0;
+  overscroll-behavior: none;
+  background-color: #F8F4EE;
 }
 
 @keyframes aura-pulse {

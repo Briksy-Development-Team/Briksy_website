@@ -37,7 +37,7 @@ const Heroone = () => {
     return (
         <section
             ref={sectionRef}
-            className="relative h-screen bg-[#C2B4AA] font-helvetica"
+            className="relative h-screen overflow-clip bg-[#C2B4AA] font-helvetica"
         >
             <div className="relative z-20 flex flex-col items-center pt-20">
                 <h1 className="max-w-4xl text-center text-[3rem] sm:text-[4rem] lg:text-[3.625rem] font-medium leading-[1.05] text-primary-brown">

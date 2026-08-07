@@ -6,8 +6,10 @@ import Hand from "../../../assets/utils/Hand.svg";
 import Contacts from "../../../assets/utils/contact.svg";
 import House from "../../../assets/utils/house.svg";
 import Tick from "../../../assets/utils/Tick.svg";
+import Transition from "../Transition";
 
 gsap.registerPlugin(ScrollTrigger);
+
 type Badge = {
     id: string;
     image: string;
@@ -88,6 +90,7 @@ const ImageAnimation = () => {
     const sectionRef = useRef<HTMLDivElement>(null);
     const imgWrapRef = useRef<HTMLDivElement>(null);
     const badgeRefs = useRef<Array<HTMLDivElement | null>>([]);
+    const fogRef = useRef<HTMLDivElement>(null);
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
@@ -95,16 +98,19 @@ const ImageAnimation = () => {
                 scrollTrigger: {
                     trigger: sectionRef.current,
                     start: "top top",
-                    end: "+=50%",
+                    end: "+=250%",
                     scrub: 1,
                     pin: true,
+                    anticipatePin: 1,
                 },
             });
 
+            // Phase 1 (0–0.4): image scales up + badges fade in
             tl.fromTo(
                 imgWrapRef.current,
                 { scale: 0.8 },
-                { scale: 1, ease: "power2.out", duration: 1 },
+                { scale: 1, ease: "power2.out", duration: 0.4 },
+                0,
             );
 
             tl.fromTo(
@@ -113,11 +119,20 @@ const ImageAnimation = () => {
                 {
                     autoAlpha: 1,
                     y: 0,
-                    stagger: 0.15,
-                    duration: 0.6,
+                    stagger: 0.04,
+                    duration: 0.2,
                     ease: "power2.out",
                 },
-                ">-0.1",
+                0.15,
+            );
+
+            // Phase 2 (0.4–1.0): Fog simply rolls up over the fully pinned, stationary image.
+            // Using ease: "none" here keeps the fog moving at a constant speed attached to the scroll wheel.
+            tl.fromTo(
+                fogRef.current,
+                { yPercent: 100, opacity: 0 },
+                { yPercent: 0, opacity: 1, duration: 0.6, ease: "none" },
+                0.4,
             );
         }, sectionRef);
 
@@ -127,32 +142,34 @@ const ImageAnimation = () => {
     return (
         <div
             ref={sectionRef}
-            className="relative h-screen w-screen overflow-hidden bg-[#C2B4AA]  font-helvetica"
+            className="relative h-screen w-full overflow-hidden bg-[#C2B4AA] font-helvetica"
         >
             <div
                 ref={imgWrapRef}
-                className="absolute inset-0 h-full w-full  origin-center overflow-hidden will-change-transform"
+                className="absolute inset-0 h-full w-full origin-center overflow-hidden will-change-transform"
             >
-                <img loading="lazy"
+                <img
+                    loading="lazy"
                     src={WholeBg}
                     alt=""
                     className="h-full w-full object-cover"
                     draggable={false}
                 />
-                <div className="absolute inset-0 h-full w-full bg-black/40 z-10 " />
+                <div className="absolute inset-0 h-full w-full bg-black/40 z-10" />
                 {badges.map((b, i) => (
                     <div
                         key={b.id}
                         ref={(el) => {
                             badgeRefs.current[i] = el;
                         }}
-                        className={`absolute ${b.className} w-[30rem] z-20  opacity-0`}
+                        className={`absolute ${b.className} w-[30rem] z-20 opacity-0`}
                     >
                         <GlowDot className={b.dotClassName}>
                             <div
                                 className={`pointer-events-none absolute flex w-[30rem] items-center gap-4 rounded-xl bg-[#F8F3EC] px-5 py-4 opacity-0 shadow-lg scale-95 transition-all duration-300 ease-out group-hover:pointer-events-auto group-hover:opacity-100 group-hover:scale-100 ${b.panelClassName}`}
                             >
-                                <img loading="lazy"
+                                <img
+                                    loading="lazy"
                                     src={b.image}
                                     alt={b.title}
                                     className="h-20 w-20 shrink-0"
@@ -171,6 +188,9 @@ const ImageAnimation = () => {
                     </div>
                 ))}
             </div>
+
+            {/* Fog overlay — animated by the timeline above */}
+            <Transition ref={fogRef} />
         </div>
     );
 };

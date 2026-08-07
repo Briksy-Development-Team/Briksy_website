@@ -13,7 +13,10 @@
   --color-white-50: #fbfaf3;
   --color-white-100: #eeece0;
 }
-
+html {
+  overflow-y: scroll; /* older/simple fix */
+  scrollbar-gutter: stable; /* modern, preferred */
+}
 @font-face {
   font-family: "HelveticaNow";
   src: url("./assest/font/HelveticaNeueLight.otf") format("opentype");
