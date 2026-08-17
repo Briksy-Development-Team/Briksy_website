@@ -17,7 +17,11 @@ const PropertyGridCard = ({ item }: Props) => (
       />
 
       {item.badge && (
-        <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-[0.75rem] font-medium">
+        <span className={`absolute left-3 top-3 rounded-full px-3 py-1 text-[0.75rem] font-medium ${
+          item.badge === "BRIKSY EXCLUSIVE"
+            ? "bg-[#1F1A17] text-[#F5E6C8]"
+            : "bg-white/90 text-[#342511]"
+        }`}>
           {item.badge}
         </span>
       )}

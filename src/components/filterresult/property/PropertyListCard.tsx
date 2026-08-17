@@ -14,7 +14,11 @@ const PropertyListCard = ({ item }: Props) => (
         alt={item.title}
         className="h-full w-full object-cover"
       />
-      <span className="absolute right-2 top-2 rounded-full bg-white/80 px-2 py-0.5 text-[0.625rem] font-medium">
+      <span className={`absolute right-2 top-2 rounded-full px-2 py-0.5 text-[0.625rem] font-medium ${
+        item.badge === "BRIKSY EXCLUSIVE"
+          ? "bg-[#1F1A17] text-[#F5E6C8]"
+          : "bg-white/80 text-[#342511]"
+      }`}>
         {item.badge}
       </span>
     </div>
